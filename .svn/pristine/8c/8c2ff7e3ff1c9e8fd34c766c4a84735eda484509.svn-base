@@ -1,0 +1,2 @@
+@javax.xml.bind.annotation.XmlSchema(namespace = "http://www.primeton.com/teacherAwardService", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+package org.bureaumanager.bureaumanagerpro.sysConfig.webService.fwdtClassAward;

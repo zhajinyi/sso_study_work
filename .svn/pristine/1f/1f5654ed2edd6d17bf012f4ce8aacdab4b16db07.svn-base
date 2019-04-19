@@ -1,0 +1,139 @@
+package org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo;
+
+import org.bureaumanager.bureaumanagerpro.base.BaseEntity;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto;
+
+public class SisoStudentInfo extends BaseEntity<SisoStudentInfoDto>{
+
+    private String grade;
+
+    private String collegeCode;
+
+    private String dromCode;
+
+    private String classCode;
+
+    private String specialtyCode;
+
+    private String instructorCode;
+
+    private String adviserCode;
+
+    private String entryScore;
+
+    private String bankCard;
+
+    private String onShool;
+
+    private String shoolRoll;
+
+    private String entryYear;
+
+    private String remark;
+
+
+
+    public String getCollegeCode() {
+        return collegeCode;
+    }
+
+    public void setCollegeCode(String collegeCode) {
+        this.collegeCode = collegeCode == null ? null : collegeCode.trim();
+    }
+
+    public String getSpecialtyCode() {
+        return specialtyCode;
+    }
+
+    public void setSpecialtyCode(String specialtyCode) {
+        this.specialtyCode = specialtyCode == null ? null : specialtyCode.trim();
+    }
+
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade == null ? null : grade.trim();
+    }
+
+    public String getClassCode() {
+        return classCode;
+    }
+
+    public void setClassCode(String classCode) {
+        this.classCode = classCode == null ? null : classCode.trim();
+    }
+
+    public String getInstructorCode() {
+        return instructorCode;
+    }
+
+    public void setInstructorCode(String instructorCode) {
+        this.instructorCode = instructorCode == null ? null : instructorCode.trim();
+    }
+
+    public String getAdviserCode() {
+        return adviserCode;
+    }
+
+    public void setAdviserCode(String adviserCode) {
+        this.adviserCode = adviserCode == null ? null : adviserCode.trim();
+    }
+
+    public String getDromCode() {
+        return dromCode;
+    }
+
+    public void setDromCode(String dromCode) {
+        this.dromCode = dromCode == null ? null : dromCode.trim();
+    }
+
+    public String getEntryScore() {
+        return entryScore;
+    }
+
+    public void setEntryScore(String entryScore) {
+        this.entryScore = entryScore == null ? null : entryScore.trim();
+    }
+
+    public String getBankCard() {
+        return bankCard;
+    }
+
+    public void setBankCard(String bankCard) {
+        this.bankCard = bankCard == null ? null : bankCard.trim();
+    }
+
+    public String getOnShool() {
+        return onShool;
+    }
+
+    public void setOnShool(String onShool) {
+        this.onShool = onShool == null ? null : onShool.trim();
+    }
+
+    public String getShoolRoll() {
+        return shoolRoll;
+    }
+
+    public void setShoolRoll(String shoolRoll) {
+        this.shoolRoll = shoolRoll == null ? null : shoolRoll.trim();
+    }
+
+    public String getEntryYear() {
+        return entryYear;
+    }
+
+    public void setEntryYear(String entryYear) {
+        this.entryYear = entryYear == null ? null : entryYear.trim();
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
+    }
+}

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.dao.SisoClassInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="specialty_code" property="specialtyCode" jdbcType="VARCHAR" />
+    <result column="adviser_code" property="adviserCode" jdbcType="VARCHAR" />
+    <result column="monitor_code" property="monitorCode" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <association fetchType="lazy" column="org_id" property="organizationDto"  select="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysOrganizationMapper.selectByPrimaryKey"></association>
+    <association fetchType="lazy" column="specialty_code" property="specialtyDto"  select="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.dao.SisoSpecialtyMapper.selectByPrimaryKey"></association>
+    <association fetchType="lazy" column="adviser_code" property="adviserInfo"  select="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysEmpInfoMapper.selectByPrimaryKey"></association>
+    <association fetchType="lazy" column="monitor_code" property="monitorInfo"  select="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysEmpInfoMapper.selectByPrimaryKey"></association>
+  </resultMap>
+  <resultMap id="TablesResultMap" type="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="className" property="className" jdbcType="VARCHAR" />
+    <result column="orgId" property="orgId" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="specialtyCode" property="specialtyCode" jdbcType="VARCHAR" />
+    <result column="adviserCode" property="adviserCode" jdbcType="VARCHAR" />
+    <result column="monitorCode" property="monitorCode" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="orgName" property="orgName" jdbcType="VARCHAR" />
+    <result column="specialtyName" property="specialtyName" jdbcType="VARCHAR" />
+    <result column="adviserName" property="adviserName" jdbcType="VARCHAR" />
+    <result column="monitorName" property="monitorName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, class_name, org_id, grade, specialty_code, adviser_code, monitor_code, remark
+  </sql>
+  <sql id="Tables_Column_List" >
+    sc.id AS  id,                       sc.class_name AS className,
+    sc.org_id AS orgId,                 sc.grade AS grade,
+    sc.specialty_code AS specialtyCode, sc.adviser_code AS adviserCode,
+    sc.monitor_code AS monitorCode,     sc.remark AS remark
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from siso_class_info
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="_parameter != null and _parameter !=''">
+      id = #{id,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from siso_class_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" >
+    insert into siso_class_info (id, class_name, org_id, grade, specialty_code, adviser_code, monitor_code, remark)
+    values (#{id,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{specialtyCode,jdbcType=VARCHAR}, #{adviserCode,jdbcType=VARCHAR}, #{monitorCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" >
+    insert into siso_class_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="className != null" >
+        class_name,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="specialtyCode != null" >
+        specialty_code,
+      </if>
+      <if test="adviserCode != null" >
+        adviser_code,
+      </if>
+      <if test="monitorCode != null" >
+        monitor_code,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null" >
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyCode != null" >
+        #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adviserCode != null" >
+        #{adviserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorCode != null" >
+        #{monitorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" >
+    update siso_class_info
+    <set >
+      <if test="className != null" >
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyCode != null" >
+        specialty_code = #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adviserCode != null" >
+        adviser_code = #{adviserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="monitorCode != null" >
+        monitor_code = #{monitorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" >
+    update siso_class_info
+    set class_name = #{className,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      specialty_code = #{specialtyCode,jdbcType=VARCHAR},
+      adviser_code = #{adviserCode,jdbcType=VARCHAR},
+      monitor_code = #{monitorCode,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 自己添加的Sql-->
+  <delete id="deleteByPrimaryKeys" parameterType="java.util.List" >
+    delete from siso_class_info
+    where id in
+    <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+  <select id="selectIdsByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <if test="name != null and name != ''">
+      <bind name="realname" value="'%' + name + '%'" />
+    </if>
+    select
+    id,class_name
+    from siso_class_info
+    where 1=1
+    <if test="name != null and name !=''">
+      AND class_name LIKE #{realname}
+    </if>
+  </select>
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+      count(*)
+    from siso_class_info
+    where id = #{id}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM siso_class_info
+    WHERE  grade > (YEAR(CURDATE())-4)
+  </select>
+  <select id="selectByOrgId"  resultMap="BaseResultMap" >
+    SELECT
+      id, class_name
+    FROM siso_class_info
+    WHERE org_id = #{orgId,jdbcType=VARCHAR}
+    <if test="grade != null and grade !=''">
+      AND grade = #{grade,jdbcType=VARCHAR}
+    </if>
+    AND grade > (YEAR(CURDATE())-4)
+    ORDER BY grade DESC, class_name ASC
+  </select>
+
+  <select id="countStudentByClass"  parameterType="java.lang.String" resultType="java.lang.Integer" >
+    SELECT
+      COUNT(*)
+    FROM siso_student_info
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="_parameter != null and _parameter !=''">
+        class_code = #{id}
+      </if>
+    </trim>
+  </select>
+
+  <select id="selectClassInfoByOrgId" resultMap="BaseResultMap" >
+    <if test="className != null and className !=''">
+      <bind name="className" value="'%' + className + '%'" />
+    </if>
+    SELECT
+      <include refid="Base_Column_List" />
+        FROM siso_class_info
+      <trim prefix="where" prefixOverrides="and|or">
+      <if test="orgId != null and orgId !=''">
+        AND org_id = #{orgId,jdbcType=VARCHAR}
+      </if>
+      <if test="grade != null and grade !=''">
+        AND grade = #{grade,jdbcType=VARCHAR}
+      </if>
+      <if test="className != null and className !=''">
+        AND class_name LIKE #{className,jdbcType=VARCHAR}
+      </if>
+      AND  grade > (YEAR(CURDATE())-4)
+    </trim>
+    ORDER BY org_id ASC, grade DESC, sc.class_name ASC
+  </select>
+  <select id="selectClassInfoByUserId" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM siso_class_info
+    WHERE id = (
+        SELECT class_code FROM siso_student_info s
+        WHERE  s.id = #{userId}
+
+    )
+  </select>
+
+  <select id="selectByTemplate" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto" resultMap="TablesResultMap" >
+    <if test="t.className != null and t.className != ''">
+      <bind name="className" value="'%' + t.className + '%'" />
+    </if>
+    <if test="t.remark != null and t.remark != ''">
+      <bind name="remark" value="'%' + t.remark + '%'" />
+    </if>
+    <if test="t.orgName != null and t.orgName !=''">
+      <bind name="orgName" value="'%' + t.orgName + '%'" />
+    </if>
+    <if test="t.specialtyName != null and t.specialtyName != ''">
+      <bind name="specialtyName" value="'%' + t.specialtyName + '%'" />
+    </if>
+    <if test="t.adviserName != null and t.adviserName != ''">
+      <bind name="adviserName" value="'%' + t.adviserName + '%'" />
+    </if>
+    <if test="t.monitorName != null and t.monitorName != ''">
+      <bind name="monitorName" value="'%' + t.monitorName + '%'" />
+    </if>
+    select
+    <include refid="Tables_Column_List" />,
+    so.org_name AS orgName,             ss.specialty_name AS specialtyName,
+    se1.realname AS adviserName,        se2.realname AS monitorName
+    from siso_class_info sc
+    LEFT JOIN sys_organization so ON sc.org_id = so.id
+    LEFT JOIN siso_specialty ss ON sc.specialty_code = ss.id
+    LEFT JOIN sys_emp_info se1 ON sc.adviser_code = se1.emp_id
+    LEFT JOIN sys_emp_info se2 ON sc.monitor_code = se2.emp_id
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="t.id != null and t.id !=''">
+        AND sc.id = #{t.id,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgId != null and t.orgId !=''">
+        AND sc.org_id = #{t.orgId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.specialtyCode != null and t.specialtyCode != ''">
+        AND sc.specialty_code = #{t.specialtyCode,jdbcType=VARCHAR}
+      </if>
+      <if test="t.adviserCode != null and t.adviserCode != ''">
+        AND sc.adviser_code = #{t.adviserCode,jdbcType=VARCHAR}
+      </if>
+      <if test="t.monitorCode != null and t.monitorCode != ''">
+        AND sc.monitor_code = #{t.monitorCode,jdbcType=VARCHAR}
+      </if>
+      <if test="t.grade != null and t.grade !=''">
+        AND sc.grade = #{t.grade,jdbcType=VARCHAR}
+      </if>
+      <if test="t.className != null and t.className !=''">
+        AND sc.class_name LIKE #{className,jdbcType=VARCHAR}
+      </if>
+      <if test="t.remark != null and t.remark != ''">
+        AND sc.remark LIKE #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgName != null and t.orgName !=''">
+        AND so.org_name LIKE #{orgName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.specialtyName != null and t.specialtyName != ''">
+        AND ss.specialty_name LIKE #{specialtyName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.adviserName != null and t.adviserName != ''">
+        AND se1.realname LIKE #{adviserName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.monitorName != null and t.monitorName != ''">
+        AND se2.realname LIKE #{monitorName,jdbcType=VARCHAR}
+      </if>
+    </trim>
+    ORDER BY sc.org_id ASC, sc.grade DESC, sc.class_name ASC
+  </select>
+
+</mapper>

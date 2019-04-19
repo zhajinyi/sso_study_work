@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="cn.edu.siso.itemscenter.comm.studentExcellAwardComposite.studentExcellAwardComponent.studentExcellAwardService" targetNamespace="http://www.primeton.com/studentExcellAwardService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.primeton.com/studentExcellAwardService" xmlns:ns0="http://www.primeton.com/studentExcellAwardService" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://www.primeton.com/studentExcellAwardService" location="/default/studentExcellAwardService?wsdl=cn/edu/siso/itemscenter/comm/studentExcellAward.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="studentExcellAwardServiceBinding" type="tns:studentExcellAwardService">
+    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="querySisoExcelleaderINfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="querySisoExcelleaderINfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="querySisoExcelleaderINfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="querySisoGraduateApplyInfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="querySisoGraduateApplyInfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="querySisoGraduateApplyInfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="studentExcellAwardServiceService">
+    <wsdl:port name="studentExcellAwardServicePort" binding="tns:studentExcellAwardServiceBinding">
+      <soap11:address location="http://fwdt.siso.edu.cn/default/studentExcellAwardService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="de0ea45a-b65a-4b4f-9e31-cf7e15481278" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BureauManagerPro_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BureauManagerPro_war.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BureauManagerPro_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/BureauManagerPro_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_47.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BureauManagerPro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BureauManagerPro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/dao/SisoDormInfoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/pojo/SisoDormInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/dao/SisoClassInfoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/dao/SisoStudentInfoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/SisoClassInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/SisoStudentInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoStudentInfoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoStudentInfoDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoStudentInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoStudentInfoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/dao/SysEmpInfoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/pojo/SysEmpInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SisoClassInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SisoDormInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SisoStudentInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/SysEmpInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target" beforeDir="true" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/generatorConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BbsDetailMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/BbsSortMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bureaumanager/BureaumanagerproApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/bureaumanager/bureaumanagerpro/base/BaseServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/bbstest.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/css/list.css" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoStudentInfoDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="4" column="75" lean-forward="true" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#680#681#0" expanded="true" />
+                <element signature="e#736#737#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/controller/StudentInfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoStudentInfoServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoStudentInfoMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="33" column="132" selection-start-line="33" selection-start-column="132" selection-end-line="33" selection-end-column="132" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysEmpInfoMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="39" column="27" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoDormInfoMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoClassInfoMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Interface" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>D:\generator\src</find>
+      <find>(Long id)</find>
+      <find>(id)</find>
+      <find>sortId</find>
+      <find>integer</find>
+      <find>Long</find>
+      <find>mybatis</find>
+      <find>insertSelective</find>
+      <find>Base</find>
+      <find>Base_Column_List</find>
+      <find>selectAllBbsSort</find>
+      <find>bbsSortMapper</find>
+      <find>条数</find>
+      <find>pageNum</find>
+      <find>pageFindModel</find>
+      <find>mysql.driver.version</find>
+      <find>itemsPageDo</find>
+      <find>mysql</find>
+      <find>ServletContextFactory</find>
+      <find>selectByPrimaryKey</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>src/main/java</replace>
+      <replace>(Long sortId)</replace>
+      <replace>(sortId)</replace>
+      <replace>(id</replace>
+      <replace>id</replace>
+      <replace>INT</replace>
+      <replace>int</replace>
+      <replace>Integer</replace>
+      <replace>iBbsSortService</replace>
+      <replace>记录数</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/BureaumanagerproApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/pojo/BbsDetail.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/sortlist.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/dao/BbsDetailMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/IBbsDetailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/impl/BbsSortService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/BbsSortService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/BbsDetailService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/controller/BbsDetailController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/BbsSortServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/impl/BbsDetailServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/BbsSortMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/BureaumanagerproApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/dao/BbsSortMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/bbstest.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/css/list.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/list.css" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/utils/PageBean.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/utils/GenericsUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/pojo/Pager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/IBbsSortService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/service/impl/BbsSortServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/base/BaseDao.java" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/controller/TestController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/test1.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/testHello.jsp" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/controller/StuInfoController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/SisoStudentInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoStudentInfoDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/dao/SisoStudentInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/SisoClassInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/dao/SisoClassInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoClassInfoDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoClassInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SisoClassInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/pojo/SisoDormInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/pojo/dto/SisoDormInfoDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/dao/SisoDormInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/service/impl/SisoDormInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SisoDormInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/pojo/SysEmpInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/pojo/dto/SysEmpInfoDto.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/dao/SysEmpInfoMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SysEmpInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/SisoStudentInfoMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoStudentInfoServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/controller/StudentInfoController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="bureaumanagerpro" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="bureaumanagerpro" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="bureaumanagerpro" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="bureaumanagerpro" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="81" />
+    <option name="y" value="53" />
+    <option name="width" value="1235" />
+    <option name="height" value="655" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <hideEmptyPackages ProjectPane="false" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="stuBasicInfo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="stuBasicInfo" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="stuBasicInfo" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+              <item name="sysConfig" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanager" type="462c0819:PsiDirectoryNode" />
+              <item name="bureaumanagerpro" type="462c0819:PsiDirectoryNode" />
+              <item name="sysConfig" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BureauManagerPro" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BureauManagerPro" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547103670737" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../StuLabor" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="settings.editor.splitter.proportion" value="0.24173748" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\webapp\WEB-INF" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\resources\mapper" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\webapp" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\resources\static" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.bureaumanager" />
+      <recent name="org.bureaumanager.bureaumanagerpro" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\webapp\css" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\webapp" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\resources\public" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\resources\templates\css" />
+      <recent name="D:\IDEAWorkSpace\BureauManagerPro\src\main\resources\templates\js" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.bureaumanager.bureaumanagerpro.controller" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.bureaumanager.bureaumanagerpro.service" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BureaumanagerproApplication">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in BureauManagerPro" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BureauManagerPro" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BureaumanagerproApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="BureauManagerPro" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.bureaumanager.BureaumanagerproApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.All in BureauManagerPro" />
+      <item itemvalue="Spring Boot.BureaumanagerproApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in BureauManagerPro" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\asus\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\idea_workspace\BureauManagerPro" />
+          <option name="myCopyRoot" value="E:\idea_workspace\BureauManagerPro" />
+        </SvnCopyRootSimple>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\idea_workspace\BureauManagerPro\.idea" />
+          <option name="myCopyRoot" value="E:\idea_workspace\BureauManagerPro\.idea" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="E:\idea_workspace\BureauManagerPro" />
+          <option name="myCopyRoot" value="E:\idea_workspace\BureauManagerPro" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de0ea45a-b65a-4b4f-9e31-cf7e15481278" name="Default" comment="" />
+      <created>1544599951748</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1544599951748</updated>
+      <workItem from="1544599953164" duration="4442000" />
+      <workItem from="1544604415661" duration="6660000" />
+      <workItem from="1544661469081" duration="29363000" />
+      <workItem from="1544748499769" duration="25884000" />
+      <workItem from="1545007378714" duration="28964000" />
+      <workItem from="1545093417135" duration="30142000" />
+      <workItem from="1545179886775" duration="18337000" />
+      <workItem from="1545215485964" duration="865000" />
+      <workItem from="1545266125803" duration="4875000" />
+      <workItem from="1545628659069" duration="39000" />
+      <workItem from="1545629436221" duration="1765000" />
+      <workItem from="1545631940952" duration="5726000" />
+      <workItem from="1545700532948" duration="5492000" />
+      <workItem from="1547088475826" duration="9801000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1545644037119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1545644037119</updated>
+    </task>
+    <task id="LOCAL-00002">
+      <created>1545702121112</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1545702121112</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_BureauManagerPro - 2018.12.12 at 18h 12m 36s.xml">
+      <configuration name="All in BureauManagerPro" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_BureauManagerPro - 2018.12.13 at 10h 10m 08s.xml">
+      <configuration name="All in BureauManagerPro" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_BureauManagerPro - 2018.12.13 at 10h 10m 43s.xml">
+      <configuration name="All in BureauManagerPro" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_BureauManagerPro - 2018.12.13 at 10h 14m 19s.xml">
+      <configuration name="All in BureauManagerPro" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="172355000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2249467" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32971016" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.52122986" visible="true" weight="0.43770313" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.78332037" weight="0.432971" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32971016" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.47877014" side_tool="true" weight="0.797054" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.18309858" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32840723" />
+      <window_info anchor="bottom" id="Spring" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.329653" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="right" id="Maven" weight="0.18443497" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Bean Validation" order="7" weight="0.32995737" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.10989867" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="1" />
+      <window_info anchor="bottom" id="Message" order="2" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32971016" />
+      <window_info active="true" anchor="bottom" id="Run" order="4" sideWeight="0.52122986" visible="true" weight="0.40953413" />
+      <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.78332037" weight="0.432971" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="8" weight="0.32971016" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.47877014" side_tool="true" weight="0.797054" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.18309858" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32840723" />
+      <window_info anchor="bottom" id="Spring" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.329653" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="right" id="Maven" order="0" weight="0.32995737" />
+      <window_info anchor="right" id="Commander" order="1" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32980332" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.32995737" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="10" weight="0.10989867" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/dao/BbsSortMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/controller/TestController.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/spring/boot/mybatis-spring-boot-autoconfigure/1.2.0/mybatis-spring-boot-autoconfigure-1.2.0.jar!/org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1825">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.1.RELEASE/spring-boot-autoconfigure-2.1.1.RELEASE.jar!/org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/base/BaseDao.java" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/test1.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/testHello.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/bureaumanager/bureaumanagerpro/BureaumanagerproApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BureauManagerPro.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-325">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/config/Global.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/controller/GlobalController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/controller/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="55" column="27" lean-forward="true" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../demo/src/main/resources/mapper/SysUserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/controller/StuInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/base/BaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="55" column="39" lean-forward="true" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+          <folding>
+            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="e#1318#1319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/base/BaseMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoAwardMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="2" column="33" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="75" column="59" lean-forward="true" selection-start-line="75" selection-start-column="59" selection-end-line="75" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/base/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="35" column="9" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/dao/SisoStudentInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/SisoClassInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="14" column="25" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/dao/SisoClassInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoClassInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="53" lean-forward="true" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/SisoClassInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/SisoStudentInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoClassInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" column="99" selection-start-line="7" selection-start-column="99" selection-end-line="7" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/pojo/SisoDormInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="60" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/pojo/dto/SisoDormInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/dao/SisoDormInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="3" column="83" selection-start-line="3" selection-start-column="83" selection-end-line="3" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/service/SisoDormInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/service/SisoDormViolateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/service/impl/SisoDormInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="9" column="89" selection-start-line="9" selection-start-column="89" selection-end-line="9" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/dormitoryManager/service/impl/SisoDormViolateServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/pojo/SysInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/pojo/SysEmpInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="26" lean-forward="true" selection-start-line="8" selection-start-column="26" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/dao/SysEmpInfoMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="5" column="69" lean-forward="true" selection-start-line="5" selection-start-column="69" selection-end-line="5" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/SisoStudentInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoClassInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoDormInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SysEmpInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/sysConfig/pojo/dto/SysEmpInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SisoStudentInfoMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="33" column="132" selection-start-line="33" selection-start-column="132" selection-end-line="33" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/pojo/dto/SisoStudentInfoDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" column="75" lean-forward="true" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#680#681#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/service/impl/SisoStudentInfoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bureaumanager/bureaumanagerpro/model/stuBasicInfo/controller/StudentInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>BureauManagerPro:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web (BureauManagerPro)|Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>BureauManagerPro</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

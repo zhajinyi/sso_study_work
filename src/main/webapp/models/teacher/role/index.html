@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/main.css" media="all">
+</head>
+
+<body>
+    <div class="layui-fluid">
+        <table id="tableData" lay-filter="tableData"></table>
+    </div>
+    <!--表格头部自定义控件-->
+    <script type="text/html" id="tableToolbar">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+                <div class="layui-btn-group">
+                    <button class="layui-btn layui-btn-normal layui-btn-sm btn-add">添加</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!-- 表格操作 -->
+    <script type="text/html" id="tableOperation">
+        <a class="layui-table-link" href="javascript:;" lay-event="rolEdit">权限分配</a>
+        <a class="layui-table-link" href="javascript:;" lay-event="edit">编辑</a>
+        <a class="layui-table-link btn-danger" href="javascript:;" lay-event="del">删除</a>
+    </script>
+    <script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'table', 'layer'], function () {
+            var $ = layui.$,
+                table = layui.table,
+                fun = layui.fun,
+                layer = layui.layer,
+                $body = $("body")
+            table.render({
+                elem: '#tableData'
+                , url: layui.setter.base + 'json/stu/stu_manage.js' //模拟接口
+                , toolbar: '#tableToolbar'
+                , page: {
+                    layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                    , 'prev': '上一页'
+                    , 'next': '下一页'
+                    , 'limits': [10, 20, 30, 40, 50]
+                    , jump: function (obj) {
+                        console.log(obj)
+                    }
+                }
+                , loading: true
+                , cellMinWidth: 120
+                , defaultToolbar: ['filter']
+                , cols: [[
+                    { type: 'numbers', title: '编号', width: 60 }
+                    , { field: 'id', title: '角色名称' }
+                    , { field: 'sex', title: '上级角色', sort: true }
+                    , { field: 'city', title: '状态' }
+                    , { field: 'sign', title: '创建时间' }
+                    , { fixed: 'right', title: '操作', width: 220, align: 'center', toolbar: '#tableOperation' } //这里的toolbar值是模板元素的选择器
+                ]]
+            })
+            //监听行工具事件
+            table.on('tool(tableData)', function (obj) {
+                var data = obj.data;
+                // console.log(obj)
+                switch(obj.event){
+                    case 'del':
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        del();
+                        layer.close(index);
+                    });
+                    break;
+                    case 'edit':
+                        LayerOpen('role/add_edit.html?id=' + data.id + '&name=' + escape(data.city), '修改角色');//
+                    break;
+                    case 'rolEdit':
+                        LayerOpen('role/role_edit.html?id=' + data.id, '权限分配');
+                    break;
+                }
+            });
+
+            //监听选项卡的更多操作
+            $body.on('click', '.btn-add', function (elem) {
+                LayerOpen('role/add_edit.html');
+            })
+            function LayerOpen(url, title = '添加角色') {
+                parent.layer.open({
+                    type: 2 //Page层类型
+                    , area: ['700px', '500px']
+                    , title: title
+                    , shade: 0.6 //遮罩透明度
+                    , maxmin: true //允许全屏最小化
+                    , anim: 1 //0-6的动画形式，-1不开启
+                    , content: url
+                });
+            }
+            function del(id) {
+                fun.AjaxData('json/stu/stu_manage.js', 'get', {}, delData);
+
+            }
+            function delData(res) {
+                parent.layer.msg('删除成功！', {
+                    time: 20000, //20s后自动关闭
+                    btn: '知道了'
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

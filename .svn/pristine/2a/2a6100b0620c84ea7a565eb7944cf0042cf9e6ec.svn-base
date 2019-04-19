@@ -1,0 +1,15 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto;
+
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysEmpInfo;
+
+public class SysEmpInfoDto extends SysEmpInfo {
+    private String userType;
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+}

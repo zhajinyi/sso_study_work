@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/main.css" media="all">
+</head>
+
+<body>
+    <div class="layui-fluid" id="LAY-component-grid-mobile-pc">
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-xs4 layui-col-md2">
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <ul id="tree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs8 layui-col-md10">
+                <!-- 填充内容 -->
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <form class="layui-form" action="" lay-filter="component-form-group">
+                            <input type="hidden" name="treeid" value="">
+                            <div class="layui-row">
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">菜单名称：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">菜单路径：</label>
+                                    <div class="layui-input-block">
+                                        <select name="professional" lay-filter="professional">
+                                            <option value=""></option>
+                                            <option value="0">写作</option>
+                                            <option value="1">阅读</option>
+                                            <option value="2">游戏</option>
+                                            <option value="3">音乐</option>
+                                            <option value="4">旅行</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">跳转URL：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">菜单类型：</label>
+                                    <div class="layui-input-block">
+                                        <select name="professional" lay-filter="professional">
+                                            <option value=""></option>
+                                            <option value="0">写作</option>
+                                            <option value="1">阅读</option>
+                                            <option value="2">游戏</option>
+                                            <option value="3">音乐</option>
+                                            <option value="4">旅行</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">触发事件：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">菜单排序：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md6 layui-form-item">
+                                    <label class="layui-form-label">是否启用：</label>
+                                    <div class="layui-input-block">
+                                        <input type="radio" name="sex" value="启用" title="启用" checked="">
+                                        <input type="radio" name="sex" value="不启用" title="不启用">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md12 layui-form-item layui-layout-admin btn-sumbit">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="class_form_save">保存</button>
+                                        <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="class_form_new_save">保存并新建</button>
+                                        <button class="layui-btn layui-btn-normal" lay-submit="" lay-filter="class_form_del">删除</button>
+                                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'tree', 'table', 'layer', 'form'], function () {
+            var $ = layui.$
+                , tree = layui.tree
+                , fun = layui.fun
+                , form = layui.form
+                , $body = $('body');//body
+
+            fun.AjaxData('json/stu/stu_tree.js', 'get', {}, TreeFun)
+            function TreeFun(res) {
+                tree({
+                    elem: '#tree'
+                    , target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
+                    , nodes: res
+                    , click: function (node) {
+                        console.log(node) //node即为当前点击的节点数据
+                        // Table (node.id);
+                        $("input[name=treeid]").val(node.id)
+                    }
+                });
+            }
+
+            //监听选项卡的更多操作
+            $body.on('click', '.btn-add', function (elem) {
+            })
+            
+            /* 表单保存 */
+            form.on('submit(class_form_save)', function (data) {
+                parent.layer.closeAll();
+                parent.layer.alert(JSON.stringify(data.field), {
+                    title: '表单保存'
+                })
+                return false;
+            });
+            /* 表单保存并新建 */
+            form.on('submit(class_form_new_save)', function (data) {
+                parent.layer.closeAll();
+                parent.layer.alert(JSON.stringify(data.field), {
+                    title: '表单保存并新建'
+                })
+                return false;
+            });
+            /* 表单删除 */
+            form.on('submit(class_form_del)', function (data) {
+                var treeId = $("input[name=treeid]").val();
+                if( treeId !== "") {
+                    parent.layer.closeAll();
+                    parent.layer.confirm('你确定删除选中的菜单吗？', function(){
+                        //执行删除事件
+                        parent.layer.closeAll();
+                        $('#tree').empty();
+                        fun.AjaxData('json/stu/stu_tree.js', 'get', {}, TreeFun);
+                    })
+                } else {
+                    parent.layer.alert('请点击左侧要删除的菜单！');
+                }
+                
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

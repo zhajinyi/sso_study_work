@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao.SisoAwardMapper">
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="emp_id" jdbcType="VARCHAR" property="empId" />
+    <result column="award_name" jdbcType="VARCHAR" property="awardName" />
+    <result column="award_time" jdbcType="TIMESTAMP" property="awardTime" />
+    <result column="verifier" jdbcType="VARCHAR" property="verifier" />
+    <result column="opinion" jdbcType="VARCHAR" property="opinion" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="story" jdbcType="VARCHAR" property="story" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, emp_id, award_name, award_time, verifier, opinion, level, story, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from siso_award
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from siso_award
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto">
+    insert into siso_award (id, emp_id, award_name, 
+      award_time, verifier, opinion, 
+      level, story, remark
+      )
+    values (#{id,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{awardName,jdbcType=VARCHAR}, 
+      #{awardTime,jdbcType=VARCHAR}, #{verifier,jdbcType=VARCHAR}, #{opinion,jdbcType=VARCHAR}, 
+      #{level,jdbcType=VARCHAR}, #{story,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto">
+    insert into siso_award
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="awardName != null">
+        award_name,
+      </if>
+      <if test="awardTime != null">
+        award_time,
+      </if>
+      <if test="verifier != null">
+        verifier,
+      </if>
+      <if test="opinion != null">
+        opinion,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="story != null">
+        story,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardName != null">
+        #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="awardTime != null">
+        #{awardTime,jdbcType=VARCHAR},
+      </if>
+      <if test="verifier != null">
+        #{verifier,jdbcType=VARCHAR},
+      </if>
+      <if test="opinion != null">
+        #{opinion,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="story != null">
+        #{story,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto">
+    update siso_award
+    <set>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="awardName != null">
+        award_name = #{awardName,jdbcType=VARCHAR},
+      </if>
+      <if test="awardTime != null">
+        award_time = #{awardTime,jdbcType=VARCHAR},
+      </if>
+      <if test="verifier != null">
+        verifier = #{verifier,jdbcType=VARCHAR},
+      </if>
+      <if test="opinion != null">
+        opinion = #{opinion,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="story != null">
+        story = #{story,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto">
+    update siso_award
+    set emp_id = #{empId,jdbcType=VARCHAR},
+      award_name = #{awardName,jdbcType=VARCHAR},
+      award_time = #{awardTime,jdbcType=VARCHAR},
+      verifier = #{verifier,jdbcType=VARCHAR},
+      opinion = #{opinion,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      story = #{story,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+ 
+
+  <!-- 自己添加的Sql-->
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(id)
+    from siso_award
+    where id = #{id}
+  </select>
+
+  <select id="selectIdByTemplate" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto" resultType="java.lang.String">
+    select
+      id
+    from siso_award
+    where emp_id = #{empId}
+    AND award_name = #{awardName,jdbcType=VARCHAR}
+    AND award_time = #{awardTime,jdbcType=VARCHAR}
+  </select>
+
+  <select id="count" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAwardDto" resultType="java.lang.Integer">
+    select
+    count(id)
+    from siso_award
+    where emp_id = #{empId}
+    AND award_name = #{awardName,jdbcType=VARCHAR}
+    AND award_time = #{awardTime,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByTemplate"  resultMap="BaseResultMap" >
+    <if test="t.empId != null and t.empId != ''">
+      <bind name="t.empId" value="'%' + t.empId + '%'" />
+    </if>
+    <if test="t.awardName != null and t.awardName != ''">
+      <bind name="t.awardName" value="'%' + t.awardName + '%'" />
+    </if>
+    <if test="t.awardTime != null and t.awardTime != ''">
+      <bind name="t.awardTime" value="'%' + t.awardTime + '%'" />
+    </if>
+    <if test="t.verifier != null and t.verifier != ''">
+      <bind name="t.verifier" value="'%' + t.verifier + '%'" />
+    </if>
+    <if test="t.opinion != null and t.opinion != ''">
+      <bind name="t.opinion" value="'%' + t.opinion + '%'" />
+    </if>
+    <if test="t.level != null and t.level != ''">
+      <bind name="t.level" value="'%' + t.level + '%'" />
+    </if>
+    <if test="t.story != null and t.story != ''">
+      <bind name="t.story" value="'%' + t.story + '%'" />
+    </if>
+    <if test="t.remark != null and t.remark != ''">
+      <bind name="t.remark" value="'%' + t.remark + '%'" />
+    </if>
+    select
+    <include refid="Base_Column_List" />
+    from siso_award
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="t.empId != null and t.empId != ''">
+        AND emp_id LIKE #{t.empId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.awardName != null and t.awardName != ''">
+        AND award_name LIKE #{awardName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.awardTime != null and t.awardTime != ''">
+        AND award_time LIKE #{awardTime,jdbcType=VARCHAR}
+      </if>
+      <if test="t.verifier != null and t.verifier != ''">
+        AND verifier LIKE #{verifier,jdbcType=VARCHAR}
+      </if>
+      <if test="t.opinion != null and t.opinion != ''">
+        AND opinion LIKE #{opinion,jdbcType=VARCHAR}
+      </if>
+      <if test="t.level != null and t.level != ''">
+        AND level LIKE #{t.level}
+      </if>
+      <if test="t.story != null and t.story != ''">
+        AND story LIKE #{story,jdbcType=VARCHAR}
+      </if>
+      <if test="t.remark != null and t.remark != ''">
+        AND remark LIKE #{remark,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+</mapper>

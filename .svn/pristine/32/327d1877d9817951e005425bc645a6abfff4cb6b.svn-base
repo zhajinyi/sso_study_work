@@ -1,0 +1,39 @@
+table{
+    width:800px;
+    height:60px;
+    text-align: center;
+    margin:auto;
+}
+tr{
+    height: 40px;
+}
+span{
+    color: red;
+}
+tr:nth-of-type(odd) {
+    background: #8EFFFF;
+}
+tr:nth-of-type(even) {
+    background:white;
+}
+#title{
+    background-color:white;
+}
+a{
+    text-decoration:none;
+}
+#sec{
+    background-color:#DBC4FF;
+}
+
+#sea{
+    text-align:right;
+}
+p{
+    text-align: center;
+
+}
+
+
+
+

@@ -1,0 +1,116 @@
+
+package org.bureaumanager.bureaumanagerpro.sysConfig.webService.fwdtBursaryAndHighExcellent;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
+import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
+
+
+/**
+ * This object contains factory methods for each 
+ * Java content interface and Java element interface 
+ * generated in the org.bureaumanager.bureaumanagerpro.sysConfig.webService.fwdtBursaryAndHighExcellent package. 
+ * <p>An ObjectFactory allows you to programatically 
+ * construct new instances of the Java representation 
+ * for XML content. The Java representation of XML 
+ * content can consist of schema derived interfaces 
+ * and classes representing the binding of schema 
+ * type definitions, element declarations and model 
+ * groups.  Factory methods for each of these are 
+ * provided in this class.
+ * 
+ */
+@XmlRegistry
+public class ObjectFactory {
+
+    private final static QName _QueryBursaryResponseBursarys_QNAME = new QName("http://www.primeton.com/studentAwardService", "bursarys");
+    private final static QName _QueryHighExcellentType_QNAME = new QName("http://www.primeton.com/studentAwardService", "type");
+    private final static QName _QueryHighExcellentYear_QNAME = new QName("http://www.primeton.com/studentAwardService", "year");
+    private final static QName _QueryHighExcellentResponseExcellent_QNAME = new QName("http://www.primeton.com/studentAwardService", "excellent");
+
+    /**
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.bureaumanager.bureaumanagerpro.sysConfig.webService.fwdtBursaryAndHighExcellent
+     * 
+     */
+    public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link QueryBursary }
+     * 
+     */
+    public QueryBursary createQueryBursary() {
+        return new QueryBursary();
+    }
+
+    /**
+     * Create an instance of {@link QueryBursaryResponse }
+     * 
+     */
+    public QueryBursaryResponse createQueryBursaryResponse() {
+        return new QueryBursaryResponse();
+    }
+
+    /**
+     * Create an instance of {@link QueryHighExcellentResponse }
+     * 
+     */
+    public QueryHighExcellentResponse createQueryHighExcellentResponse() {
+        return new QueryHighExcellentResponse();
+    }
+
+    /**
+     * Create an instance of {@link QueryHighExcellent }
+     * 
+     */
+    public QueryHighExcellent createQueryHighExcellent() {
+        return new QueryHighExcellent();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.primeton.com/studentAwardService", name = "bursarys", scope = QueryBursaryResponse.class)
+    public JAXBElement<String> createQueryBursaryResponseBursarys(String value) {
+        return new JAXBElement<String>(_QueryBursaryResponseBursarys_QNAME, String.class, QueryBursaryResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.primeton.com/studentAwardService", name = "type", scope = QueryHighExcellent.class)
+    public JAXBElement<String> createQueryHighExcellentType(String value) {
+        return new JAXBElement<String>(_QueryHighExcellentType_QNAME, String.class, QueryHighExcellent.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.primeton.com/studentAwardService", name = "year", scope = QueryHighExcellent.class)
+    public JAXBElement<String> createQueryHighExcellentYear(String value) {
+        return new JAXBElement<String>(_QueryHighExcellentYear_QNAME, String.class, QueryHighExcellent.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.primeton.com/studentAwardService", name = "excellent", scope = QueryHighExcellentResponse.class)
+    public JAXBElement<String> createQueryHighExcellentResponseExcellent(String value) {
+        return new JAXBElement<String>(_QueryHighExcellentResponseExcellent_QNAME, String.class, QueryHighExcellentResponse.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://www.primeton.com/studentAwardService", name = "year", scope = QueryBursary.class)
+    public JAXBElement<String> createQueryBursaryYear(String value) {
+        return new JAXBElement<String>(_QueryHighExcellentYear_QNAME, String.class, QueryBursary.class, value);
+    }
+
+}

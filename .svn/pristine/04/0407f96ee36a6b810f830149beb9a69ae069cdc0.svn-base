@@ -1,0 +1,41 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.controller;
+
+import org.bureaumanager.bureaumanagerpro.base.BaseController;
+import org.bureaumanager.bureaumanagerpro.model.sysManager.service.impl.SysEmpInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.Msg;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * @Author: BaoLing
+ * @Date: 2019/2/27 14:37
+ * @Description: EmpInfoController
+ * @Version: 1.0
+ */
+@Controller
+@RequestMapping("/empInfo")
+public class EmpInfoController extends BaseController {
+
+    @Autowired
+    SysEmpInfoServiceImpl sysEmpInfoService;
+
+    @RequestMapping(value = "/findIds",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public List<SysEmpInfoDto> findIdAndNameByRealName(@RequestParam(value = "realName",defaultValue = "") String realName){
+        List<SysEmpInfoDto> empInfolist = sysEmpInfoService.selectIdsByName(realName);
+        return empInfolist;
+    }
+
+    @RequestMapping(value = "/selectIdsByName", method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg selectIdsByName(@RequestBody SysEmpInfoDto sysEmpInfoDto){
+        String realname = sysEmpInfoDto.getRealname();
+        List<SysEmpInfoDto> sysEmpInfoDtos = sysEmpInfoService.selectIdsByName(realname);
+        return Msg.success().add("sysEmpInfoDtos",sysEmpInfoDtos);
+    }
+
+}

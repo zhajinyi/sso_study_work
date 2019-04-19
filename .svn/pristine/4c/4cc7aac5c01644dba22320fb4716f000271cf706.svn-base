@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao.SisoAdvancedInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoAdvancedInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="orgid" property="orgid" jdbcType="VARCHAR" />
+    <result column="orgname" property="orgname" jdbcType="VARCHAR" />
+    <result column="graduate" property="graduate" jdbcType="VARCHAR" />
+    <result column="banji_name" property="banjiName" jdbcType="VARCHAR" />
+    <result column="detail" property="detail" jdbcType="VARCHAR" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    <result column="suozaixi" property="suozaixi" jdbcType="VARCHAR" />
+    <result column="advanced_time" property="advancedTime" jdbcType="VARCHAR" />
+    <result column="banji_id" property="banjiId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, empid, empname, orgid, orgname, graduate, banji_name, detail, dept, suozaixi, 
+    advanced_time, banji_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from siso_advanced_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from siso_advanced_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoAdvancedInfo" >
+    insert into siso_advanced_info (id, empid, empname, 
+      orgid, orgname, graduate, 
+      banji_name, detail, dept, 
+      suozaixi, advanced_time, banji_id)
+    values (#{id,jdbcType=INTEGER}, #{empid,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
+      #{orgid,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR}, #{graduate,jdbcType=VARCHAR}, 
+      #{banjiName,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, 
+      #{suozaixi,jdbcType=VARCHAR}, #{advancedTime,jdbcType=VARCHAR}, #{banjiId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoAdvancedInfo" >
+    insert into siso_advanced_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="orgid != null" >
+        orgid,
+      </if>
+      <if test="orgname != null" >
+        orgname,
+      </if>
+      <if test="graduate != null" >
+        graduate,
+      </if>
+      <if test="banjiName != null" >
+        banji_name,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="dept != null" >
+        dept,
+      </if>
+      <if test="suozaixi != null" >
+        suozaixi,
+      </if>
+      <if test="advancedTime != null" >
+        advanced_time,
+      </if>
+      <if test="advancedTime != null" >
+        banji_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="graduate != null" >
+        #{graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="banjiName != null" >
+        #{banjiName,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="suozaixi != null" >
+        #{suozaixi,jdbcType=VARCHAR},
+      </if>
+      <if test="advancedTime != null" >
+        #{advancedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="banjiId != null" >
+        #{banjiId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoAdvancedInfo" >
+    update siso_advanced_info
+    <set >
+      <if test="empid != null" >
+        empid = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        orgname = #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="graduate != null" >
+        graduate = #{graduate,jdbcType=VARCHAR},
+      </if>
+      <if test="banjiName != null" >
+        banji_name = #{banjiName,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="dept != null" >
+        dept = #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="suozaixi != null" >
+        suozaixi = #{suozaixi,jdbcType=VARCHAR},
+      </if>
+      <if test="advancedTime != null" >
+        advanced_time = #{advancedTime,jdbcType=VARCHAR},
+      </if>
+      <if test="banjiId != null" >
+        banji_id = #{banjiId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoAdvancedInfo" >
+    update siso_advanced_info
+    set empid = #{empid,jdbcType=VARCHAR},
+      empname = #{empname,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      orgname = #{orgname,jdbcType=VARCHAR},
+      graduate = #{graduate,jdbcType=VARCHAR},
+      banji_name = #{banjiName,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      dept = #{dept,jdbcType=VARCHAR},
+      suozaixi = #{suozaixi,jdbcType=VARCHAR},
+      advanced_time = #{advancedTime,jdbcType=VARCHAR},
+      banji_id = #{banjiId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="countByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select
+    count(*)
+    from siso_advanced_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <!-- 自己添加的Sql-->
+  <select id="selectByTemplate" resultMap="BaseResultMap" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoAdvancedInfo">
+    select
+    <include refid="Base_Column_List" />
+    from siso_advanced_info
+    <where>
+      <if test="t.empid != null and t.empid != ''" >
+        empid = #{t.empid,jdbcType=VARCHAR}
+      </if>
+      <if test="t.empname != null and t.empname != ''" >
+        and empname like "%"#{t.empname,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.orgid != null and t.orgid != ''" >
+        and orgid = #{t.orgid,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgname != null and t.orgname != ''" >
+        and orgname like "%"#{t.orgname,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.graduate != null and t.graduate != ''" >
+        and graduate like "%"#{t.graduate,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.banjiName != null and t.banjiName != ''" >
+        and banji_name like "%"#{t.banjiName,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.detail != null and t.detail != ''" >
+        and detail like "%"#{t.detail,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.dept != null and t.dept != ''" >
+        and dept like "%"#{t.dept,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.suozaixi != null and t.suozaixi != ''" >
+        and suozaixi = #{t.suozaixi,jdbcType=VARCHAR}
+      </if>
+      <if test="t.advancedTime != null and t.advancedTime != ''" >
+        and advanced_time = #{t.advancedTime,jdbcType=VARCHAR}
+      </if>
+      <if test="t.banjiId != null and t.banjiId != ''" >
+        and banji_id = #{t.banjiId,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+</mapper>

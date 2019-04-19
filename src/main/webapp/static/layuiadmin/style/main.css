@@ -1,0 +1,116 @@
+.none{
+    display: none;
+}
+input{
+    font-size: 12px;
+}
+.layui-table-cell .btn-danger{
+    color: #FF5722;
+}
+.main-section{
+    background-color: transparent;
+    box-shadow: none;
+}
+.main-section .layui-card-body{
+    padding: 0 0 0 15px;
+}
+.layui-form-label{
+    font-size: 12px;
+    padding: 5px 0;
+}
+.layui-input-block {
+    min-height: 30px;
+    margin-left: 80px;
+}
+.layui-btn-group{
+    display: block;
+    text-align: right;
+}
+.layui-table-tool {
+    padding-left: 0;
+}
+.layui-table-tool-temp {
+    padding-right: 35px;
+}
+.layui-table-page{
+    text-align: center;
+    background-color: #fff;
+}
+.layui-table tbody tr:hover, .layui-table thead tr, .layui-table-click, .layui-table-header, .layui-table-hover, .layui-table-mend, .layui-table-patch, .layui-table-total, .layui-table-total tr, .layui-table[lay-even] tr:nth-child(even){
+    background-color:#fff;
+}
+#addClass {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+}
+.btn-sumbit .layui-input-block{
+    margin-left: 0;
+    text-align: center;
+}
+.form-text .layui-input-block .layui-textarea{
+    width: 485px;
+}
+.layui-input-inline {
+    font-size: 12px;
+}
+.layui-input, .layui-textarea {
+    height:30px;
+}
+.stu-html-manage.layui-tab-content{
+    background-color: #fff;
+}
+.stu-html-manage .layui-form-radio {
+    margin: 2px 10px 0 0;
+}
+.stu-html-manage .layui-form-item .layui-form-checkbox[lay-skin=primary]{
+    margin-top: 6px;
+}
+.layui-form-checkbox{
+    top: 5px !important;
+}
+.stu-html-manage input[type="text"][disabled][readonly] {
+    background-color:#eee;
+}
+
+.layui-tab-content.stu-html-manage{
+    position: relative;
+    min-height: 590px;
+}
+.layui-tab-content.stu-html-manage .btn-bottom{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -32px;
+}
+.layui-form-radio {
+    margin-top: 3px; 
+}
+.layui-table-link {
+    font-size: 13px;
+}
+/* 角色管理 */
+.role-ct {
+    font-size: 12px;
+    padding-bottom: 20px;
+}
+.role-ct .layui-form-checkbox[lay-skin=primary] i {
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    top: 2px;
+}
+.role-ct .layui-form-checkbox[lay-skin=primary] {
+    padding-left: 20px;
+}
+.role-ct .layui-form-checkbox[lay-skin=primary] span {
+    font-size: 12px;
+}
+.role-ct .title-1-1 {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.role-ct .title-1-2 {
+    padding-left: 40px;
+    padding-top: 10px;
+}

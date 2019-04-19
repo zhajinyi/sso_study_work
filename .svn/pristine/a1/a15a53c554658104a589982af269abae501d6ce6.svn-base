@@ -1,0 +1,106 @@
+package org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.controller;
+
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.SecurityUtils;
+import org.bureaumanager.bureaumanagerpro.base.BaseController;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.dao.SisoStudentInfoMapper;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.service.impl.SisoClassInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.Msg;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysOrganizationDto;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysUserDto;
+import org.bureaumanager.bureaumanagerpro.sysConfig.service.impl.SysOrganizationServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @Author: BaoLing
+ * @Date: 2019/1/22 10:47
+ * @Description: ClassInfoController
+ * @Version: 1.0
+ */
+@Controller
+@RequestMapping("/class")
+public class ClassInfoController extends BaseController {
+    @Autowired
+    SisoClassInfoServiceImpl sisoClassInfoService;
+
+    @RequestMapping(value = "/findIds",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public List<SisoClassInfoDto> findIdAndNameByRealName(@RequestParam(value = "realName",defaultValue = "") String realName){
+        List<SisoClassInfoDto> classInfolist = sisoClassInfoService.selectIdsByName(realName);
+        return classInfolist;
+    }
+    @RequestMapping(value = "/queryByParams",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg findClassesByTemplate(@RequestBody(required = false) SisoClassInfoDto t) {
+
+        PageHelper.startPage(t.getCurrentPage(), t.getPageSize());
+        List <SisoClassInfoDto> classList = sisoClassInfoService.selectEntitiesByTemplate(t);
+        PageInfo page = new PageInfo(classList, 5);
+        return Msg.success().add("PageInfo", page);
+    }
+
+    @RequestMapping(value = "/insertOneClass",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg insertOneClassByTemplate(@RequestBody SisoClassInfoDto t) {
+        boolean flg = sisoClassInfoService.insertEntitySelective(t);
+        if (flg){
+            return Msg.success();
+        }else {
+            return Msg.failure();
+        }
+    }
+
+    @RequestMapping(value = "/updateOneClass",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg updateOneClassByTemplate(@RequestBody SisoClassInfoDto t) {
+        boolean flg = sisoClassInfoService.updateEntityByPrimaryKeySelective(t);
+        if (flg){
+            return Msg.success();
+        }else {
+            return Msg.failure();
+        }
+    }
+
+    @RequestMapping(value = "/deleteSelectedClasses",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg deleteClassBySelected(@RequestBody List<String> ids) {
+        boolean flg = sisoClassInfoService.deleteEntityByPrimaryKeys(ids);
+        if (flg){
+            return Msg.success();
+        }else {
+            return Msg.failure();
+        }
+    }
+
+    @RequestMapping("/commTree1")
+    @ResponseBody
+    @Override
+    public List<Map> selectCollegeTree() throws Exception {
+        return super.selectCollegeTree();
+    }
+
+    @RequestMapping("/classInfo")
+    @ResponseBody
+    public SisoClassInfoDto selectClassInfoByUserId() {
+        SisoClassInfoDto classInfo = new SisoClassInfoDto();
+        if (null == SecurityUtils.getSubject().getSession()) {
+            logger.info("Session has been invalidated! Can not select ClassInfo By UserId!");
+            return classInfo;
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+        classInfo = sisoClassInfoService.selectClassInfoByUserId(userDto.getId());
+        return classInfo;
+    }
+}

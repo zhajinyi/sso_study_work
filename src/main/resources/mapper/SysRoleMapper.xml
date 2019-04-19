@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysRoleMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="organization_id" property="organizationId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="enname" property="enname" jdbcType="VARCHAR" />
+    <result column="role_type" property="roleType" jdbcType="VARCHAR" />
+    <result column="data_scope" property="dataScope" jdbcType="CHAR" />
+    <result column="is_sys" property="isSys" jdbcType="VARCHAR" />
+    <result column="useable" property="useable" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+    <collection property="permissions" column="id" select="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysRoleMenuMapper.selectPermssionsByRoleId">
+    </collection>
+  </resultMap>
+
+  <resultMap id="TablesResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="organizationId" property="organizationId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="enname" property="enname" jdbcType="VARCHAR" />
+    <result column="roleType" property="roleType" jdbcType="VARCHAR" />
+    <result column="dataScope" property="dataScope" jdbcType="CHAR" />
+    <result column="isSys" property="isSys" jdbcType="VARCHAR" />
+    <result column="useable" property="useable" jdbcType="VARCHAR" />
+    <result column="createBy" property="createBy" jdbcType="VARCHAR" />
+    <result column="createDate" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="updateBy" property="updateBy" jdbcType="VARCHAR" />
+    <result column="updateDate" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="delFlag" property="delFlag" jdbcType="CHAR" />
+    <result column="orgName" property="orgName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="selectRolesByMenuIdsResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto">
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR"/>
+    <result column="orgName" property="orgName" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, organization_id, name, enname, role_type, data_scope, is_sys, useable, create_by, 
+    create_date, update_by, update_date, remarks, del_flag
+  </sql>
+  <sql id="Table_Column_List" >
+    sr.id AS id,                          sr.organization_id AS organizationId,
+    sr.name AS name,                      sr.enname AS enname,
+    sr.role_type AS roleType,             sr.data_scope AS dataScope,
+    sr.is_sys AS isSys,                   sr.useable AS useable,
+    sr.create_by AS createBy,             sr.create_date AS createDate,
+    sr.update_by AS updateBy,             sr.update_date AS updateDate,
+    sr.remarks AS remarks,                sr.del_flag AS delFlag,
+    so.org_name AS orgName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap"  >
+  select
+  *
+  from sys_role
+</select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_role
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" >
+    insert into sys_role (id, organization_id, name, 
+      enname, role_type, data_scope, 
+      is_sys, useable, create_by, 
+      create_date, update_by, update_date, 
+      remarks, del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{organizationId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{enname,jdbcType=VARCHAR}, #{roleType,jdbcType=VARCHAR}, #{dataScope,jdbcType=CHAR}, 
+      #{isSys,jdbcType=VARCHAR}, #{useable,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" >
+    insert into sys_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="enname != null" >
+        enname,
+      </if>
+      <if test="roleType != null" >
+        role_type,
+      </if>
+      <if test="dataScope != null" >
+        data_scope,
+      </if>
+      <if test="isSys != null" >
+        is_sys,
+      </if>
+      <if test="useable != null" >
+        useable,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null" >
+        #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataScope != null" >
+        #{dataScope,jdbcType=CHAR},
+      </if>
+      <if test="isSys != null" >
+        #{isSys,jdbcType=VARCHAR},
+      </if>
+      <if test="useable != null" >
+        #{useable,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" >
+    update sys_role
+    <set >
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enname != null" >
+        enname = #{enname,jdbcType=VARCHAR},
+      </if>
+      <if test="roleType != null" >
+        role_type = #{roleType,jdbcType=VARCHAR},
+      </if>
+      <if test="dataScope != null" >
+        data_scope = #{dataScope,jdbcType=CHAR},
+      </if>
+      <if test="isSys != null" >
+        is_sys = #{isSys,jdbcType=VARCHAR},
+      </if>
+      <if test="useable != null" >
+        useable = #{useable,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" >
+    update sys_role
+    set organization_id = #{organizationId,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      enname = #{enname,jdbcType=VARCHAR},
+      role_type = #{roleType,jdbcType=VARCHAR},
+      data_scope = #{dataScope,jdbcType=CHAR},
+      is_sys = #{isSys,jdbcType=VARCHAR},
+      useable = #{useable,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 自己添加的Sql-->
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+      count(id)
+    from sys_role
+    where id = #{id}
+  </select>
+  <select id="selectRolesByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List" />
+    FROM sys_user_role sur
+    LEFT JOIN sys_role sr
+    ON sur.role_id = sr.id
+    WHERE sur.user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByTemplate" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    sys_role
+    <where>
+      <if test="t.delFlag != null and t.delFlag != ''">
+        del_flag = #{t.delFlag,jdbcType=CHAR}
+      </if>
+      <if test="t.id != null and t.id != ''">
+        and id = #{t.id,jdbcType=VARCHAR}
+      </if>
+      <if test="t.organizationId != null and t.organizationId != ''">
+        and organization_id = #{t.organizationId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.name != null and t.name != ''">
+        and name = #{t.name,jdbcType=VARCHAR}
+      </if>
+      <if test="t.enname != null and t.enname != ''">
+        and enname = #{t.enname,jdbcType=VARCHAR}
+      </if>
+      <if test="t.roleType != null and t.roleType != ''">
+        and role_type = #{t.roleType,jdbcType=VARCHAR}
+      </if>
+      <if test="t.dataScope != null and t.dataScope != ''">
+        and data_scope = #{t.dataScope,jdbcType=CHAR}
+      </if>
+      <if test="t.isSys != null and t.isSys != ''">
+        and is_sys = #{t.isSys,jdbcType=VARCHAR}
+      </if>
+      <if test="t.useable != null and t.useable != ''">
+        and useable = #{t.useable,jdbcType=VARCHAR}
+      </if>
+      <if test="t.createBy != null and t.createBy != ''">
+        and create_by = #{t.createBy,jdbcType=VARCHAR}
+      </if>
+      <if test="t.createDate != null and t.createDate != ''">
+        and create_date = #{t.createDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="t.updateBy != null and t.updateBy != ''">
+        and update_by = #{t.updateBy,jdbcType=VARCHAR}
+      </if>
+      <if test="t.updateDate != null and t.updateDate != ''">
+        and update_date = #{t.updateDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="t.remarks != null and t.remarks != ''">
+        and remarks = #{t.remarks,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+
+  <select id="selectByIdOrName" resultMap="TablesResultMap" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleDto">
+    <if test="t.orgName != null and t.orgName != ''">
+      <bind name="orgName" value="'%' + t.orgName + '%'" />
+    </if>
+    SELECT
+    <include refid="Table_Column_List" />
+    FROM
+    sys_role sr
+    LEFT JOIN sys_organization so ON sr.organization_id = so.id
+    <trim prefix="where" prefixOverrides="and|or">
+
+      <if test="t.orgName != null and t.orgName != ''">
+        AND so.org_name LIKE #{orgName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.delFlag != null and t.delFlag != ''">
+        AND sr.del_flag = #{t.delFlag,jdbcType=CHAR}
+      </if>
+      <if test="t.id != null and t.id != ''">
+        AND sr.id = #{t.id,jdbcType=VARCHAR}
+      </if>
+      <if test="t.organizationId != null and t.organizationId != ''">
+        AND sr.organization_id = #{t.organizationId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.name != null and t.name != ''">
+        AND sr.name = #{t.name,jdbcType=VARCHAR}
+      </if>
+      <if test="t.enname != null and t.enname != ''">
+        AND sr.enname = #{t.enname,jdbcType=VARCHAR}
+      </if>
+      <if test="t.roleType != null and t.roleType != ''">
+        AND sr.role_type = #{t.roleType,jdbcType=VARCHAR}
+      </if>
+      <if test="t.dataScope != null and t.dataScope != ''">
+        AND sr.data_scope = #{t.dataScope,jdbcType=CHAR}
+      </if>
+      <if test="t.isSys != null and t.isSys != ''">
+        AND sr.is_sys = #{t.isSys,jdbcType=VARCHAR}
+      </if>
+      <if test="t.useable != null and t.useable != ''">
+        AND sr.useable = #{t.useable,jdbcType=VARCHAR}
+      </if>
+      <if test="t.createBy != null and t.createBy != ''">
+        AND sr.create_by = #{t.createBy,jdbcType=VARCHAR}
+      </if>
+      <if test="t.createDate != null and t.createDate != ''">
+        AND sr.create_date = #{t.createDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="t.updateBy != null and t.updateBy != ''">
+        AND sr.update_by = #{t.updateBy,jdbcType=VARCHAR}
+      </if>
+      <if test="t.updateDate != null and t.updateDate != ''">
+        AND sr.update_date = #{t.updateDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="t.remarks != null and t.remarks != ''">
+        AND sr.remarks = #{t.remarks,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+  <delete id="deleteByIds" parameterType="java.util.List" >
+    delete from sys_role
+    where id in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+      #{item.id}
+    </foreach>
+  </delete>
+
+  <select id="selectRolesByMenuIds" parameterType="java.util.Map" resultMap="selectRolesByMenuIdsResultMap">
+    SELECT
+    r.name as 'name',r.id as 'id',o.org_name as 'orgName'
+    FROM sys_role r
+    LEFT JOIN sys_organization o
+    ON r.organization_id = o.id
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="menuIds != null and menuIds.size > 0">
+        AND r.id NOT IN
+        <foreach collection="menuIds" index="index" item="menuId" open="(" separator="," close=")">
+          #{menuId}
+        </foreach>
+      </if>
+      <if test="sysRoleDto.name != null and sysRoleDto.name != ''">
+        AND r.name = #{sysRoleDto.name,jdbcType=VARCHAR}
+      </if>
+      <if test="sysRoleDto.organizationId != null and sysRoleDto.organizationId != ''">
+        AND r.organization_id = #{sysRoleDto.organizationId,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+
+
+</mapper>

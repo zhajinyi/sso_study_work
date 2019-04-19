@@ -1,0 +1,17 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.dao;
+
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SisoSpecialty;
+
+public interface SisoSpecialtyMapper {
+    int deleteByPrimaryKey(String id);
+
+    int insert(SisoSpecialty record);
+
+    int insertSelective(SisoSpecialty record);
+
+    SisoSpecialty selectByPrimaryKey(String id);
+
+    int updateByPrimaryKeySelective(SisoSpecialty record);
+
+    int updateByPrimaryKey(SisoSpecialty record);
+}

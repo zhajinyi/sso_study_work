@@ -1,0 +1,143 @@
+package org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.controller;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import net.sf.json.JSONString;
+import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.SecurityUtils;
+import org.bureaumanager.bureaumanagerpro.base.BaseController;
+import org.bureaumanager.bureaumanagerpro.model.dormitoryManager.pojo.dto.SisoDormInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.dormitoryManager.service.impl.SisoDormInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.service.impl.SisoPunishmentServiceImpl;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.service.impl.SisoStudentInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.Msg;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysUserDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
+
+@Controller
+@RequestMapping("/stu")
+public class StudentInfoController extends BaseController{
+
+    @Autowired
+    private SisoStudentInfoServiceImpl sisoStudentInfoService;
+    @Autowired
+    private SisoDormInfoServiceImpl sisoDormInfoService;
+    @Autowired
+    private SisoPunishmentServiceImpl sisoPunishmentService;
+
+    @RequestMapping(value = "/commTree2",method ={RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public List<Map> selectCollegeAndClassTree(@RequestBody String data) throws Exception{
+        Map<String,String> o = (Map)JSON.parse(data);
+        String grade = o.get("grade");
+        return super.selectCollegeAndClassTree(grade);
+    }
+
+
+    @RequestMapping(value = "/queryByParams",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg selectStudentInfoTables(@RequestBody(required = false)SisoStudentInfoDto t){
+        PageHelper.startPage(t.getCurrentPage(),t.getPageSize());
+        List<SisoStudentInfoDto> stus = sisoStudentInfoService.selectEntitiesByTemplate(t);
+        PageInfo page = new PageInfo(stus,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+
+    @RequestMapping(value = "/insertOneStudentInfo",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg insertOneStudentInfoByTemplate(@RequestBody SisoStudentInfoDto t) {
+        boolean flg = sisoStudentInfoService.insertEntitySelective(t);
+        if (flg){
+            return Msg.success();
+        }else {
+            return Msg.failure();
+        }
+    }
+
+    @RequestMapping(value = "/updateOneStudentInfo",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg updateOneStudentInfoByTemplate(@RequestBody SisoStudentInfoDto t) {
+        boolean flg = sisoStudentInfoService.updateEntityByPrimaryKeySelective(t);
+        if (flg){
+            return Msg.success();
+        }else {
+            return Msg.failure();
+        }
+    }
+
+    @RequestMapping(value = "/deleteSelectedStudentInfo",method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg deleteStudentInfoBySelected(@RequestBody List<String> ids) {
+        boolean flg = sisoStudentInfoService.deleteEntityByPrimaryKeys(ids);
+        if (flg){
+            return Msg.success();
+        }else {
+            return Msg.failure();
+        }
+    }
+
+    @RequestMapping("/studentInfo")
+    @ResponseBody
+    public SisoStudentInfoDto selectStudentInfoByUserId(){
+        SisoStudentInfoDto studentInfo =new SisoStudentInfoDto();
+        if (null==SecurityUtils.getSubject().getSession()){
+            return studentInfo;
+        }
+            SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+            studentInfo = sisoStudentInfoService.selectStudentInfoByUserId(userDto.getId());
+            //studentInfo.setNativePlace(studentInfo.getFamilyAddress().substring(0,3));
+            //if ("f".equals(studentInfo.getGender().trim())){
+           //     studentInfo.setGender("女");
+            //}else if ("m".equals(studentInfo.getGender().trim())){
+            //    studentInfo.setGender("男");
+           // }
+        return studentInfo;
+    }
+
+    @RequestMapping("/dormInfo")
+    @ResponseBody
+    public SisoDormInfoDto selectDromOfStudent(){
+        SisoDormInfoDto dormInfoDto = new SisoDormInfoDto();
+        if (null==SecurityUtils.getSubject().getSession()){
+            logger.info("Session has been invalidated! Can not select Drom Of Student!");
+            return dormInfoDto;
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SisoStudentInfoDto studentInfo = sisoStudentInfoService.selectStudentInfoByUserId(userDto.getId());
+        dormInfoDto = sisoDormInfoService.selectEntityByPrimaryKey(studentInfo.getDromCode());
+        return dormInfoDto;
+    }
+
+    @RequestMapping("/punishInfo")
+    @ResponseBody
+    public Msg selectPunishInfoOfStudent(@RequestParam(value="currentPage",defaultValue="1")Integer currentPage
+            ,@RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize
+            ,@Param(value = "t") SisoPunishmentDto t){
+        if (null==SecurityUtils.getSubject().getSession()){
+            logger.info("Session has been invalidated! Can not select Drom Of Student!");
+            return Msg.failure();
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SisoPunishmentDto punishmentDto = new SisoPunishmentDto();
+        if (null != t){
+            punishmentDto = t;
+        }
+        punishmentDto.setEmpId(userDto.getId());
+
+        PageHelper.startPage(currentPage, pageSize);
+        List<SisoPunishmentDto> pList = sisoPunishmentService.selectEntitiesByTemplate(punishmentDto);
+        PageInfo page = new PageInfo(pList,5);
+        return Msg.success().add("PageInfo",page);
+    }
+}

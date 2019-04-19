@@ -1,0 +1,6 @@
+package org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto;
+
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoGraduateInfo;
+
+public class SisoGraduateInfoDto extends SisoGraduateInfo {
+}

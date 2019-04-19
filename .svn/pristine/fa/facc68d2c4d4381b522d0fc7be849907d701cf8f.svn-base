@@ -1,0 +1,6 @@
+package org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto;
+
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.SisoSpeciality;
+
+public class SisoSpecialityDto extends SisoSpeciality {
+}

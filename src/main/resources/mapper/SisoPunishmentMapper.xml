@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao.SisoPunishmentMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="record_time" property="recordTime" jdbcType="VARCHAR" />
+    <result column="punish_time" property="punishTime" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="relieve_time" property="relieveTime" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ExtendResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="VARCHAR" />
+    <result column="record_time" property="recordTime" jdbcType="VARCHAR" />
+    <result column="punish_time" property="punishTime" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="VARCHAR" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="relieve_time" property="relieveTime" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="college_code" property="orgid" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgname" jdbcType="VARCHAR" />
+    <result column="class_code" property="classid" jdbcType="VARCHAR" />
+    <result column="class_name" property="classname" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, emp_id, result, record_time, punish_time, level, reason, relieve_time, remark
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from siso_punishment
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from siso_punishment
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" >
+    insert into siso_punishment (id, emp_id, result, 
+      record_time, punish_time, level, 
+      reason, relieve_time, remark
+      )
+    values (#{id,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, 
+      #{recordTime,jdbcType=VARCHAR}, #{punishTime,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{reason,jdbcType=VARCHAR}, #{relieveTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" >
+    insert into siso_punishment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="recordTime != null" >
+        record_time,
+      </if>
+      <if test="punishTime != null" >
+        punish_time,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="relieveTime != null" >
+        relieve_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=VARCHAR},
+      </if>
+      <if test="punishTime != null" >
+        #{punishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="relieveTime != null" >
+        #{relieveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" >
+    update siso_punishment
+    <set >
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="recordTime != null" >
+        record_time = #{recordTime,jdbcType=VARCHAR},
+      </if>
+      <if test="punishTime != null" >
+        punish_time = #{punishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="relieveTime != null" >
+        relieve_time = #{relieveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" >
+    update siso_punishment
+    set emp_id = #{empId,jdbcType=VARCHAR},
+      result = #{result,jdbcType=VARCHAR},
+      record_time = #{recordTime,jdbcType=VARCHAR},
+      punish_time = #{punishTime,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR},
+      relieve_time = #{relieveTime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!-- 自己添加的Sql-->
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+       count(id)
+    from siso_punishment
+    where id = #{id}
+  </select>
+<select id="selectAll" resultMap="BaseResultMap">
+  select
+       *
+    from siso_punishment
+</select>
+  <select id="selectByOrgId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select p.*,e.realname
+    from siso_punishment p,siso_student_info s,sys_emp_info e
+    where p.emp_id=s.id and p.emp_id=e.emp_id
+    <if test="orgId.length()>0" >
+      and s.college_code = #{orgId,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+  <select id="selectByEmpId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from siso_punishment
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByEmpIdAndLevel" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from siso_punishment
+    where emp_id = #{empId,jdbcType=VARCHAR}
+    <if test="level != null">
+       AND level = #{level}
+    </if>
+  </select>
+
+  <select id="selectByTemplate"  resultMap="BaseResultMap" >
+    <if test="t.empId != null and t.empId != ''">
+      <bind name="t.empId" value="'%' + t.empId + '%'" />
+    </if>
+    <if test="t.level != null and t.level != ''">
+      <bind name="t.level" value="'%' + t.level + '%'" />
+    </if>
+    select
+    <include refid="Base_Column_List" />
+    from siso_punishment
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="t.empId != null and t.empId != ''">
+        AND emp_id LIKE #{t.empId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.level != null and t.level != ''">
+        AND level LIKE #{t.level}
+      </if>
+    </trim>
+  </select>
+
+  <select id="queryByTemplate" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoPunishmentDto" resultMap="ExtendResultMap">
+    select p.*,e.realname,s.class_code,s.college_code,o.org_name,c.class_name
+    from siso_punishment p,siso_student_info s,sys_emp_info e,sys_organization o,siso_class_info c
+    where p.emp_id=s.id and p.emp_id=e.emp_id and s.class_code=c.id and s.college_code=o.id
+    <if test="spd.orgid != null and spd.orgid != ''" >
+      and s.college_code = #{spd.orgid,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.grade != null and spd.grade != ''" >
+      and s.grade = #{spd.grade,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.classid != null and spd.classid != ''" >
+      and s.class_code = #{spd.classid,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.realname != null and spd.realname != ''" >
+      and e.realname like "%"#{spd.realname,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="spd.id != null and spd.id != ''">
+      and p.id = #{spd.id,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.empId != null and spd.empId != ''" >
+      and p.emp_id = #{spd.empId,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.result != null and spd.result != ''" >
+      and p.result = #{spd.result,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.recordTime != null and spd.recordTime != ''" >
+      and p.record_time like "%"#{spd.recordTime,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="spd.punishTime != null and spd.punishTime != ''" >
+      and p.punish_time like "%"#{spd.punishTime,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="spd.level != null and spd.level != ''" >
+      and p.level = #{spd.level,jdbcType=VARCHAR}
+    </if>
+    <if test="spd.reason != null and spd.reason != ''" >
+      and p.reason like "%"#{spd.reason,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="spd.relieveTime != null and spd.relieveTime != ''" >
+      and p.relieve_time like "%"#{spd.relieveTime,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="spd.remark != null and spd.remark != ''" >
+      and p.remark like "%"#{spd.remark,jdbcType=VARCHAR}"%"
+    </if>
+  </select>
+
+</mapper>

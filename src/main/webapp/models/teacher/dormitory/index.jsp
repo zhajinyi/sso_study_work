@@ -1,0 +1,150 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2019/1/28
+  Time: 9:04
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+<html>
+<head>
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <%@ include file="/include/head_include.jsp"%>
+</head>
+<body>
+<div class="layui-fluid" id="LAY-component-grid-mobile-pc">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-xs4 layui-col-md2">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <ul id="tree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs8 layui-col-md10">
+            <div class="layui-card main-section">
+                <div class="layui-card-body">
+                    <table id="tableData" lay-filter="tableData"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--表格头部自定义控件-->
+<script type="text/html" id="tableToolbar">
+    <div class="layui-row">
+        <form class="layui-form" id="toolbarForm">
+            <%--隐藏域--%>
+            <input type="hidden" name="buildingNum">
+            <input type="hidden" name="floor">
+            <input type="hidden" name="state">
+            <input type="hidden" name="type">
+            <input type="hidden" name="currentNum">
+            <input type="hidden" name="bunkNum">
+            <input type="hidden" name="leader">
+            <input type="hidden" name="orientation">
+            <input type="hidden" name="isAllot">
+            <input type="hidden" name="remark">
+                <%--具体表单--%>
+            <div class="layui-col-md4">
+                <label class="layui-form-label" style="width: 80px">宿舍编号</label>
+                <div class="layui-input-block" style="margin-left: 110px">
+                    <input type="text" name="id" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <label class="layui-form-label" style="width: 80px">所在校区</label>
+                <div class="layui-input-block" style="margin-left: 110px">
+                    <select name="area" lay-filter="professional">
+                        <option value="">全部</option>
+                        <option value="校本部">校本部</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-col-md2" style="text-align: right">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="search">查询</button>
+                <button class="layui-btn layui-btn-primary layui-btn-sm" type="reset">重置</button>
+            </div>
+        </form>
+        <div class="layui-col-md2" style="text-align: right">
+            <button class="layui-btn layui-btn-primary layui-btn-sm layui-btn-radius" lay-event="multiSearch">自定义查询</button>
+        </div>
+    </div>
+    <div class="layui-row" style="padding: 10px 0px 0px 30px">
+        <div class="layui-btn-group" style="text-align: left">
+            <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
+            <button class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</button>
+            <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete">删除</button>
+        </div>
+    </div>
+</script>
+<script src="${ctxStatic}/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '${ctxStatic}/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index', //主入口模块
+        commTreeTable:'commTreeTable'
+    }).use(['index', 'tree', 'table', 'layer', 'form', 'commTreeTable'], function () {
+        var $ = layui.$,
+            tree = layui.tree,
+            table = layui.table,
+            layer = layui.layer,
+            form = layui.form,
+            commTreeTable = layui.commTreeTable,
+            treeUrl = "${ctx}/sisoDormInfo/tree",
+            treeElement = "tree",
+            tableUrl = "${ctx}/sisoDormInfo/selective",
+            delTableUrl = "${ctx}/sisoDormInfo/delete/selective",
+            tableElement = "tableData",
+            tableId = "tableDataID",
+            tableToolbar = "tableToolbar",
+            toolbarForm = "toolbarForm",
+            formUrl = "${ctx}/models/teacher/dormitory/form.jsp";
+
+            var cols = [[
+                { type: 'checkbox', fixed: 'left'},
+                { field: 'id', title: '宿舍号',  align: 'center', width : 80  },
+                { field: 'area', title: '区域', align: 'center', width : 80 },
+                { field: 'buildingNum', title: '楼号',  align: 'center', width : 60 },
+                { field: 'floor', title: '楼层', align: 'center', width : 60 },
+                { field: 'orientation', title: '朝向', align: 'center', width : 60 },
+                { field: 'type', title: '男/女', align: 'center', width : 70 },
+                { field: 'bunkNum', title: '床位数',  align: 'center', width : 80 },
+                { field: 'leader', title: '寝室长', align: 'center' , width : 80 },
+                { field: 'state', title: '使用情况', align: 'center' , width : 90 },
+                { field: 'isAllot', title: '是否参与分配', align: 'center',templet: '#isAllot' , width : 120 },
+                { field: 'remark', title: '备注', align: 'center' }
+            ]];
+
+        Object.defineProperty(window.clickNode,'level', {
+            get: function(){},//取值的时候会触发
+            set: function(value){//更新值的时候会触发
+                if(value == 0){
+                    $("input[name='buildingNum']").val("");
+                    $("select[name='area']").val(window.clickNode.name);
+                }else{
+                    $("input[name='buildingNum']").val(window.clickNode.id);
+                    $("select[name='area']").val("");
+                }
+            }
+        });
+
+
+        commTreeTable.getCommTree(treeElement,treeUrl,null,tableId,toolbarForm,tableUrl); //加载tree对象初始化方法；
+        commTreeTable.getCommTable(tableElement, tableUrl,tableId,cols,tableToolbar);
+        commTreeTable.listenToolbar(table,tableElement,tableId,tableUrl,toolbarForm,delTableUrl,formUrl);
+
+    });
+</script>
+<script type="text/html" id="isAllot">
+    {{# if(d.isAllot=='Y'){ }}
+    是
+    {{# } else{}}
+    否
+    {{# } }}
+</script>
+</body>
+</html>

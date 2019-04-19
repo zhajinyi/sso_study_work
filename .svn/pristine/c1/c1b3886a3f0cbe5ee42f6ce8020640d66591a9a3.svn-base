@@ -1,0 +1,207 @@
+package org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.controller;
+
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.SecurityUtils;
+import org.bureaumanager.bureaumanagerpro.base.BaseController;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoHighExcellentDto;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.service.impl.SisoHighExcellentServiceImpl;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.service.impl.SisoClassInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.Msg;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysUserDto;
+import org.bureaumanager.bureaumanagerpro.sysConfig.utils.JdbcUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @Author: WangJiaWei
+ * @Date: 2019-02-01 09:59
+ * @Description:
+ */
+
+@Controller
+@RequestMapping("/highGood")
+public class HighGoodStudentController extends BaseController{
+
+
+    @Autowired
+    SisoHighExcellentServiceImpl highExcellentService;
+
+    @RequestMapping(value = "/threeGood", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public Msg findAllThreeGood(@RequestBody(required = false) SisoHighExcellentDto sisoHighExcellentDto) {
+        String orgid = sisoHighExcellentDto.getOrgid();
+        if ("0".equals(orgid)){
+            sisoHighExcellentDto.setOrgid(null);
+        }
+        sisoHighExcellentDto.setAwardType("三好学生");
+        PageHelper.startPage(sisoHighExcellentDto.getCurrentPage(), sisoHighExcellentDto.getPageSize());
+        List<SisoHighExcellentDto> list = selectByTemplate(sisoHighExcellentDto);
+        PageInfo page = new PageInfo(list,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    @RequestMapping(value = "/cadres", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public Msg findAllCadres(@RequestBody(required = false) SisoHighExcellentDto sisoHighExcellentDto) {
+        String orgid = sisoHighExcellentDto.getOrgid();
+        if (null == orgid || "0".equals(orgid)){
+            sisoHighExcellentDto.setOrgid(null);
+        }
+        sisoHighExcellentDto.setAwardType("优秀学生干部");
+        PageHelper.startPage(sisoHighExcellentDto.getCurrentPage(), sisoHighExcellentDto.getPageSize());
+        List<SisoHighExcellentDto> list = highExcellentService.selectEntitiesByTemplate(sisoHighExcellentDto);
+        PageInfo page = new PageInfo(list,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    @RequestMapping("/onestudent/highcadre")
+    @ResponseBody
+    public Msg selectHighCadreOfStudent(@RequestParam(value="currentPage",defaultValue="1")Integer currentPage
+            ,@RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize
+            ,@Param(value = "t") SisoHighExcellentDto t){
+        if (null== SecurityUtils.getSubject().getSession()){
+            //logger.info("Session has been invalidated! Can not select HighExcellent Of Student!");
+            return Msg.failure();
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SisoHighExcellentDto highExcellentDto = new SisoHighExcellentDto();
+        if (null != t){
+            highExcellentDto = t;
+
+        }
+        //highExcellentDto.setEmpid(userDto.getEmpId());
+        highExcellentDto.setAwardType("优秀学生干部");
+
+        PageHelper.startPage(currentPage, pageSize);
+        List<SisoHighExcellentDto> pList = highExcellentService.selectEntitiesByTemplate(highExcellentDto);
+        PageInfo page = new PageInfo(pList,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    @RequestMapping("/onestudent/highThreeGood")
+    @ResponseBody
+    public Msg selectHighThreeGoodOfStudent(@RequestParam(value="currentPage",defaultValue="1")Integer currentPage
+            ,@RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize
+            ,@Param(value = "t") SisoHighExcellentDto t){
+        if (null== SecurityUtils.getSubject().getSession()){
+            //logger.info("Session has been invalidated! Can not select HighExcellent Of Student!");
+            return Msg.failure();
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+        SisoHighExcellentDto highExcellentDto = new SisoHighExcellentDto();
+        if (null != t){
+            highExcellentDto = t;
+        }
+        //highExcellentDto.setEmpid(userDto.getEmpId());
+        highExcellentDto.setAwardType("三好学生");
+
+        PageHelper.startPage(currentPage, pageSize);
+        List<SisoHighExcellentDto> pList = highExcellentService.selectEntitiesByTemplate(highExcellentDto);
+        PageInfo page = new PageInfo(pList,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    @RequestMapping(value = "/tree",method =  {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    @Override
+    public List<Map> selectCollegeAndClassTree(@RequestParam(value = "grade",defaultValue = "",required = false) String grade) throws Exception{
+        return super.selectCollegeAndClassTree(grade);
+    }
+
+
+
+    private static Long countByJdbc(String orgid, String type) {
+        Connection conn = null;
+        Statement stm = null;
+        ResultSet res = null;
+        Long num = Long.valueOf(0);
+        try {
+            //1.连接数据库
+            conn = JdbcUtil.getConnection();
+            //2.获取到statement对象
+            stm = conn.createStatement();
+            //3.执行sql语句
+            String sql = "select count(h.id) num from siso_highexcellent h,siso_student_info s where h.empid=s.id and h.award_type=\'" + type + "\' and s.college_code=" + orgid;
+            res = stm.executeQuery(sql);
+            while(res.next()){
+                //提倡通过列名获取
+                num = res.getLong("num");
+            }
+            //关闭资源
+            JdbcUtil.close(conn, stm, res);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return num;
+    }
+
+    private static List<SisoHighExcellentDto> selectByTemplate(SisoHighExcellentDto shd) {
+        Connection conn = null;
+        Statement stm = null;
+        ResultSet res = null;
+        List<SisoHighExcellentDto> list = new ArrayList<SisoHighExcellentDto>();
+        try {
+            //1.连接数据库
+            conn = JdbcUtil.getConnection();
+            //2.获取到statement对象
+            stm = conn.createStatement();
+            //3.执行sql语句
+            String sql = "select h.*,o.id as orgid,o.org_name,c.class_name as classname,c.id as classid,c.class_name,e.gender,e.politics_status from siso_highexcellent h,siso_student_info s,siso_class_info c,sys_organization o,sys_emp_info e where h.empid=s.id and s.college_code=o.id and s.class_code=c.id and s.id=e.id";
+            if (shd.getOrgid()!=null && !"".equals(shd.getOrgid())) sql += " and s.college_code=\'" + shd.getOrgid() + "\'";
+            if (shd.getClassid()!=null && !"".equals(shd.getClassid())) sql += " and s.class_code=\'" + shd.getClassid() + "\'";
+            if (shd.getId()!=null && !"".equals(shd.getId())) sql += " and h.id=\'" + shd.getId() + "\'";
+            if (shd.getEmpid()!=null && !"".equals(shd.getEmpid())) sql += " and h.empid=\'" + shd.getEmpid() + "\'";
+            if (shd.getEmpname()!=null && !"".equals(shd.getEmpname())) sql += " and h.empname like \"%" + shd.getEmpname() + "%\"";
+            if (shd.getAwardType()!=null && !"".equals(shd.getAwardType())) sql += " and h.award_type=\'" + shd.getAwardType() + "\'";
+            if (shd.getDeteal()!=null && !"".equals(shd.getDeteal())) sql += " and h.deteal like \"%" + shd.getDeteal() + "%\"";
+            if (shd.getMainContent()!=null && !"".equals(shd.getMainContent())) sql += " and h.main_content like \"%" + shd.getMainContent() + "%\"";
+            if (shd.getAwardTime()!=null && !"".equals(shd.getAwardTime())) sql += " and h.award_time like \"%" + shd.getAwardTime() + "%\"";
+            if (shd.getRemark()!=null && !"".equals(shd.getRemark())) sql += " and h.remark like \"%" + shd.getRemark() + "%\"";
+            if (shd.getOrgname()!=null && !"".equals(shd.getOrgname())) sql += " and o.org_name like \"%" + shd.getOrgname() + "%\"";
+            if (shd.getClassname()!=null && !"".equals(shd.getClassname())) sql += " and c.class_name like \"%" + shd.getClassname() + "%\"";
+            if (shd.getSex()!=null && !"".equals(shd.getSex())) sql += " and e.gender=\'" + shd.getSex() + "\'";
+            if (shd.getPolitical()!=null && !"".equals(shd.getPolitical())) sql += " and e.politics_status like \"%" + shd.getPolitical() + "%\"";
+            if (shd.getGrade()!=null && !"".equals(shd.getGrade())) sql += " and s.grade like \"%" + shd.getGrade() + "%\"";
+            res = stm.executeQuery(sql);
+            while(res.next()){
+                //提倡通过列名获取
+                SisoHighExcellentDto sisoHighExcellentDto = new SisoHighExcellentDto();
+                sisoHighExcellentDto.setId(res.getString("id"));
+                sisoHighExcellentDto.setEmpid(res.getString("empid"));
+                sisoHighExcellentDto.setEmpname(res.getString("empname"));
+                sisoHighExcellentDto.setAwardType(res.getString("award_type"));
+                sisoHighExcellentDto.setDeteal(res.getString("deteal"));
+                sisoHighExcellentDto.setMainContent(res.getString("main_content"));
+                sisoHighExcellentDto.setAwardTime(res.getString("award_time"));
+                sisoHighExcellentDto.setRemark(res.getString("remark"));
+                sisoHighExcellentDto.setOrgid(res.getString("orgid"));
+                sisoHighExcellentDto.setOrgname(res.getString("org_name"));
+                sisoHighExcellentDto.setClassid(res.getString("classid"));
+                sisoHighExcellentDto.setClassname(res.getString("class_name"));
+                sisoHighExcellentDto.setGrade(res.getString("grade"));
+                sisoHighExcellentDto.setSex("f".equals(res.getString("gender"))? "女" : "男");
+                sisoHighExcellentDto.setPolitical(res.getString("politics_status"));
+                list.add(sisoHighExcellentDto);
+            }
+            //关闭资源
+            JdbcUtil.close(conn, stm, res);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+}

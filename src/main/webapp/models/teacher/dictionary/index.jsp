@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<%--
+  Created by IntelliJ IDEA.
+  User: liupengzheng
+  Date: 2019/2/15
+  Time: 10:11
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/style/main.css" media="all">
+</head>
+<style>
+    #treebuttons .layui-btn + .layui-btn{
+        margin-left: 0px;
+    }
+    .layui-form-checkbox i{
+        top: -5px;
+    }
+</style>
+<body>
+<div class="layui-fluid" id="LAY-component-grid-mobile-pc">
+    <input type="hidden" name="treeid">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-xs4 layui-col-md2">
+            <div class="layui-card">
+                <div style="text-align: center;padding: 10px 0;" id="treebuttons">
+                    <button href="${ctxStatic}/layuiadmin" class="layui-btn layui-btn-primary layui-btn-sm add">添加</button>
+                    <button class="layui-btn layui-btn-primary layui-btn-sm edit">编辑</button>
+                    <button class="layui-btn layui-btn-primary layui-btn-sm del">删除</button>
+                </div>
+                <div class="layui-card-body" id="treeModel">
+                    <ul id="tree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs8 layui-col-md10">
+            <!-- 填充内容 -->
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <table id="tableData" lay-filter="tableData"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--表格头部自定义控件-->
+<script type="text/html" id="tableToolbar">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-btn-group" id="demoTable">
+                <button class="layui-btn layui-btn-danger layui-btn-sm dic-del" data-type="getCheckData" id="getCheckData">批量删除</button>
+                <button class="layui-btn layui-btn-normal layui-btn-sm dic-add">添加</button>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!-- 表格操作 -->
+<script type="text/html" id="tableOperation">
+    <a class="layui-table-link" href="javascript:;" lay-event="edit">编辑</a>
+    <a class="layui-table-link btn-danger" href="javascript:;" lay-event="del">删除</a>
+</script>
+<script src="${ctxStatic}/layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '${ctxStatic}/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'tree', 'table', 'layer'], function () {
+        var $ = layui.$
+            , tree = layui.tree
+            , fun = layui.fun
+            , table = layui.table
+            , $body = $('body');//body
+        showTree();
+        var nodeid=0;
+        function showTree(){
+            //下拉树ajax数据获取
+            $.ajax({
+                url: '${ctx}/sys/Dict/tree', //模拟接口
+                type: 'get',
+                dataType: 'json',
+                data: {},
+                success: TreeFun
+            })
+        }
+
+        //下拉树ajax数据请求成功返回的数据
+        function TreeFun(res) {
+            tree({
+                elem: '#tree'
+                , target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
+                , nodes: res
+                , click: function (node) {
+                    console.log(node.id); //node即为当前点击的节点数据
+                    nodeid=node.id;
+                    $("input[name=treeid]").val(node.id);
+                    table.reload('tableDataID', { //此处是上文提到的 初始化标识id
+                        where: {
+                            id: node.id
+                        }
+                    });
+                }
+            });
+        }
+        //数据表格填充
+        function tableData (id) {
+            table.render({
+                elem: '#tableData'
+                , url: '${ctx}/sys/Dict/all' //模拟接口
+                , toolbar: '#tableToolbar'
+                ,id:'tableDataID'
+                ,contentType: "application/json"
+                ,method: "post"
+                ,where: {
+                    orgid: "0"
+                }
+                ,request: {
+                    pageName: 'currentPage',
+                    limitName: 'pageSize',
+                },
+                parseData: function(result){ //result 即为原始返回的数据
+                    return {
+                        "code":result.code, //解析接口状态
+                        "msg": result.msg, //解析提示文本
+                        "count": result.extend.PageInfo.total, //解析数据长度
+                        "data": result.extend.PageInfo.list //解析数据列表
+                    };
+                },
+                response: {
+                    statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
+                }
+                , page: {
+                    layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                    , 'prev': '上一页'
+                    , 'next': '下一页'
+                    , 'limits': [10, 20, 30, 40, 50]
+                    , jump: function (obj) {
+                        console.log(obj)
+                    }
+                }
+                , loading: true
+                , cellMinWidth: 120
+                , defaultToolbar: ['filter']
+                , cols: [[
+                    { type: 'checkbox',class:'check1',fixed:'left', title: '编号', width: 60 }
+                    , { field: 'id',align:"center", title: 'id' }
+                    , { field: 'value',align:"center", title: '角色名称' }
+                    , { field: 'parentId',align:"center", title: '父类id', sort: true }
+                    , { field: 'createDate',align:"center", title: '创建时间' }
+                    , { field: 'remarks',align:"center", title: '备注' }
+                    , { fixed: 'right', title: '操作', width: 220, align: 'center', toolbar: '#tableOperation' } //这里的toolbar值是模板元素的选择器
+                ]]
+            })
+        }
+        tableData(0);
+        //数据表格操作
+        table.on('tool(tableData)', function (obj) {
+            var data = obj.data;
+            switch (obj.event) {
+                case 'edit':
+                    LayerOpen('${ctxTeacher}/dictionary/table_data.jsp?id=' + escape(data.id) + "&event=" + escape(obj.event));
+                    break;
+                case 'del':
+                    dataDel(data);
+                    break;
+            }
+        })
+
+        //表格数据新增
+        $body.on('click', '.dic-add', function (elem) {
+            var treeId = $("input[name=treeid]").val();
+            if (treeId !== '') {
+                var event="add";
+                LayerOpen('${ctxTeacher}/dictionary/table_data.jsp?id=' + escape(nodeid)+ "&event=" + escape(event));
+            } else {
+                layer.alert('请选择需要新增的业务字典组名称！');
+            }
+            table.reload(0);
+
+        })
+        //表格数据批量删除s
+   /*     $body.on('click', '.dic-del', function () {
+            var checkStatus = table.checkStatus('tableData');
+            debugger;
+            if (checkStatus.data.length == 0) {
+                parent.layer.msg('请先选择要删除的数据行！', { icon: 2 });
+                return;
+            }
+
+            parent.layer.msg('删除中...', { icon: 16, shade: 0.3, time: 5000 });
+            $.ajax({
+                "url":"/sys/Dict/delete/childreninfos",
+                'dataType': 'json',
+                "type":"POST",
+                "data": JSON.stringify(checkStatus.data),
+                "contentType" : 'application/json',
+                "success":function(re){
+                    if(re.code){
+                        parent.layer.msg('删除成功！', { icon: 2, time: 3000, shade: 0.2 });
+                    }else{
+                        parent.layer.msg('删除失败！', { icon: 2, time: 2000, shade: 0.2 });
+                    }
+                }
+            });
+            // $.post('url',
+            //     { 'ids': ids },
+            //     function (data) {
+            //         layer.closeAll('loading');
+            //         if (data.code == 1) {
+            //             parent.layer.msg('删除成功！', { icon: 1, time: 2000, shade: 0.2 });
+            //             location.reload(true);
+            //         } else {
+            //             parent.layer.msg('删除失败！', { icon: 2, time: 3000, shade: 0.2 });
+            //         }
+            //     }
+            // );
+            tableData(0);
+        })*/
+        //页面左侧字典组新增
+        $body.on('click', '.add', function () {
+            var event="add";
+            LayerOpen('${ctxTeacher}/dictionary/dict_data.jsp?event=' + event);
+        })
+        //页面左侧字典组编辑
+        $body.on('click', '.edit', function () {
+            var treeId = $("input[name=treeid]").val();
+            var event = "edit"
+            if (treeId !== '') {
+                LayerOpen('${ctxTeacher}/dictionary/dict_data.jsp?id=' + treeId+ "&event=" + event);
+            } else {
+                layer.alert('请选择需要修改的字典组名称！');
+            }
+        })
+        //页面左侧字典组删除
+        $body.on('click', '.del', function () {
+            var treeId = $("input[name=treeid]").val();
+            var sysDictDto={"id":treeId}
+            if (treeId !== '') {
+                layer.alert('确定删除该字典组及业务字典', {
+                    skin: 'layui-layer-molv' //样式类名  自定义样式
+                    ,closeBtn: 1    // 是否显示关闭按钮
+                    ,anim: 1 //动画类型
+                    ,btn: ['确定','取消'] //按钮
+                    ,icon: 6    // icon
+                    ,yes:function(){
+                        //编写执行字典组的删除ajax
+                        $.ajax({
+                            "url":"${ctx}/sys/Dict/delete/parent",
+                            'dataType': 'json',
+                            "type":"POST",
+                            "data": JSON.stringify(sysDictDto),
+                            "contentType" : 'application/json',
+                            "success":updateTree
+                        });
+                        layer.closeAll('dialog');
+                    }
+                });
+
+            } else {
+                layer.alert('请选择需要删除的字典组名称！');
+            }
+        })
+        function updateTree(re){
+            if(!re.code){
+                layer.alert('删除失败，请联系管理员！');
+            }
+            $('#tree').remove();
+            $('#treeModel').append("<ul id='tree'></ul>");
+            showTree();
+            tableData(0);
+        }
+        //弹窗函数
+        function LayerOpen(url) {
+            parent.layer.open({
+                type: 2 //Page层类型
+                , area: ["60%","60%"]
+                , title: false
+                , shade: 0.6 //遮罩透明度
+                , anim: 1 //0-6的动画形式，-1不开启
+                , content: url
+                ,end: function () {
+                    $('#tree').remove();
+                    $('#treeModel').append("<ul id='tree'></ul>");
+                    showTree();
+                    tableData(0);
+                }
+            });
+        }
+
+        $body.on('click', '.dic-del', function () {
+            debugger;
+            var checkStatus = table.checkStatus('tableDataID')
+                ,data = checkStatus.data;
+            if (checkStatus.data.length == 0) {
+                parent.layer.msg('请先选择要删除的数据行！', { icon: 2 });
+                return;
+            }
+            var ids = "";
+            for (var i = 0; i < checkStatus.data.length; i++) {
+                ids += checkStatus.data[i].id + ",";
+            }
+            ids = ids.slice(0, ids.length-1);//去除字符串末尾多出的","
+            console.log(ids)
+            parent.layer.msg('删除中...', { icon: 16, shade: 0.3, time: 5000 });
+            $.ajax({
+                "url":"${ctx}/sys/Dict/delete/childreninfos",
+                'dataType': 'json',
+                "data": {"ids":ids},
+                "type":"POST",
+                "success":function (re) {
+                    if(re.code){
+                        parent.layer.msg('删除成功！', { icon: 2, time: 3000, shade: 0.2 });
+                        myData=[];
+                        tableData(0);
+                    }else{
+                        parent.layer.msg('删除失败！', { icon: 2, time: 2000, shade: 0.2 });
+                        myData=[];
+                        tableData(0);
+                    }
+                }
+            });
+        })
+
+
+        //表格数据单独删除
+        function dataDel (data) {
+            alert(data.id);
+            var sysDictDto={id:data.id};
+            $.ajax({
+                "url":"${ctx}/sys/Dict/delete/children",
+                'dataType': 'json',
+                "type":"POST",
+                "data": JSON.stringify(sysDictDto),
+                "contentType" : 'application/json',
+                "success":updateTree
+            });
+        }
+    /*    function getCheckData(){ //获取选中数据
+            var checkStatus = table.checkStatus('idTest')
+                ,data = checkStatus.data;
+            layer.alert(JSON.stringify(data));
+        }*/
+
+
+
+
+
+
+
+    });
+</script>
+</body>
+
+</html>

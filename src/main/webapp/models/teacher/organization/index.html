@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/main.css" media="all">
+</head>
+
+<body>
+    <div class="layui-fluid" id="LAY-component-grid-mobile-pc">
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-xs4 layui-col-md2">
+                <div class="layui-card">
+                    <div style="text-align: center;padding: 10px 0;">
+                        <button class="layui-btn layui-btn-primary layui-btn-sm add">添加</button>
+                        <button class="layui-btn layui-btn-primary layui-btn-sm edit">编辑</button>
+                        <button class="layui-btn layui-btn-primary layui-btn-sm del">删除</button>
+                    </div>
+                    <div class="layui-card-body">
+                        <ul id="tree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-xs8 layui-col-md10">
+                <!-- 填充内容 -->
+                <div class="layui-card">
+                    <div class="layui-card-body">
+                        <form class="layui-form" action="" lay-filter="component-form-group">
+                            <input type="hidden" name="treeid" value="">
+                            <div class="layui-row">
+                                <div class="layui-col-md4 layui-col-md-offset3 layui-form-item">
+                                    <label class="layui-form-label">上级名称：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md4 layui-col-md-offset3 layui-form-item">
+                                    <label class="layui-form-label">组织名称：</label>
+                                    <div class="layui-input-block">
+                                        <input type="text" name="title" lay-verify="title" autocomplete="off"
+                                            placeholder="请输入标题" class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-col-md12 layui-form-item layui-layout-admin btn-sumbit">
+                                    <div class="layui-input-block">
+                                        <button class="layui-btn layui-btn-normal" type="button" lay-submit=""
+                                            lay-filter="class_form_sub">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'tree', 'table', 'layer', 'form'], function () {
+            var $ = layui.$
+                , tree = layui.tree
+                , fun = layui.fun
+                , form = layui.form
+                , $body = $('body');//body
+
+            fun.AjaxData('json/stu/stu_tree.js', 'get', {}, TreeFun)
+            function TreeFun(res) {
+                tree({
+                    elem: '#tree'
+                    , target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
+                    , nodes: res
+                    , click: function (node) {
+                        console.log(node) //node即为当前点击的节点数据
+                        // Table (node.id);
+                        $("input[name=treeid]").val(node.id)
+                    }
+                });
+            }
+
+            //页面左侧字典组新增
+            $body.on('click', '.add', function () {
+                LayerOpen('dictionary/dict_data.html');
+            })
+            //页面左侧字典组编辑
+            $body.on('click', '.edit', function () {
+                var treeId = $("input[name=treeid]").val();
+                if (treeId !== '') {
+                    LayerOpen('dictionary/dict_data.html?id=' + treeId);
+                } else {
+                    layer.alert('请选择需要修改的字典组名称！');
+                }
+            })
+            //页面左侧字典组删除
+            $body.on('click', '.del', function () {
+                var treeId = $("input[name=treeid]").val();
+                if (treeId !== '') {
+                    //编写执行字典组的删除ajax
+                    $('#tree').empty();
+                    fun.AjaxData('json/stu/stu_tree.js', 'get', {}, TreeFun)//重新执行树的数据获取，以更新树数据
+                } else {
+                    layer.alert('请选择需要删除的字典组名称！');
+                }
+            })
+            //弹窗函数
+            function LayerOpen(url) {
+                parent.layer.open({
+                    type: 2 //Page层类型
+                    , area: ['500px', '310px']
+                    , title: false
+                    , shade: 0.6 //遮罩透明度
+                    , anim: 1 //0-6的动画形式，-1不开启
+                    , content: url
+                });
+            }
+            /* 表单提交 */
+            form.on('submit(class_form_sub)', function (data) {
+                parent.layer.closeAll();
+                parent.layer.alert(JSON.stringify(data.field), {
+                    title: '最终的提交信息'
+                })
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

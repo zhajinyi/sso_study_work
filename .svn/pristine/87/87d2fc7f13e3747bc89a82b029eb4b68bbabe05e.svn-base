@@ -1,0 +1,17 @@
+package org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo;
+
+import org.bureaumanager.bureaumanagerpro.base.BaseEntity;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoSpecialityDto;
+
+public class SisoSpeciality extends BaseEntity<SisoSpecialityDto> {
+
+    private  String specialityName;
+
+    public String getSpecialityName() {
+        return specialityName;
+    }
+
+    public void setSpecialityName(String specialityName) {
+        this.specialityName = specialityName;
+    }
+}

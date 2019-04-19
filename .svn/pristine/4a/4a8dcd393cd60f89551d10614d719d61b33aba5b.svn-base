@@ -1,0 +1,366 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: BaoLing
+  Date: 2019/2/26
+  Time: 15:21
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+<html>
+<head>
+    <title>学生信息管理</title>
+    <%@ include file="/include/head_include.jsp"%>
+</head>
+<style>
+    .layui-form-label{
+        text-align: left;
+    }
+    .layui-form-item{
+        text-align: center;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+
+            <form class="layui-form" lay-filter="component-form-group" id="iframeForm">
+
+                <div class="layui-form-item">
+
+                    <%--学生基本信息--%>
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend>学生信息</legend>
+                    </fieldset>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">学号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="id" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" >姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="empName" id="empName" placeholder="请输入" autocomplete="off" class="layui-input" lay-verify="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所在班级</label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" name="className" id="className">
+                                <select name="classCode" id="classCode"   lay-search>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="gender" value="m" title="男">
+                                <input type="radio" name="gender" value="f" title="女">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所在学院</label>
+                            <div class="layui-input-inline">
+                                <input type="hidden" name="orgName" id="orgName">
+                                <select name="orgId" id="orgId"   lay-search>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">专业</label>
+                            <div class="layui-input-inline">
+                                <select name="specialtyCode" id="specialtyCode"   lay-search>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">班主任</label>
+                            <div class="layui-input-inline">
+                                <select name="adviserCode" id="adviserCode"   lay-search>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">辅导员</label>
+                            <div class="layui-input-inline">
+                                <select name="instructorCode" id="instructorCode"   lay-search>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">年级</label>
+                            <div class="layui-input-inline">
+                                <select name="grade" lay-filter="grade" id="gradeForm" >
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">银行卡号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="bankCard" id="bankCard" placeholder="请输入" autocomplete="off" class="layui-input" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">宿舍号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="dormCode"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                <%--<select name="dormCode" id="dormCode"   lay-search>--%>
+                                <%--</select>--%>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">入学年份</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="entryYear" id="entryYear" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-layout-admin">
+                        <div class="layui-input-block">
+                            <div class="layui-footer" style="left: 0;">
+                                <button class="layui-btn" lay-submit lay-filter="formSubmit" id="formSubmit">保存</button>
+                                <button class="layui-btn layui-btn-primary" type="button" id="close">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script src="${ctxStatic}/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '${ctxStatic}/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index', //主入口模块
+        commTreeTable:'commTreeTable'
+    }).use(['index','commTreeTable', 'form', 'layer'], function () {
+        var $ = layui.$,
+            $body = $('body'),
+            fun = layui.fun,
+            layer = layui.layer,
+            form = layui.form,
+            commTreeTable = layui.commTreeTable,
+            iframeForm = "iframeForm",
+            submitBtn = "formSubmit",
+            formLayFilter = "component-form-group",
+            tableUrl = '${ctx}/class/qurryByParams',
+            insertUrl = "${ctx}/class/insertOneClass",
+            updateUrl = "${ctx}/class/updateOneClass",
+            theRequest = fun.GetRequest(),
+            type = theRequest.type,
+            id = type == 'update' ? theRequest.id : null,
+            defaultData = {id:id};
+        //指定页面所在元素的id，加载年级选项
+        commTreeTable.getSelectGrade("gradeForm");
+        getSelectEmpIds("adviserCode");
+        getSelectEmpIds("monitorCode");
+        getSelectOrgIds("orgId");
+        getSelectClassIds("classCode");
+        getSelectSpecialityIds("specialtyCode");
+        grade = commTreeTable.isEmpty($("#gradeForm  option:selected").val()) ? "" : $("#gradeForm  option:selected").val();
+        var orgName =commTreeTable.isEmpty($("#orgId  option:selected").val()) ? "" : $("#orgId  option:selected").text();
+        function getSelectEmpIds(selId) {
+            var selectId = "#"+selId,
+            realName = "";
+
+            $.ajax({
+                url: '${ctx}/empInfo/findIds',
+                data:{realName:realName},
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result){
+                    var select = $(selectId);
+                    select.prepend("<option value='' selected='selected'>请输入姓名搜索</option>");
+                    for (var i in result) {
+                        select.append("<option value='" + result[i].id + "' >" + result[i].realname + "</option>");
+                    }
+                    form.render('select'); //刷新select选择框渲染
+                }
+            })
+        }
+        function getSelectOrgIds(selId) {
+            var selectId = "#"+selId,
+                realName = "";
+            $.ajax({
+                url: '${ctx}/user/org/findIds',
+                data:{realName:realName},
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result){
+                    var select = $(selectId);
+                    select.prepend("<option value='' selected='selected'>请输入学院搜索</option>");
+                    for (var i in result) {
+                        select.append("<option value='" + result[i].id + "' >" + result[i].orgName + "</option>");
+                    }
+                    form.render('select'); //刷新select选择框渲染
+
+                }
+            })
+        }
+        function getSelectClassIds(selId) {
+            var selectId = "#"+selId,
+                realName = "";
+            $.ajax({
+                url: '${ctx}/class/findIds',
+                data:{realName:realName},
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result){
+                    var select = $(selectId);
+                    select.prepend("<option value='' selected='selected'>请输入班级搜索</option>");
+                    for (var i in result) {
+                        select.append("<option value='" + result[i].id + "' >" + result[i].className + "</option>");
+                    }
+                    form.render('select'); //刷新select选择框渲染
+                }
+            })
+        }
+
+        function getSelectSpecialityIds(selId) {
+            var selectId = "#"+selId,
+                realName = "";
+            $.ajax({
+                url: '${ctx}/speciality/findIds',
+                data:{realName:realName},
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result){
+                    var select = $(selectId);
+                    select.prepend("<option value='' selected='selected'>请输入专业搜索</option>");
+                    for (var i in result) {
+                        select.append("<option value='" + result[i].id + "' >" + result[i].specialtyName + "</option>");
+                    }
+                    form.render('select'); //刷新select选择框渲染
+                }
+            })
+        }
+
+        switch(type){
+            case 'add': addDefaultData();
+                break;
+            case 'update': updateDefaultData();
+                break;
+            case 'multiSearch':multiSearchDefaultData();
+                break;
+        };
+
+        function updateDefaultData(){
+            $.ajax({
+                url: tableUrl,
+                data:JSON.stringify(defaultData),
+                type: 'post',
+                contentType: 'application/json; charset=utf-8',
+                success: function(result){
+//                    debugger;
+                    if (result.code === 200) {
+                        form.render(null, formLayFilter);
+                        iframeForm = "#" + iframeForm;
+                        var formElement = $(iframeForm);
+                        var obj = result.extend.PageInfo.list[0];
+                        setEntity(formElement, obj);
+                        form.render(null, formLayFilter);
+                    }
+                }
+            })
+        }
+
+        function addDefaultData() {
+            $("#iframeForm input[name=id]").attr("readonly",false);
+            form.verify({id: function(value, item){if(!validateForm(tableUrl,{id:value})){return '班级编号已存在!';}} });//value：表单的值、item：表单的DOM对象
+        }
+
+        function multiSearchDefaultData(){
+//            $("input[name='orgName']").val(orgName);
+            var obj = $("#"+iframeForm).serializeArray();
+
+            for (var i in obj){
+                $("#iframeForm input[name="+obj[i].name+"]").removeAttr("lay-verify");
+//                $("#iframeForm select[name="+obj[i].name+"]").removeAttr("lay-verify");
+
+            }
+            $("#formSubmit").html("查询");
+        }
+
+
+
+        function validateForm(requestUrl,data){
+            var flag = false;
+            $.ajax({
+                url: requestUrl,
+                data: JSON.stringify(data),
+                async: false,
+                type: "post",
+                contentType: "application/json;charset=utf-8",
+                success: function(res){
+                    flag = res.extend.PageInfo.list.length == 0 ? true : false;
+                }
+            })
+            return flag;
+        }
+
+
+        $("#close").on("click",function(){parent.layer.closeAll();});
+
+
+
+
+        /* 监听提交 */
+        form.on('submit('+submitBtn+')', function (data) {
+            var index = parent.layer.getFrameIndex(window.name);
+            if(type == 'multiSearch'){
+                top.parent.fromIframeData = data.field;
+                parent.layer.close(index);
+            }else {
+                var flagMsg = type == "add" ?  "提交错误" : "修改错误";
+                var flag = saveData(type,data.field);
+                if(flag){
+                    parent.layer.close(index);
+                }else {
+                    parent.layer.msg("出错", {
+                        time: 5000, //20s后自动关闭
+                        content:flagMsg
+                    })
+                }
+            }
+        });
+
+        function saveData(type,data){
+            var requestUrl = type == 'add' ?  insertUrl : updateUrl;
+            var result;
+            $.ajax({
+                url: requestUrl,
+                data: JSON.stringify(data),
+                async: false,
+                type: 'post',
+                contentType: 'application/json;charset=utf-8',
+                success: function(res){
+                    result = res.code == 200 ? true : false;
+                }
+            });
+            return result;
+        }
+    });
+
+
+</script>
+</body>
+</html>

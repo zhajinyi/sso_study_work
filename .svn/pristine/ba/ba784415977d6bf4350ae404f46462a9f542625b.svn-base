@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/main.css" media="all">
+    <style>
+        .layui-form-item .layui-form-checkbox[lay-skin=primary] {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">详细信息</li>
+            <li>班级信息</li>
+            <li>宿舍信息</li>
+            <li>处罚记录</li>
+            <li>家庭信息</li>
+            <li>学籍异动</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!-- 详细信息 -->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" action="" lay-filter="component-form-group">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <input type="checkbox" name="" title="是否来自部队" lay-skin="primary">
+                            <input type="checkbox" name="" title="是否常住户口在农村" lay-skin="primary">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <input type="checkbox" name="" title="否建档立卡贫困家庭" lay-skin="primary">
+                            <input type="checkbox" name="" title="学生确认" lay-skin="primary">
+                        </div>
+                    </div>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 班级信息 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="" lay-filter="component-form-group">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">专业：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-block">
+                            <label class="layui-form-label">院系：</label>
+                            <div class="layui-input-block">
+                                <textarea name="text" placeholder="请输入内容" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 宿舍信息 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="" lay-filter="component-form-group">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">小区：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">床号：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼号：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">宿舍长：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">楼层：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">宿舍长学号：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">朝向：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">宿舍编号：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">床铺数：</label>
+                            <div class="layui-input-inline">
+                                <select name="city" lay-verify="">
+                                    <option value="">请选择一个城市</option>
+                                    <option value="010">北京</option>
+                                    <option value="021">上海</option>
+                                    <option value="0571">杭州</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </form>
+            </div>
+            <!-- 处罚记录 -->
+            <div class="layui-tab-item">
+                <table id="tableData" lay-filter="tableData"></table>
+            </div>
+            <!-- 家庭信息 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="" lay-filter="component-form-group">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">家长姓名：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">家长联系方式：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">家长职业：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">家长住址：</label>
+                            <div class="layui-input-inline">
+                                <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                    class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 学籍异动 -->
+            <div class="layui-tab-item">
+                <table id="tableData1" lay-filter="tableData1"></table>
+
+            </div>
+        </div>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'table', 'layer'], function () {
+            var $ = layui.$,
+                table = layui.table,
+                fun = layui.fun,
+                layer = layui.layer,
+                $body = $("body")
+            function Table(id) {
+                table.render({
+                    elem: '#tableData'
+                    , url: layui.setter.base + 'json/stu/stu_manage.js' //模拟接口
+                    , page: {
+                        layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                        , 'prev': '上一页'
+                        , 'next': '下一页'
+                        , 'limits': [10, 20, 30, 40, 50]
+                        , jump: function (obj) {
+                            console.log(obj)
+                        }
+                    }
+                    , loading: true
+                    , cellMinWidth: 120
+                    , defaultToolbar: ['filter']
+                    , cols: [[
+                        { type: 'numbers', width: 70, title: '编号' }
+                        , { field: 'username', width: 120, title: '处分结果', sort: true }
+                        , { field: 'sex', width: 120, title: '处分时间', sort: true }
+                        , { field: 'city', width: 100, title: '文件号' }
+                        , { field: 'sign', title: '处分原因', minWidth: 150 }
+                    ]]
+                })
+            }
+            Table(0);
+            function Table1(id) {
+                table.render({
+                    elem: '#tableData1'
+                    , url: layui.setter.base + 'json/stu/stu_manage.js' //模拟接口
+                    , page: {
+                        layout: ['count', 'prev', 'page', 'next', 'limit', 'skip']
+                        , 'prev': '上一页'
+                        , 'next': '下一页'
+                        , 'limits': [10, 20, 30, 40, 50]
+                        , jump: function (obj) {
+                            console.log(obj)
+                        }
+                    }
+                    , loading: true
+                    , cellMinWidth: 120
+                    , defaultToolbar: ['filter']
+                    , cols: [[
+                        { type: 'numbers', width: 70, title: '编号' }
+                        , { field: 'username', width: 150, title: '事件' }
+                        , { field: 'sex', width: 120, title: '记录时间', sort: true }
+                        , { field: 'city', width: 100, title: '处理结果' }
+                        , { field: 'sign', title: '备注', minWidth: 150 }
+                    ]]
+                })
+            }
+            Table1(0);
+        })
+    </script>
+</body>
+
+</html>

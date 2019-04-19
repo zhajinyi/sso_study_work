@@ -1,0 +1,479 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: ZhaJinyi
+  Date: 2019-2-12
+  Time: 16:25
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+<%@ include file="/include/head_include.jsp"%>
+<html>
+<head>
+    <title>编辑-学生基本信息管理</title>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+
+            <form class="layui-form" lay-filter="component-form-group" id="stuBasicInfo">
+
+                <div class="layui-form-item">
+
+
+                        <%--学生基本信息--%>
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>基本信息</legend>
+                        </fieldset>
+
+                        <div class="layui-inline">
+                        <label class="layui-form-label">学号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="id"  placeholder="请输入" autocomplete="off" class="layui-input" readonly>
+                        </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">姓名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="sysEmpInfoDto.realname"  placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">性别</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="gender" value="m" title="男">
+                                <input type="radio" name="gender" value="f" title="女">
+                            </div>
+                        </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">院系</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="collegeName"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">专业</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="specialtyName"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">证件号</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="idCard"  placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="phone" placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label">QQ</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="qq"  placeholder="请输入" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">Email</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">民族</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="nation"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">出生日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="birthdate"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">政治面貌</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="politicsStatus"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">入学时间</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="entryYear"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">生源地区</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">家庭住址</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="familyAddress"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">家庭电话</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">联系人</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">家庭邮编</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="postalCode"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">名字拼音</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">毕业中学</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">中学邮编</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">曾用名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">籍贯</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">户口性质</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">银行卡号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="bankCard"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+
+
+
+
+                            <%--宿舍信息--%>
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend>宿舍信息</legend>
+                            </fieldset>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">宿舍号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoDormInfoDto.id"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">小区</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoDormInfoDto.area"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">楼号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoDormInfoDto.buildingNum"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">楼层</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoDormInfoDto.floor"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">朝向</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoDormInfoDto.orientation"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">床铺数</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoDormInfoDto.bunkNum"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">宿舍电话</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">寝室长学号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">寝室长</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name=""  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <%--班级信息--%>
+                            <fieldset class="layui-elem-field layui-field-title">
+                                <legend>班级信息</legend>
+                            </fieldset>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">院系</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.orgName"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班级</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.className"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班长学号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.monitorName"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班长姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.monitorTel"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班主任工号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.adviserCode"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班主任姓名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.adviserName"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">班主任电话</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.adviserTel"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-inline">
+                                <label class="layui-form-label">备注</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="sisoClassInfoDto.remark"  placeholder="请输入" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item layui-layout-admin">
+                                <div class="layui-input-block">
+                                    <div class="layui-footer" style="left: 0;">
+                                        <button class="layui-btn" lay-submit lay-filter="formSubmit">提交修改</button>
+                                        <button class="layui-btn layui-btn-primary" type="button">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxStatic}/layuiadmin/layui/layui.js"></script>
+<script>
+    var paramID = getParam("id");
+    layui.config({
+        base: '${ctxStatic}/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index',//主入口模块
+        enhanceform: 'enhanceform'//form表单快速填充
+    }).use(['index', 'form', 'laydate', 'layedit' ,'enhanceform'], function(){
+        var $ = layui.$,
+            admin = layui.admin,
+            element = layui.element,
+            layer = layui.layer,
+            laydate = layui.laydate,
+            layedit = layui.layedit,
+            form = layui.form,
+            enhanceForm = layui.enhanceform;
+        var enhance = new enhanceForm({
+            elem: '#stuBasicInfo' //表单选择器
+        });
+
+            var sisoStudentInfoDto = JSON.stringify({id : paramID} );
+        //表单初始赋值
+        $.ajax({
+            url: '${ctx}/stu/selective', //模拟接口
+            data: sisoStudentInfoDto,
+            type: 'post',
+            contentType: 'application/json',
+            success: function(obj){
+                var student = obj.extend.PageInfo.list[0];
+                form.val("component-form-group", {
+                    "id": student.id
+                    ,"sysEmpInfoDto.realname": student.sysEmpInfoDto.realname
+                    ,"gender": student.gender
+                    ,"collegeName": student.collegeName
+                    ,"specialtyName": student.specialtyName
+                    ,"idCard": student.idCard
+                    ,"phone": student.phone
+                    ,"email": student.email
+                    ,"nation": student.nation
+                    ,"birthdate": student.birthdate
+                    ,"politicsStatus": student.politicsStatus
+                    ,"entryYear": student.entryYear
+                    ,"familyAddress": student.familyAddress
+                    ,"postalCode": student.postalCode
+                    ,"bankCard": student.bankCard
+
+
+
+                })
+
+                if(student.sisoDormInfoDto != null && student.sisoDormInfoDto!=""){
+                    form.val("component-form-group", {
+                        "sisoDormInfoDto.id": student.sisoDormInfoDto.id
+                        ,"sisoDormInfoDto.area": student.sisoDormInfoDto.area
+                        ,"sisoDormInfoDto.buildingNum":student.sisoDormInfoDto.buildingNum
+                        ,"sisoDormInfoDto.floor":student.sisoDormInfoDto.floor
+                        ,"sisoDormInfoDto.orientation":student.sisoDormInfoDto.orientation
+                        ,"sisoDormInfoDto.bunkNum":student.sisoDormInfoDto.bunkNum
+                    });}
+                if(student.sisoClassInfoDto!=null && student.sisoDormInfoDto!=""){
+                    form.val("component-form-group", {
+                        "sisoClassInfoDto.orgName":student.collegeName
+                        ,"sisoClassInfoDto.className":student.className
+                        ,"sisoClassInfoDto.monitorName":student.sisoClassInfoDto.monitorName
+                        ,"sisoClassInfoDto.monitorTel":student.sisoClassInfoDto.monitorTel
+                        ,"sisoClassInfoDto.adviserCode":student.sisoClassInfoDto.adviserCode
+                        ,"sisoClassInfoDto.adviserName":student.sisoClassInfoDto.adviserName
+                        ,"sisoClassInfoDto.adviserTel":student.sisoClassInfoDto.adviserTel
+                        ,"sisoClassInfoDto.remark":student.sisoClassInfoDto.remark
+                    });}
+            }
+        });
+
+
+
+
+        form.render(null, 'component-form-group');
+
+        laydate.render({
+            elem: '#LAY-component-form-group-date'
+        });
+
+        /* 自定义验证规则 */
+        form.verify({
+            title: function(value){
+                if(value.length < 5){
+                    return '标题至少得5个字符啊';
+                }
+            }
+            ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+
+        /* 监听指定开关 */
+        form.on('switch(component-form-switchTest)', function(data){
+            layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+                offset: '6px'
+            });
+            layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+        });
+
+        /* 监听提交 */
+        form.on('submit(formSubmit)', function(data){
+            debugger;
+            var transData;
+            for(var key in data.field){
+                if(key.indexOf(".") != -1 ){
+                    var param = key.substr(".");
+                }
+            }
+            parent.layer.alert(JSON.stringify(data.field), {
+                title: '最终的提交信息'
+            })
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysMenu;
+import org.bureaumanager.bureaumanagerpro.sysConfig.utils.UserUtils;
+
+import java.util.List;
+
+/**
+ * @Author: BaoLing
+ * @Date: 2019/1/3 11:33
+ * @Description: SysMenuDto
+ * @Version: 1.0
+ */
+public class SysMenuDto extends SysMenu {
+    private String userId;
+    private SysMenuDto parent;	// 父级菜单
+    private List<SysMenuDto> children;	// 父级菜单
+    public SysMenuDto(){
+        super();
+    }
+    public SysMenuDto(String id){
+        super(id);
+    }
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public SysMenuDto getParent() {
+        return parent;
+    }
+
+    public void setParent(SysMenuDto parent) {
+        this.parent = parent;
+    }
+
+    public List <SysMenuDto> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List <SysMenuDto> children) {
+        this.children = children;
+    }
+    @JsonIgnore
+    public static String getRootId(){
+        return "1";
+    }
+    @JsonIgnore
+    public boolean hasPermisson(){
+        List<SysMenuDto> menuList = UserUtils.getMenuList();
+        for(SysMenuDto menu:menuList){
+            if(menu.getId().equals(this.getId()))
+                return true;
+        }
+        return false;
+    }
+    @JsonIgnore
+    public static void sortList(List<SysMenuDto> list, List<SysMenuDto> sourcelist, String parentId, boolean cascade){
+        for (int i=0; i<sourcelist.size(); i++){
+            SysMenuDto e = sourcelist.get(i);
+            if (e.getParent()!=null && e.getParent().getId()!=null
+                    && e.getParent().getId().equals(parentId)){
+                list.add(e);
+                if (cascade){
+                    // 判断是否还有子节点, 有则继续获取子节点
+                    for (int j=0; j<sourcelist.size(); j++){
+                        SysMenuDto child = sourcelist.get(j);
+                        if (child.getParent()!=null && child.getParent().getId()!=null
+                                && child.getParent().getId().equals(e.getId())){
+                            sortList(list, sourcelist, e.getId(), true);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

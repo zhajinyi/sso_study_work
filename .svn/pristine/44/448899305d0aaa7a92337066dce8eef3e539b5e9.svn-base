@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysNotifyRecordMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysNotifyRecord" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="sys_notify_id" property="sysNotifyId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="read_flag" property="readFlag" jdbcType="CHAR" />
+    <result column="read_date" property="readDate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, sys_notify_id, user_id, read_flag, read_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_notify_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_notify_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysNotifyRecord" >
+    insert into sys_notify_record (id, sys_notify_id, user_id, 
+      read_flag, read_date)
+    values (#{id,jdbcType=VARCHAR}, #{sysNotifyId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
+      #{readFlag,jdbcType=CHAR}, #{readDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysNotifyRecord" >
+    insert into sys_notify_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="sysNotifyId != null" >
+        sys_notify_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="readFlag != null" >
+        read_flag,
+      </if>
+      <if test="readDate != null" >
+        read_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="sysNotifyId != null" >
+        #{sysNotifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="readFlag != null" >
+        #{readFlag,jdbcType=CHAR},
+      </if>
+      <if test="readDate != null" >
+        #{readDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysNotifyRecord" >
+    update sys_notify_record
+    <set >
+      <if test="sysNotifyId != null" >
+        sys_notify_id = #{sysNotifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="readFlag != null" >
+        read_flag = #{readFlag,jdbcType=CHAR},
+      </if>
+      <if test="readDate != null" >
+        read_date = #{readDate,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysNotifyRecord" >
+    update sys_notify_record
+    set sys_notify_id = #{sysNotifyId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      read_flag = #{readFlag,jdbcType=CHAR},
+      read_date = #{readDate,jdbcType=DATE}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

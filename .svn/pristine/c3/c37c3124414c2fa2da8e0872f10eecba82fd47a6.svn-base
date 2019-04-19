@@ -1,0 +1,14 @@
+package org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.dao;
+
+import org.apache.ibatis.annotations.Param;
+import org.bureaumanager.bureaumanagerpro.base.BaseMapper;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.SisoStudentInfo;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto;
+
+import java.util.List;
+
+public interface SisoStudentInfoMapper extends BaseMapper<SisoStudentInfoDto> {
+    SisoStudentInfoDto selectStudentInfoByUserId(String id);
+    SisoStudentInfoDto selectStudentInfoByEmpid(@Param("empid") String empid);
+
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+        name="cn.edu.siso.itemscenter.comm.walkSchoolInterfaceComposite.walkSchoolInterfaceComponent.walkSchoolInterfaceService"
+        targetNamespace="http://www.primeton.com/walkSchoolInterfaceService"
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.primeton.com/walkSchoolInterfaceService"
+        xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://www.primeton.com/walkSchoolInterfaceService" location="/default/walkSchoolInterfaceService?wsdl=cn/edu/siso/itemscenter/comm/walkSchoolInterface.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="walkSchoolInterfaceServiceBinding" type="tns:walkSchoolInterfaceService">
+    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryWalkSchool">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryWalkSchool">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryWalkSchoolResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="walkSchoolInterfaceServiceService">
+    <wsdl:port name="walkSchoolInterfaceServicePort" binding="tns:walkSchoolInterfaceServiceBinding">
+      <soap11:address location="http://192.168.200.47/default/walkSchoolInterfaceService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

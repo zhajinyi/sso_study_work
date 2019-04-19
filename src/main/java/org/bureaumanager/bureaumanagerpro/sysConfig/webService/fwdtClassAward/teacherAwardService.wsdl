@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="cn.edu.siso.itemscenter.comm.teacherAwardComposite.teacherAwardComponent.teacherAwardService" targetNamespace="http://www.primeton.com/teacherAwardService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.primeton.com/teacherAwardService" xmlns:ns0="http://www.primeton.com/teacherAwardService" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://www.primeton.com/teacherAwardService" location="/default/teacherAwardService?wsdl=cn/edu/siso/itemscenter/comm/teacherAward.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="teacherAwardServiceBinding" type="tns:teacherAwardService">
+    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryAdvancedApplyInfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryAdvancedApplyInfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryAdvancedApplyInfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryExcellClassINfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryExcellClassINfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryExcellClassINfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="querySupervisionevaluationInfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="querySupervisionevaluationInfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="querySupervisionevaluationInfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="teacherAwardServiceService">
+    <wsdl:port name="teacherAwardServicePort" binding="tns:teacherAwardServiceBinding">
+      <soap11:address location="http://fwdt.siso.edu.cn/default/teacherAwardService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

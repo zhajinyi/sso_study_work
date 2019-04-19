@@ -1,0 +1,8 @@
+package org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao;
+
+import org.bureaumanager.bureaumanagerpro.base.BaseMapper;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.SisoGraduateInfo;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoGraduateInfoDto;
+
+public interface SisoGraduateInfoMapper extends BaseMapper<SisoGraduateInfoDto>{
+}

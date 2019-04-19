@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.dao.SisoStudentInfoMapper" >
+
+
+  <resultMap id="stuResultMap" type="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto">
+    <id column="empcode" property="id" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="collegeName" property="collegeName" jdbcType="VARCHAR" />
+    <result column="collegeCode" property="collegeCode" jdbcType="VARCHAR" />
+    <result column="specialtyCode" property="specialtyCode" jdbcType="VARCHAR" />
+    <result column="specialtyName" property="specialtyName" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="className" property="className" jdbcType="VARCHAR" />
+    <result column="classCode" property="classCode" jdbcType="VARCHAR" />
+    <result column="instructorName" property="instructorName" jdbcType="VARCHAR" />
+    <result column="instructorCode" property="instructorCode" jdbcType="VARCHAR" />
+    <result column="postalCode" property="postalCode" jdbcType="VARCHAR" />
+    <result column="idCard" property="idCard" jdbcType="VARCHAR" />
+    <result column="familyAddress" property="familyAddress" jdbcType="VARCHAR" />
+    <result column="dromCode" property="dromCode" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="VARCHAR" />
+    <result column="entryScore" property="entryScore" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="bankCard" property="bankCard" jdbcType="VARCHAR" />
+    <result column="onShool" property="onShool" jdbcType="VARCHAR" />
+    <result column="shoolRoll" property="shoolRoll" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="entryYear" property="entryYear" jdbcType="VARCHAR" />
+    <result column="politicsStatus" property="politicsStatus" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <association property="sisoClassInfoDto" javaType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto">
+      <id column="classCode" jdbcType="VARCHAR" property="id"/>
+      <result column="adviserCode" property="adviserCode" jdbcType="VARCHAR" />
+      <result column="adviserName" property="adviserName" jdbcType="VARCHAR" />
+      <result column="adviserTel" property="adviserTel" jdbcType="VARCHAR" />
+      <result column="monitorName" property="monitorName" jdbcType="VARCHAR" />
+      <result column="monitorTel" property="monitorTel" jdbcType="VARCHAR" />
+      <result column="classRemark" property="remark" jdbcType="VARCHAR" />
+    </association>
+    <association property="sysEmpInfoDto" javaType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto">
+      <id column="empcode" jdbcType="VARCHAR" property="id"/>
+      <result  column="empname" jdbcType="VARCHAR" property="realname"/>
+    </association>
+    <association property="sisoDormInfoDto" javaType="org.bureaumanager.bureaumanagerpro.model.dormitoryManager.pojo.dto.SisoDormInfoDto">
+      <id column="dromCode" jdbcType="VARCHAR" property="id"/>
+      <result  column="area" jdbcType="VARCHAR" property="area"/>
+      <result column="buildingNum" property="buildingNum" jdbcType="VARCHAR" />
+      <result column="floor" property="floor" jdbcType="VARCHAR" />
+      <result column="state" property="state" jdbcType="VARCHAR" />
+      <result column="type" property="type" jdbcType="VARCHAR" />
+      <result column="currentNum" property="currentNum" jdbcType="INTEGER" />
+      <result column="bunkNum" property="bunkNum" jdbcType="INTEGER" />
+      <result column="leader" property="leader" jdbcType="VARCHAR" />
+      <result column="orientation" property="orientation" jdbcType="VARCHAR" />
+      <result column="isAllot" property="isAllot" jdbcType="VARCHAR" />
+      <result column="dromRemark" property="remark" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+
+
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="college_code" property="collegeCode" jdbcType="VARCHAR" />
+    <result column="drom_code" property="dromCode" jdbcType="VARCHAR" />
+    <result column="class_code" property="classCode" jdbcType="VARCHAR" />
+    <result column="specialty_code" property="specialtyCode" jdbcType="VARCHAR" />
+    <result column="instructor_code" property="instructorCode" jdbcType="VARCHAR" />
+    <result column="adviser_code" property="adviserCode" jdbcType="VARCHAR" />
+    <result column="entry_score" property="entryScore" jdbcType="VARCHAR" />
+    <result column="bank_card" property="bankCard" jdbcType="VARCHAR" />
+    <result column="on_shool" property="onShool" jdbcType="VARCHAR" />
+    <result column="shool_roll" property="shoolRoll" jdbcType="VARCHAR" />
+    <result column="entry_year" property="entryYear" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <association fetchType="lazy" property="sisoClassInfoDto" column="class_code" select="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.dao.SisoClassInfoMapper.selectByPrimaryKey"></association>
+    <association fetchType="lazy" property="sisoDormInfoDto" column="drom_code" select="org.bureaumanager.bureaumanagerpro.model.dormitoryManager.dao.SisoDormInfoMapper.selectByPrimaryKey"></association>
+    <association fetchType="lazy" property="sysEmpInfoDto" column="id" select="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysEmpInfoMapper.selectByEmpId"></association>
+  </resultMap>
+
+  <resultMap id="TablesResultMap" type="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
+    <result column="orgId" property="orgId" jdbcType="VARCHAR" />
+    <result column="dromCode" property="dromCode" jdbcType="VARCHAR" />
+    <result column="classCode" property="classCode" jdbcType="VARCHAR" />
+    <result column="specialtyCode" property="specialtyCode" jdbcType="VARCHAR" />
+    <result column="instructorCode" property="instructorCode" jdbcType="VARCHAR" />
+    <result column="adviserCode" property="adviserCode" jdbcType="VARCHAR" />
+    <result column="entryScore" property="entryScore" jdbcType="VARCHAR" />
+    <result column="bankCard" property="bankCard" jdbcType="VARCHAR" />
+    <result column="onShool" property="onShool" jdbcType="VARCHAR" />
+    <result column="shoolRoll" property="shoolRoll" jdbcType="VARCHAR" />
+    <result column="entryYear" property="entryYear" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="specialtyName" property="specialtyName" jdbcType="VARCHAR" />
+    <result column="orgName" property="orgName" jdbcType="VARCHAR" />
+    <result column="className" property="className" jdbcType="VARCHAR" />
+    <result column="empName" property="empName" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="adviserName" property="adviserName" jdbcType="VARCHAR" />
+    <result column="instructorName" property="instructorName" jdbcType="VARCHAR" />
+    <result  column="cardType" property="cardType" jdbcType="VARCHAR" />
+    <result  column="cardNo" property="cardNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, grade, college_code, drom_code, class_code, specialty_code,
+    instructor_code, adviser_code, entry_score, bank_card, on_shool, shool_roll,
+    entry_year, remark
+  </sql>
+  <sql id="stu_Column_List" >
+      stu.id AS id,                          stu.grade AS grade,
+      stu.college_code AS orgId,             stu.drom_code AS  dromCode,
+      stu.class_code AS classCode,           stu.specialty_code AS specialtyCode,
+      stu.instructor_code AS  instructorCode,stu.adviser_code AS adviserCode,
+      stu.entry_score AS entryScore,         stu.bank_card AS bankCard,
+      stu.on_shool AS onShool,               stu.shool_roll AS shoolRoll,
+      stu.entry_year AS entryYear,           stu.remark AS remark
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select * from siso_student_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from siso_student_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto" >
+    insert into siso_student_info (id, grade, college_code,
+    drom_code, class_code, specialty_code,instructor_code, adviser_code, entry_score,
+    bank_card, on_shool, shool_roll, entry_year, remark)
+    values (#{id,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{collegeCode,jdbcType=VARCHAR},
+    #{dromCode,jdbcType=VARCHAR}, #{classCode,jdbcType=VARCHAR}, #{specialtyCode,jdbcType=VARCHAR},
+    #{instructorCode,jdbcType=VARCHAR}, #{adviserCode,jdbcType=VARCHAR}, #{entryScore,jdbcType=VARCHAR},
+    #{bankCard,jdbcType=VARCHAR}, #{onShool,jdbcType=VARCHAR}, #{shoolRoll,jdbcType=VARCHAR},
+    #{entryYear,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto" >
+    insert into siso_student_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="collegeCode != null" >
+        college_code,
+      </if>
+      <if test="dromCode != null" >
+        drom_code,
+      </if>
+      <if test="classCode != null" >
+        class_code,
+      </if>
+      <if test="specialtyCode != null" >
+        specialty_code,
+      </if>
+      <if test="instructorCode != null" >
+        instructor_code,
+      </if>
+      <if test="adviserCode != null" >
+        adviser_code,
+      </if>
+      <if test="entryScore != null" >
+        entry_score,
+      </if>
+      <if test="bankCard != null" >
+        bank_card,
+      </if>
+      <if test="onShool != null" >
+        on_shool,
+      </if>
+      <if test="shoolRoll != null" >
+        shool_roll,
+      </if>
+      <if test="entryYear != null" >
+        entry_year,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeCode != null" >
+        #{collegeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dromCode != null" >
+        #{dromCode,jdbcType=VARCHAR},
+      </if>
+      <if test="classCode != null" >
+        #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyCode != null" >
+        #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorCode != null" >
+        #{instructorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adviserCode != null" >
+        #{adviserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="entryScore != null" >
+        #{entryScore,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null" >
+        #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="onSchool != null" >
+        #{onSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="shoolRoll != null" >
+        #{shoolRoll,jdbcType=VARCHAR},
+      </if>
+      <if test="entryYear != null" >
+        #{entryYear,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto" >
+    update siso_student_info
+    <set >
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="collegeCode != null" >
+        college_code = #{collegeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dromCode != null" >
+        drom_code = #{dromCode,jdbcType=VARCHAR},
+      </if>
+      <if test="classCode != null" >
+        class_code = #{classCode,jdbcType=VARCHAR},
+      </if>
+      <if test="specialtyCode != null" >
+        specialty_code = #{specialtyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="instructorCode != null" >
+        instructor_code = #{instructorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adviserCode != null" >
+        adviser_code = #{adviserCode,jdbcType=VARCHAR},
+      </if>
+      <if test="entryScore != null" >
+        entry_score = #{entryScore,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCard != null" >
+        bank_card = #{bankCard,jdbcType=VARCHAR},
+      </if>
+      <if test="onShool != null" >
+        on_shool = #{onShool,jdbcType=VARCHAR},
+      </if>
+      <if test="shoolRoll != null" >
+        shool_roll = #{shoolRoll,jdbcType=VARCHAR},
+      </if>
+      <if test="entryYear != null" >
+        entry_year = #{entryYear,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto" >
+    update siso_student_info
+    set grade = #{grade,jdbcType=VARCHAR},
+    college_code = #{collegeCode,jdbcType=VARCHAR},
+    drom_code = #{dromCode,jdbcType=VARCHAR},
+    class_code = #{classCode,jdbcType=VARCHAR},
+    specialty_code = #{specialtyCode,jdbcType=VARCHAR},
+    instructor_code = #{instructorCode,jdbcType=VARCHAR},
+    adviser_code = #{adviserCode,jdbcType=VARCHAR},
+    entry_score = #{entryScore,jdbcType=VARCHAR},
+    bank_card = #{bankCard,jdbcType=VARCHAR},
+    on_shool = #{onShool,jdbcType=VARCHAR},
+    shool_roll = #{shoolRoll,jdbcType=VARCHAR},
+    entry_year = #{entryYear,jdbcType=VARCHAR},
+    remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+
+  <!-- 自己添加的Sql-->
+  <delete id="deleteByPrimaryKeys" parameterType="java.util.List" >
+    delete from siso_student_info
+    where id in
+    <foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(id)
+    from siso_student_info
+    where id = #{id}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    *
+    from
+    siso_student_info
+  </select>
+
+  <select id="selectStudentInfoByUserId" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from siso_student_info
+    where id = #{id}
+  </select>
+
+  <select id="selectByTemplate" resultMap="TablesResultMap" parameterType="org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto">
+    <if test="t.className != null and t.className != ''">
+      <bind name="className" value="'%' + t.className + '%'" />
+    </if>
+    <if test="t.remark != null and t.remark != ''">
+      <bind name="remark" value="'%' + t.remark + '%'" />
+    </if>
+    <if test="t.orgName != null and t.orgName !=''">
+      <bind name="orgName" value="'%' + t.orgName + '%'" />
+    </if>
+    <if test="t.specialtyName != null and t.specialtyName != ''">
+      <bind name="specialtyName" value="'%' + t.specialtyName + '%'" />
+    </if>
+    <if test="t.empName != null and t.empName != ''">
+      <bind name="empName" value="'%' + t.empName + '%'" />
+    </if>
+    <if test="t.adviserName != null and t.adviserName != ''">
+      <bind name="adviserName" value="'%' + t.adviserName + '%'" />
+    </if>
+    <if test="t.instructorName != null and t.instructorName != ''">
+      <bind name="instructorName" value="'%' + t.instructorName + '%'" />
+    </if>
+    SELECT
+    <include refid="stu_Column_List" />,
+    ss.specialty_name AS specialtyName,  so.org_name AS orgName,
+    sc.class_name AS className,          se.realname AS empName,
+    se.gender AS gender,                 se.cardtype AS cardType,
+    se.cardno AS cardNo,                 se1.realname AS adviserName,
+    se2.realname AS instructorName
+    FROM
+    siso_student_info stu
+    LEFT JOIN siso_specialty ss ON stu.specialty_code = ss.id
+    LEFT JOIN sys_organization so ON stu.college_code = so.id
+    LEFT JOIN siso_class_info sc ON stu.class_code = sc.id
+    LEFT JOIN sys_emp_info se ON stu.id = se.id
+    LEFT JOIN sys_emp_info se1 ON stu.adviser_code = se1.id
+    LEFT JOIN sys_emp_info se2 ON stu.instructor_code = se2.id
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="t.id != null and t.id !=''">
+        AND stu.id = #{t.id,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgId != null and t.orgId !=''">
+        AND stu.college_code = #{t.orgId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.specialtyCode != null and t.specialtyCode != ''">
+        AND stu.specialty_code = #{t.specialtyCode,jdbcType=VARCHAR}
+      </if>
+      <if test="t.adviserCode != null and t.adviserCode != ''">
+        AND stu.adviser_code = #{t.adviserCode,jdbcType=VARCHAR}
+      </if>
+      <if test="t.instructorCode != null and t.instructorCode != ''">
+        AND stu.instructor_code = #{t.instructorCode,jdbcType=VARCHAR}
+      </if>
+      <if test="t.grade != null and t.grade !=''">
+        AND stu.grade = #{t.grade,jdbcType=VARCHAR}
+      </if>
+      <if test="t.gender != null and t.gender != ''">
+        AND se.gender = #{t.gender,jdbcType=VARCHAR}
+      </if>
+      <if test="t.className != null and t.className !=''">
+        AND sc.class_name LIKE #{className,jdbcType=VARCHAR}
+      </if>
+      <if test="t.remark != null and t.remark != ''">
+        AND stu.remark LIKE #{remark,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgName != null and t.orgName !=''">
+        AND so.org_name LIKE #{orgName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.specialtyName != null and t.specialtyName != ''">
+        AND ss.specialty_name LIKE #{specialtyName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.empName != null and t.empName != ''">
+        AND se.realname LIKE #{empName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.adviserName != null and t.adviserName != ''">
+        AND se1.realname LIKE #{adviserName,jdbcType=VARCHAR}
+      </if>
+      <if test="t.instructorName != null and t.instructorName != ''">
+        AND se2.realname LIKE #{instructorName,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+
+</mapper>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao.SisoHighExcellentMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoHighExcellentDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="award_type" property="awardType" jdbcType="VARCHAR" />
+    <result column="deteal" property="deteal" jdbcType="VARCHAR" />
+    <result column="main_content" property="mainContent" jdbcType="VARCHAR" />
+    <result column="award_time" property="awardTime" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, empid, empname, award_type, deteal, main_content, award_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from siso_highexcellent
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from siso_highexcellent
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoHighExcellentDto" >
+    insert into siso_highexcellent (id, empid, empname, 
+      award_type, deteal, main_content, 
+      award_time, remark)
+    values (#{id,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, #{empname,jdbcType=VARCHAR}, 
+      #{awardType,jdbcType=VARCHAR}, #{deteal,jdbcType=VARCHAR}, #{mainContent,jdbcType=VARCHAR}, 
+      #{awardTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoHighExcellentDto" >
+    insert into siso_highexcellent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="awardType != null" >
+        award_type,
+      </if>
+      <if test="deteal != null" >
+        deteal,
+      </if>
+      <if test="mainContent != null" >
+        main_content,
+      </if>
+      <if test="awardTime != null" >
+        award_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="awardType != null" >
+        #{awardType,jdbcType=VARCHAR},
+      </if>
+      <if test="deteal != null" >
+        #{deteal,jdbcType=VARCHAR},
+      </if>
+      <if test="mainContent != null" >
+        #{mainContent,jdbcType=VARCHAR},
+      </if>
+      <if test="awardTime != null" >
+        #{awardTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoHighExcellentDto" >
+    update siso_highexcellent
+    <set >
+      <if test="empid != null" >
+        empid = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="awardType != null" >
+        award_type = #{awardType,jdbcType=VARCHAR},
+      </if>
+      <if test="deteal != null" >
+        deteal = #{deteal,jdbcType=VARCHAR},
+      </if>
+      <if test="mainContent != null" >
+        main_content = #{mainContent,jdbcType=VARCHAR},
+      </if>
+      <if test="awardTime != null" >
+        award_time = #{awardTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoHighExcellentDto" >
+    update siso_highexcellent
+    set empid = #{empid,jdbcType=VARCHAR},
+      empname = #{empname,jdbcType=VARCHAR},
+      award_type = #{awardType,jdbcType=VARCHAR},
+      deteal = #{deteal,jdbcType=VARCHAR},
+      main_content = #{mainContent,jdbcType=VARCHAR},
+      award_time = #{awardTime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 自己添加的SQL -->
+  <select id="selectByTemplate"  resultMap="BaseResultMap" >
+    <if test="t.empId != null and t.empId != ''">
+      <bind name="t.empId" value="'%' + t.empId + '%'" />
+    </if>
+    <if test="t.awardType != null and t.awardType != ''">
+      <bind name="t.awardType" value="'%' + t.awardType + '%'" />
+    </if>
+    <if test="t.awardTime != null and t.awardTime != ''">
+      <bind name="t.awardTime" value="'%' + t.awardTime + '%'" />
+    </if>
+    <if test="t.remark != null and t.remark != ''">
+      <bind name="t.remark" value="'%' + t.remark + '%'" />
+    </if>
+    select
+    <include refid="Base_Column_List" />
+    from siso_highexcellent
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="t.empId != null and t.empId != ''">
+        AND empid LIKE #{t.empId,jdbcType=VARCHAR}
+      </if>
+      <if test="t.awardType != null and t.awardType != ''">
+        AND award_type LIKE #{t.awardType,jdbcType=VARCHAR}
+      </if>
+      <if test="t.awardTime != null and t.awardTime != ''">
+        AND award_time LIKE #{t.awardTime,jdbcType=VARCHAR}
+      </if>
+      <if test="t.remark != null and t.remark != ''">
+        AND remark LIKE #{t.remark,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+  
+</mapper>

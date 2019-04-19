@@ -1,0 +1,67 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.service.impl;
+
+import org.bureaumanager.bureaumanagerpro.base.BaseServiceImpl;
+import org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysMenuMapper;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysMenuDto;
+import org.bureaumanager.bureaumanagerpro.sysConfig.service.SysMenuService;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * @Author: BaoLing
+ * @Date: 2019/1/4 15:09
+ * @Description: SysMenuServiceImpl
+ * @Version: 1.0
+ */
+@Service
+public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuDto,SysMenuMapper> implements SysMenuService {
+
+
+    @Override
+    public int countEntities(SysMenuDto menuDto) {
+        return super.countEntities(menuDto);
+    }
+
+    @Override
+    public boolean insertEntity(SysMenuDto menuDto) {
+        return super.insertEntity(menuDto);
+    }
+
+    @Override
+    public boolean insertEntitySelective(SysMenuDto menuDto) {
+        return super.insertEntitySelective(menuDto);
+    }
+
+    @Override
+    public boolean deleteEntity(SysMenuDto menuDto) {
+        return super.deleteEntity(menuDto);
+    }
+
+    @Override
+    public boolean deleteEntityByPrimaryKey(String id) {
+        return super.deleteEntityByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean updateEntityByPrimaryKey(SysMenuDto menuDto) {
+        return super.updateEntityByPrimaryKey(menuDto);
+    }
+
+    @Override
+    public boolean updateEntityByPrimaryKeySelective(SysMenuDto menuDto) {
+        return super.updateEntityByPrimaryKeySelective(menuDto);
+    }
+
+    @Override
+    public SysMenuDto selectEntityByPrimaryKey(String id) {
+        return super.selectEntityByPrimaryKey(id);
+    }
+
+    @Override
+    public List<SysMenuDto> selectAllEntities() {
+        return super.selectAllEntities();
+    }
+
+
+}

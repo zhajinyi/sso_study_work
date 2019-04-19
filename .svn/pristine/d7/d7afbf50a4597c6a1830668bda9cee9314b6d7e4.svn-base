@@ -1,0 +1,61 @@
+
+package org.bureaumanager.bureaumanagerpro.sysConfig.webService.walkSchool;
+
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.*;
+
+
+/**
+ * <p>anonymous complex type�� Java �ࡣ
+ * 
+ * <p>����ģʽƬ��ָ�������ڴ����е�Ԥ�����ݡ�
+ * 
+ * <pre>
+ * &lt;complexType>
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="year" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "year"
+})
+@XmlRootElement(name = "queryWalkSchool")
+public class QueryWalkSchool {
+
+    @XmlElementRef(name = "year", namespace = "http://www.primeton.com/walkSchoolInterfaceService", type = JAXBElement.class, required = false)
+    protected JAXBElement<String> year;
+
+    /**
+     * ��ȡyear���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public JAXBElement<String> getYear() {
+        return year;
+    }
+
+    /**
+     * ����year���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link JAXBElement }{@code <}{@link String }{@code >}
+     *     
+     */
+    public void setYear(JAXBElement<String> value) {
+        this.year = value;
+    }
+
+}

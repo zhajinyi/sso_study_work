@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="cn.edu.siso.itemscenter.comm.studentAwardComposite.studentAwardComponent.studentAwardService" targetNamespace="http://www.primeton.com/studentAwardService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.primeton.com/studentAwardService" xmlns:ns0="http://www.primeton.com/studentAwardService" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://www.primeton.com/studentAwardService" location="/default/studentAwardService?wsdl=cn/edu/siso/itemscenter/comm/studentAward.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="studentAwardServiceBinding" type="tns:studentAwardService">
+    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryBursary">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryBursary">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryBursaryResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryHighExcellent">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryHighExcellent">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryHighExcellentResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="studentAwardServiceService">
+    <wsdl:port name="studentAwardServicePort" binding="tns:studentAwardServiceBinding">
+      <soap11:address location="http://fwdt.siso.edu.cn/default/studentAwardService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

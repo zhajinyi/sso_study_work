@@ -1,0 +1,203 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.controller;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.bureaumanager.bureaumanagerpro.base.BaseController;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.Msg;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysMenuDto;
+import org.bureaumanager.bureaumanagerpro.sysConfig.service.impl.SysMenuServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @Author: BaoLing
+ * @Date: 2019/1/4 14:31
+ * @Description: MenuController
+ * @Version: 1.0
+ */
+@Controller
+@RequestMapping(value = "/sys/menu")
+public class MenuController extends BaseController {
+    @Autowired
+    private SysMenuServiceImpl menuService;
+//    @ModelAttribute("menu")
+//    public SysMenuDto get(@RequestParam(required=false) String id) {
+//        if (StringUtils.isNotBlank(id)){
+//            return menuService.selectEntityByPrimaryKey(id);
+//        }else{
+//            return new SysMenuDto();
+//        }
+//    }
+//
+//    @RequiresPermissions("sys:menu:list")
+//    @RequestMapping(value = {"list", ""})
+//    public String list(Model model) {
+//        List<SysMenuDto> list = Lists.newArrayList();
+//        List<SysMenuDto> sourcelist = menuService.selectAllEntities();
+//        SysMenuDto.sortList(list, sourcelist, SysMenuDto.getRootId(), true);
+//        model.addAttribute("list", list);
+//        return "modules/sys/menuList";
+//    }
+//
+//    @RequiresPermissions(value={"sys:menu:view","sys:menu:add","sys:menu:edit"},logical= Logical.OR)
+//    @RequestMapping(value = "form")
+//    public String form(SysMenuDto menu, Model model) {
+//        if (menu.getParent()==null||menu.getParent().getId()==null){
+//            menu.setParent(new SysMenuDto(SysMenuDto.getRootId()));
+//        }
+//        menu.setParent(menuService.selectEntityByPrimaryKey(menu.getParent().getId()));
+//        // 获取排序号，最末节点排序号+30
+//        if (StringUtils.isBlank(menu.getId())){
+//            List<SysMenuDto> list = Lists.newArrayList();
+//            List<SysMenuDto> sourcelist = menuService.selectAllEntities();
+//            SysMenuDto.sortList(list, sourcelist, menu.getParentId(), false);
+//            if (list.size() > 0){
+//                menu.setSort(list.get(list.size()-1).getSort() + 30);
+//            }
+//        }
+//        model.addAttribute("menu", menu);
+//        return "modules/sys/menuForm";
+//    }
+//
+//    @RequiresPermissions(value={"sys:menu:add","sys:menu:edit"},logical=Logical.OR)
+//    @RequestMapping(value = "save")
+//    public String save(SysMenuDto menu, Model model, RedirectAttributes redirectAttributes) {
+////        if(!UserUtils.getUser().isAdmin()){
+////            addMessage(redirectAttributes, "越权操作，只有超级管理员才能添加或修改数据！");
+////            return "redirect:/sys/role/?repage";
+////        }
+//        if (!beanValidator(model, menu)){
+//            return form(menu, model);
+//        }
+//        menuService.insertEntity(menu);
+////        addMessage(redirectAttributes, "保存菜单'" + menu.getName() + "'成功");
+//        return "redirect:sys/menu/";
+//    }
+//
+//    @RequiresPermissions("sys:menu:del")
+//    @RequestMapping(value = "delete")
+//    public String delete(SysMenuDto menu, RedirectAttributes redirectAttributes) {
+//
+////		if (SysMenuDto.isRoot(id)){
+////			addMessage(redirectAttributes, "删除菜单失败, 不允许删除顶级菜单或编号为空");
+////		}else{
+//        menuService.deleteEntity(menu);
+//        addMessage(redirectAttributes, "删除菜单成功");
+////		}
+//        return "redirect:/sys/menu/";
+////        return "redirect:" + adminPath + "/sys/menu/";
+//    }
+//
+//    @RequiresPermissions("sys:menu:del")
+//    @RequestMapping(value = "deleteAll")
+//    public String deleteAll(String ids, RedirectAttributes redirectAttributes) {
+//
+////		if (SysMenuDto.isRoot(id)){
+////			addMessage(redirectAttributes, "删除菜单失败, 不允许删除顶级菜单或编号为空");
+////		}else{
+//        String idArray[] =ids.split(",");
+//        for(String id : idArray){
+//            SysMenuDto menu = menuService.selectEntityByPrimaryKey(id);
+//            if(menu != null){
+//                menuService.deleteEntity(menuService.selectEntityByPrimaryKey(id));
+//            }
+//        }
+//
+//        addMessage(redirectAttributes, "删除菜单成功");
+////		}
+//        return "redirect:/sys/menu/";
+////        return "redirect:" + adminPath + "/sys/menu/";
+//    }
+//    @RequiresPermissions("user")
+//    @RequestMapping(value = "tree")
+//    public String tree() {
+//        return "modules/sys/menuTree";
+//    }
+//
+//    @RequiresPermissions("user")
+//    @RequestMapping(value = "treeselect")
+//    public String treeselect(String parentId, Model model) {
+//        model.addAttribute("parentId", parentId);
+//        return "modules/sys/menuTreeselect";
+//    }
+//
+//    /**
+//     * 批量修改菜单排序
+//     */
+//    @RequiresPermissions("sys:menu:updateSort")
+//    @RequestMapping(value = "updateSort")
+//    public String updateSort(String[] ids, Integer[] sorts, RedirectAttributes redirectAttributes) {
+//
+//        for (int i = 0; i < ids.length; i++) {
+//            SysMenuDto menu = new SysMenuDto(ids[i]);
+//            menu.setSort(sorts[i]);
+//            menuService.updateEntityByPrimaryKey(menu);
+//        }
+//        addMessage(redirectAttributes, "保存菜单排序成功!");
+//        return "redirect:/sys/menu/";
+////        return "redirect:" + adminPath + "/sys/menu/";
+//    }
+//
+//    /**
+//     * isShowHide是否显示隐藏菜单
+//     * @param extId
+//     * @param response
+//     * @return
+//     */
+//    @RequiresPermissions("user")
+//    @ResponseBody
+//    @RequestMapping(value = "treeData")
+//    public List<Map<String, Object>> treeData(@RequestParam(required=false) String extId, @RequestParam(required=false) String isShowHide, HttpServletResponse response) {
+//        List<Map<String, Object>> mapList = Lists.newArrayList();
+//        List<SysMenuDto> list = menuService.selectAllEntities();
+//        for (int i=0; i<list.size(); i++){
+//            SysMenuDto e = list.get(i);
+//            if (StringUtils.isBlank(extId) || (extId!=null && !extId.equals(e.getId()) && e.getParentIds().indexOf(","+extId+",")==-1)){
+//                if(isShowHide != null && isShowHide.equals("0") && e.getIsShow().equals("0")){
+//                    continue;
+//                }
+//                Map<String, Object> map = Maps.newHashMap();
+//                map.put("id", e.getId());
+//                map.put("pId", e.getParentId());
+//                map.put("name", e.getName());
+//                mapList.add(map);
+//            }
+//        }
+//        return mapList;
+//    }
+
+
+    @RequestMapping(value = "/queryMenus", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public Msg queryMenuDtoList(){
+        //获取顶级菜单
+        List<SysMenuDto> topMenus = menuService.selectTopMenus();
+        return Msg.success().add("topMenus",topMenus);
+    }
+
+    @RequestMapping(value = "/teacher_index")
+    public String qetMenuList(Model model){
+        //获取顶级菜单
+        List<SysMenuDto> topMenus = menuService.selectTopMenus();
+        //获取所需要的权限
+        model.addAttribute("topMenus",topMenus);
+        return "models/teacher/teacher_index";
+    }
+
+    @RequestMapping(value = "getEntityByid", method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Msg getEntityByid(@RequestBody SysMenuDto entity){
+        SysMenuDto sysMenuDto = menuService.selectEntityByPrimaryKey(entity.getId());
+        return Msg.success().add("permission",sysMenuDto.getPermission());
+    }
+}

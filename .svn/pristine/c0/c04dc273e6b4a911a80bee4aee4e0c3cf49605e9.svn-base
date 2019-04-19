@@ -1,0 +1,320 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: BaoLing
+  Date: 2019/2/14
+  Time: 10:40
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+<html>
+<head>
+    <title>苏州工业园区服务外包学院-学工系统-优秀干部</title>
+    <%@ include file="/include/head_include.jsp"%>
+</head>
+<body>
+
+<div class="layui-fluid" id="LAY-component-grid-mobile-pc">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-xs4 layui-col-md2">
+            <div class="layui-form-item">
+                <form class="layui-form">
+                    <label id="select_label" class="layui-form-label">年级</label>
+                    <div class="layui-input-block">
+                        <select name="grade" lay-filter="grade" id="grade">
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-body" id="left_tree">
+                    <ul id="tree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-xs8 layui-col-md10">
+            <!-- 填充内容 -->
+            <div class="layui-card main-section">
+                <div class="layui-card-body">
+                    <table id="tableData" lay-filter="tableData"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--表格头部自定义控件-->
+<script type="text/html" id="tableToolbar">
+    <div class="layui-row">
+        <form class="layui-form" id="toolbarForm">
+            <%--隐藏域--%>
+            <input type="hidden" name="orgid">
+            <input type="hidden" name="classId">
+            <input type="hidden" name="phone">
+            <input type="hidden" name="job">
+            <input type="hidden" name="excellentyear">
+            <input type="hidden" name="endtime">
+            <div class="layui-col-md4">
+                <label class="layui-form-label" style="width: 80px">学号</label>
+                <div class="layui-input-block" style="margin-left: 110px">
+                    <input type="text" name="empid" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <label class="layui-form-label" style="width: 80px">学生姓名</label>
+                <div class="layui-input-block" style="margin-left: 110px">
+                    <input type="text" name="empname" lay-verify="" placeholder="" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-col-md2" style="text-align: right">
+                <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="search">查询</button>
+                <button class="layui-btn layui-btn-primary layui-btn-sm" type="reset">重置</button>
+            </div>
+        </form>
+        <div class="layui-col-md2" style="text-align: right">
+            <button class="layui-btn layui-btn-primary layui-btn-sm layui-btn-radius" lay-event="multiSearch">自定义查询</button>
+        </div>
+    </div>
+    <div class="layui-row" style="padding: 10px 0px 0px 30px">
+        <div class="layui-btn-group" style="text-align: left;visibility: hidden;">
+            <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
+            <button class="layui-btn layui-btn-sm layui-btn-warm" lay-event="update">修改</button>
+            <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete">删除</button>
+        </div>
+    </div>
+</script>
+<script src="${ctxStatic}/layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '${ctxStatic}/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+        ,commTreeTable:'commTreeTable'
+    }).use(['index', 'tree', 'table', 'layer', 'form', 'commTreeTable'], function () {
+        /*定义tree、table相关的参数*/
+        var $ = layui.$,
+            tree = layui.tree,
+            table = layui.table,
+            layer = layui.layer,
+            form = layui.form,
+            commTreeTable = layui.commTreeTable,
+            treeUrl = "${ctx}/excelleader/tree",
+            treeElement = "tree",
+            tableUrl = "${ctx}/excelleader/all",
+            delTableUrl = "",
+            tableElement = "tableData",
+            tableId = "tableDataID",
+            tableToolbar = "tableToolbar",
+            toolbarForm = "toolbarForm",
+            formUrl = "${ctx}/models/teacher/studentAward/excelleader_form.jsp";
+        var cols = [[
+            { type : 'numbers' , title : '编号' , width : 60 },
+            { field : 'empid' , width : 110 , title : '学号',align:'center' },
+            { field : 'empname' , width : 100 , title : '姓名',align:'center' },
+            { field : 'sex' , width : 60 , title : '性别', align:'center'},
+            { field : 'orgname' , width : 120 , title : '学院',align:'center' },
+            { field : 'banji' , width : 120 , title : '班级',align:'center' },
+            { field : 'job' , width : 170 , title : '职务',align:'center' },
+            { field : 'phone' , width : 135 , title : '电话号码',align:'center' },
+            { field : 'endtime' , width : 135 , title : '获奖时间',align:'center' },
+            { field : 'excellentyear' , width : 135 , title : '获奖学年',align:'center' },
+            //{ field : 'classId' , width : 135 , title : '班级',align:'center' }
+//                    { fixed: 'right', title: '操作', width: 120 , align:'center', toolbar:'#titleTpl' }
+        ]];
+
+
+        var nodeid;
+
+        Object.defineProperty(window.clickNode,'id', {
+            get: function(){},//取值的时候会触发
+            set: function(value){nodeid = value;}//更新值的时候会触发
+        });
+
+        Object.defineProperty(window.clickNode,'level', {
+            get: function(){},//取值的时候会触发
+            set: function(value) {
+                if (value == 2) {
+                    $("input[name='classId']").val(nodeid);
+                    $("input[name='orgid']").val('');
+                } else if (value == 1) {
+                    $("input[name='orgid']").val(nodeid);
+                    $("input[name='classId']").val('');
+                } else {
+                    $("input[name='orgid']").val('');
+                    $("input[name='classId']").val('');
+                }//更新值的时候会触发
+            }
+        });
+
+        commTreeTable.getSelectGrade("grade");
+        commTreeTable.getCommTree(treeElement,treeUrl,null,tableId,toolbarForm,tableUrl); //加载tree对象初始化方法；
+        commTreeTable.getCommTable(tableElement, tableUrl,tableId,cols,tableToolbar);
+        commTreeTable.listenToolbar(table,tableElement,tableId,tableUrl,toolbarForm,delTableUrl,formUrl);
+
+        form.on("select(grade)",function(data){
+            $("#tree").empty();
+            commTreeTable.getCommTree(treeElement,treeUrl+"?grade="+data.value,null,tableId,toolbarForm,tableUrl);
+        });
+
+
+    });
+
+
+   /* layui.config({
+        base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'tree', 'table', 'layer','jquery','form'], function () {
+        var $ = layui.$,
+            table = layui.table,
+            layer = layui.layer,
+            form = layui.form;
+
+        //定义变量
+        var orgid,empid,empname,orgname,banji,job,endtime,excellentyear,treeUrl;
+        var t = {};
+        //加载年级选项
+        getSelectGrade();
+        //加载tree
+        treeUrl ='/awards/tree';
+        getCommTree(treeUrl,grade);
+        //加载table
+        getExcelLeaderTable();
+        //select监听事件
+        form.render('select'); //刷新select选择框渲染
+        form.on('select(grade)', function(obj){
+            getCommTree(treeUrl,obj.value);
+            tableReload();
+        });
+        //查询按钮点击事件
+        $(document).on('click','.search',function(){
+            search();
+        });
+        function commTreeOnClick(node) {
+            if('2' == node.level){
+                banji = node.name;
+                orgname = null;
+                $("input[name='orgname']").val("");
+                orgid = null;
+            }else{
+                banji = null;
+                orgname = node.name;
+                $("input[name='banji']").val("");
+                orgid = node.id;
+            }
+        }
+
+        function getExcelLeaderTable() {
+            table.render({
+                elem: '#tableData'
+                ,url:  '/awards/excelLeader'
+                ,toolbar: '#tableToolbar'
+                ,id:'excelLeaderTable'
+                ,contentType: 'application/json'
+                ,method: 'post'
+                ,request: {
+                    pageName: 'currentPage',
+                    limitName: 'pageSize'
+                }
+                ,parseData: function(result){ //result 即为原始返回的数据
+                    return {
+                        "code":result.code, //解析接口状态
+                        "msg": result.msg, //解析提示文本
+                        "count": result.extend.PageInfo.total, //解析数据长度
+                        "data": result.extend.PageInfo.list //解析数据列表
+                    };
+                }
+                , response: {
+                    statusCode: 200 //重新规定成功的状态码为 200，table 组件默认为 0
+                }
+                , page: {
+                    layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+                    'prev': '上页',
+                    'next': '下页',
+                    'limits': [10, 20, 30, 40, 50]
+                }
+                , loading: true
+                , cellMinWidth: 120
+                , defaultToolbar: ['filter']
+                , cols: [[
+                    { type : 'numbers' , title : '编号' , width : 60 },
+                    { field : 'empid' , width : 110 , title : '学号',align:'center' },
+                    { field : 'empname' , width : 100 , title : '姓名',align:'center' },
+                    { field : 'sex' , width : 60 , title : '性别', align:'center'},
+                    { field : 'orgname' , width : 120 , title : '学院',align:'center' },
+                    { field : 'banji' , width : 120 , title : '班级',align:'center' },
+                    { field : 'job' , width : 170 , title : '职务',align:'center' },
+                    { field : 'phone' , width : 135 , title : '电话号码',align:'center' },
+                    { field : 'endtime' , width : 135 , title : '获奖时间',align:'center' },
+                    { field : 'excellentyear' , width : 135 , title : '获奖学年',align:'center' }
+//                    { fixed: 'right', title: '操作', width: 120 , align:'center', toolbar:'#titleTpl' }
+                ]]
+            })
+        }
+        function tableReload() {
+            //获取页面上的数据，给t赋值
+            empid = $("input[name='empid']").val();
+            empname = $("input[name='empname']").val();
+            orgname = isEmpty(orgname) ? $("input[name='orgname']").val() : orgname;
+            banji = isEmpty(banji) ? $("input[name='banji']").val() : banji;
+            job = $("input[name='job']").val();
+            endtime = $("input[name='endtime']").val();
+            excellentyear = $("input[name='excellentyear']").val();
+            t = {
+                orgid: orgid = isEmpty(orgname)|| isEmpty(orgid) || 0 == orgid ? '' : orgid
+                , banji: banji = isEmpty(banji) ? '' : banji
+                , orgname: orgname = isEmpty(orgname) ? '' : orgname
+                , empid: empid = isEmpty(empid) ? '' : empid
+                , empname: empname = isEmpty(empname) ? '' : empname
+                , job: job = isEmpty(job) ? '' : job
+                , endtime: endtime = isEmpty(endtime) ? '' : endtime
+                , excellentyear: excellentyear = isEmpty(excellentyear) ? '' : excellentyear
+                , grade: grade = isEmpty(grade) ? '' : grade
+            };
+            //根据t更新table
+            table.reload('excelLeaderTable', { //table的id
+                where: t
+            });
+            //搜索框数据继续显示
+            for (var k in t){
+                $("input[name='"+k+"']").val(t[k]);
+            }
+        }
+
+
+
+
+
+//        //监听行工具事件,操作按钮
+//        table.on('tool(tableData)', function (obj) {
+//            var data = obj.data;
+//            if (obj.event === 'del') {
+//                layer.confirm('确定删除？', function (index) {
+//                    //obj.del();
+//                    //layer.close(index);
+//                });
+//            } else if (obj.event === 'edit') {
+//                EditLayer("修改学生信息", data);
+//            }
+//        });
+        <%--//学生修改页面--%>
+        <%--function EditLayer(title,data) {--%>
+            <%--debugger;--%>
+            <%--var width = document.body.offsetWidth;--%>
+            <%--var height = document.body.offsetHeight;--%>
+            <%--parent.layer.open({--%>
+                <%--type: 2 //Page层类型--%>
+                <%--, area: [width,height]--%>
+                <%--, title: title--%>
+                <%--, shade: 0.7 //遮罩透明度--%>
+                <%--, maxmin: true //允许全屏最小化--%>
+                <%--, anim: 1 //0-6的动画形式，-1不开启--%>
+                <%--, content: '${ctx}/models/teacher/stu_manage/edit.jsp?id=' + data.id--%>
+            <%--});--%>
+        <%--}--%>
+
+
+    });*/
+</script>
+
+</body>
+</html>

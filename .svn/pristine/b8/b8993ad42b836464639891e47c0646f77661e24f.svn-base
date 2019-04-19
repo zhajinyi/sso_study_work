@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.stuSystem.dao.SisoWalkSchoolMapper">
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.stuSystem.pojo.dto.SisoWalkSchoolDto">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="processinstid" jdbcType="VARCHAR" property="processinstid" />
+    <result column="emp_id" jdbcType="VARCHAR" property="empId" />
+    <result column="emp_code" jdbcType="VARCHAR" property="empCode" />
+    <result column="emp_name" jdbcType="VARCHAR" property="empName" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="grade" jdbcType="VARCHAR" property="grade" />
+    <result column="class_name" jdbcType="VARCHAR" property="className" />
+    <result column="dorm_code" jdbcType="VARCHAR" property="dormCode" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="flatmate" jdbcType="VARCHAR" property="flatmate" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="walk_time" jdbcType="VARCHAR" property="walkTime" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="empty1" jdbcType="VARCHAR" property="empty1" />
+    <result column="empty2" jdbcType="VARCHAR" property="empty2" />
+    <result column="empty3" jdbcType="VARCHAR" property="empty3" />
+    <result column="empty4" jdbcType="VARCHAR" property="empty4" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id,processinstid,emp_id,emp_code,emp_name,org_id,org_name,grade,class_name,dorm_code,address,flatmate,phone,walk_time,reason,empty1,empty2,empty3,empty4
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from siso_walk_school
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from siso_walk_school
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.stuSystem.pojo.dto.SisoWalkSchoolDto">
+    insert into siso_walk_school (id,processinstid,emp_id,emp_code, emp_name, org_id,
+      org_name, grade, class_name, 
+      dorm_code, address, flatmate, 
+      phone, walk_time, reason, 
+      empty1,empty2,empty3,
+      empty4)
+    values (#{id,jdbcType=VARCHAR}, #{processinstid,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, 
+      #{empCode,jdbcType=VARCHAR}, #{empName,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{className,jdbcType=VARCHAR}, 
+      #{dormCode,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{flatmate,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{walkTime,jdbcType=VARCHAR}, #{reason,jdbcType=VARCHAR}, 
+      #{empty1,jdbcType=VARCHAR},#{empty2,jdbcType=VARCHAR},#{empty3,jdbcType=VARCHAR},
+      #{empty4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.stuSystem.pojo.dto.SisoWalkSchoolDto">
+    insert into siso_walk_school
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="processinstid != null">
+        processinstid,
+      </if>
+      <if test="empId != null">
+        emp_id,
+      </if>
+      <if test="empCode != null">
+        emp_code,
+      </if>
+      <if test="empName != null">
+        emp_name,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="grade != null">
+        grade,
+      </if>
+      <if test="className != null">
+        class_name,
+      </if>
+      <if test="dormCode != null">
+        dorm_code,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="flatmate != null">
+        flatmate,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="walkTime != null">
+        walk_time,
+      </if>
+      <if test="reason != null">
+        reason,
+      </if>
+      <if test="empty1 != null">
+        empty1,
+      </if>
+      <if test="empty2 != null">
+        empty2,
+      </if>
+      <if test="empty3 != null">
+        empty3,
+      </if>
+      <if test="empty4 != null">
+        empty4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="processinstid != null">
+        #{processinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null">
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null">
+        #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null">
+        #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null">
+        #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="dormCode != null">
+        #{dormCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="flatmate != null">
+        #{flatmate,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="walkTime != null">
+        #{walkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="empty1 != null">
+        #{empty1,jdbcType=VARCHAR},
+      </if>
+      <if test="empty2 != null">
+        empty1 = #{empty2,jdbcType=VARCHAR},
+      </if>
+      <if test="empty3 != null">
+        empty1 = #{empty3,jdbcType=VARCHAR},
+      </if>
+      <if test="empty4 != null">
+        empty1 = #{empty4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.stuSystem.pojo.dto.SisoWalkSchoolDto">
+    update siso_walk_school
+    <set>
+      <if test="processinstid != null">
+        processinstid = #{processinstid,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null">
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="empCode != null">
+        emp_code = #{empCode,jdbcType=VARCHAR},
+      </if>
+      <if test="empName != null">
+        emp_name = #{empName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null">
+        grade = #{grade,jdbcType=VARCHAR},
+      </if>
+      <if test="className != null">
+        class_name = #{className,jdbcType=VARCHAR},
+      </if>
+      <if test="dormCode != null">
+        dorm_code = #{dormCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="flatmate != null">
+        flatmate = #{flatmate,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="walkTime != null">
+        walk_time = #{walkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="empty1 != null">
+        empty1 = #{empty1,jdbcType=VARCHAR},
+      </if>
+      <if test="empty2 != null">
+        empty1 = #{empty2,jdbcType=VARCHAR},
+      </if>
+      <if test="empty3 != null">
+        empty1 = #{empty3,jdbcType=VARCHAR},
+      </if>
+      <if test="empty4 != null">
+        empty1 = #{empty4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.stuSystem.pojo.dto.SisoWalkSchoolDto">
+    update siso_walk_school
+    set processinstid = #{processinstid,jdbcType=VARCHAR},
+      emp_id = #{empId,jdbcType=VARCHAR},
+      emp_code = #{empCode,jdbcType=VARCHAR},
+      emp_name = #{empName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=VARCHAR},
+      class_name = #{className,jdbcType=VARCHAR},
+      dorm_code = #{dormCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      flatmate = #{flatmate,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      walk_time = #{walkTime,jdbcType=VARCHAR},
+      reason = #{reason,jdbcType=VARCHAR},
+      empty1 = #{empty1,jdbcType=VARCHAR},
+      empty2 = #{empty2,jdbcType=VARCHAR},
+      empty3 = #{empty3,jdbcType=VARCHAR},
+      empty4 = #{empty4,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 自己添加的Sql-->
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select  
+       count(id)
+    from siso_walk_school  
+    where id = #{id}
+  </select>
+
+
+</mapper>

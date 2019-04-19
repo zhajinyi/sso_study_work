@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="cn.edu.siso.itemscenter.comm.punishComposite.punishComponent.punishService" targetNamespace="http://www.primeton.com/punishService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.primeton.com/punishService" xmlns:ns0="http://www.primeton.com/punishService" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://www.primeton.com/punishService" location="/default/punishService?wsdl=cn/edu/siso/itemscenter/comm/punish.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="punishServiceBinding" type="tns:punishService">
+    <soap11:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="queryPunishInfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryPunishInfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryPunishInfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queryRePunishApplyInfos">
+      <soap11:operation soapAction=""/>
+      <wsdl:input name="queryRePunishApplyInfos">
+        <soap11:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryRePunishApplyInfosResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="punishServiceService">
+    <wsdl:port name="punishServicePort" binding="tns:punishServiceBinding">
+      <soap11:address location="http://fwdt.siso.edu.cn/default/punishService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,641 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: baoling
+  Date: 2019/1/25
+  Time: 14:00
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/style/main.css" media="all">
+</head>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>班级信息</li>
+            <li>宿舍信息</li>
+            <li>家庭信息</li>
+        </ul>
+        <div class="layui-tab-content stu-html-manage">
+            <!-- 基本信息 -->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" action=""  lay-filter="stu-form1" >
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">姓名：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="userName" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">学号：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="id" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">性别：</label>
+                            <div class="layui-input-block">
+                                <%--<input type="radio" name="role" value="" title="男">--%>
+                                <%--<input type="radio" name="role" value="" title="女">--%>
+                                <input type="text" name="gender" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">学院：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="collegeName" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">身份证：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="idCard" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">专业：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="specialtyName" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">入学时间：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="entryYear" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">联系方式：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="phone" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">家庭邮编：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="postalCode" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">邮箱：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="email" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">民族：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="nation" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">姓名拼音：</label>--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                                       <%--autocomplete="off" class="layui-input">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">出生日期：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="birthdate" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">学制：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="studyYears" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">政治面貌：</label>
+                            <div class="layui-input-block">
+
+                                <input type="text" name="politicsStatus" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">籍贯：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="nativePlace" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">家庭地址：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="familyAddress" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">是否在校：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="onShool" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">学籍异动：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="shoolRoll" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">银卡号：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="bankCard" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">学历：</label>--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                                       <%--autocomplete="off" class="layui-input" disabled readonly>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">户口性质：</label>--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                                       <%--autocomplete="off" class="layui-input" disabled readonly>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">生源地区：</label>--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                                       <%--autocomplete="off" class="layui-input" disabled readonly>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+
+                        <%--<div class="layui-col-md4">--%>
+                        <%--<label class="layui-form-label">家庭电话：</label>--%>
+                        <%--<div class="layui-input-block">--%>
+                        <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                        <%--autocomplete="off" class="layui-input" disabled readonly>--%>
+                        <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="checkbox" name="agreement" title="是否来自部队" lay-skin="primary">--%>
+                                <%--<input type="checkbox" name="agreement" title="是否常住户口在农村" lay-skin="primary">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="checkbox" name="agreement" title="是否建档立卡贫困家庭" lay-skin="primary">--%>
+                                <%--<input type="checkbox" name="agreement" title="学生确认" lay-skin="primary">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    </div>
+                    <%--<div class="layui-row layui-form-item">--%>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">备注：</label>--%>
+                            <%--<div class="layui-input-block" >--%>
+                                <%--<textarea name="other" style="width: 638px;background-color: #eee;" placeholder="" class="layui-textarea" disabled readonly></textarea>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="layui-form-item btn-bottom">--%>
+                        <%--<div class="layui-input-block" style="margin-left: 0;text-align: center;">--%>
+                            <%--<button class="layui-btn layui-btn-success" lay-submit lay-filter="component-form-element">保存</button>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                </form>
+            </div>
+            <!-- 班级信息 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="" lay-filter="stu-form2" >
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">学院：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="orgName" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">专业：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="specialtyName"  placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">班级名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="className" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">班长姓名：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="monitorName"  placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">班长电话：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="monitorTel"  placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">班主任姓名：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="adviserName" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">班主任电话：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="adviserTel" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">备注：</label>
+                            <div class="layui-input-block">
+                                <textarea name="remark" style="width: 638px;" placeholder="" class="layui-textarea" disabled readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%--<div class="layui-form-item btn-bottom">--%>
+                        <%--<div class="layui-input-block" style="margin-left: 0;text-align: center;">--%>
+                            <%--<button class="layui-btn layui-btn-success" lay-submit lay-filter="component-form-element">保存</button>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                </form>
+            </div>
+            <!-- 宿舍信息 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="" lay-filter="stu-form3" >
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">宿舍区：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="area" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">楼号：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="buildingNum" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">楼层：</label>
+                            <div class="layui-input-block">
+                                    <input type="text" name="floor" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">寝室号：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                <%--<option value=""></option>--%>
+                                <%--<option value="0">前端工程师</option>--%>
+                                <%--<option value="1">Node.js工程师</option>--%>
+                                <%--<option value="2">PHP工程师</option>--%>
+                                <%--<option value="3">Java工程师</option>--%>
+                                <%--<option value="4">运维</option>--%>
+                                <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                <input type="text" name="id" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">朝向：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="orientation" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">寝室长：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="leader" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">寝室长学号：</label>--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                                       <%--autocomplete="off" class="layui-input" disabled readonly>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">床铺数：</label>
+                            <div class="layui-input-block">
+                                <%--<select name="type" lay-verify="required" lay-filter="aihao">--%>
+                                    <%--<option value=""></option>--%>
+                                    <%--<option value="0">前端工程师</option>--%>
+                                    <%--<option value="1">Node.js工程师</option>--%>
+                                    <%--<option value="2">PHP工程师</option>--%>
+                                    <%--<option value="3">Java工程师</option>--%>
+                                    <%--<option value="4">运维</option>--%>
+                                    <%--<option value="4">视觉设计师</option>--%>
+                                <%--</select>--%>
+                                    <input type="text" name="bunkNum" lay-verify="required" placeholder=""
+                                           autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <%--<div class="layui-col-md4">--%>
+                            <%--<label class="layui-form-label">床号：</label>--%>
+                            <%--<div class="layui-input-block">--%>
+                                <%--&lt;%&ndash;<select name="type" lay-verify="required" lay-filter="aihao">&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value=""></option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="0">前端工程师</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="1">Node.js工程师</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="2">PHP工程师</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="3">Java工程师</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="4">运维</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;<option value="4">视觉设计师</option>&ndash;%&gt;--%>
+                                <%--&lt;%&ndash;</select>&ndash;%&gt;--%>
+                                <%--<input type="text" name="fullname" lay-verify="required" placeholder=""--%>
+                                       <%--autocomplete="off" class="layui-input" disabled readonly>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    </div>
+
+
+                    <%--<div class="layui-form-item btn-bottom">--%>
+                        <%--<div class="layui-input-block" style="margin-left: 0;text-align: center;">--%>
+                            <%--<button class="layui-btn layui-btn-success" lay-submit lay-filter="component-form-element">保存</button>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                </form>
+            </div>
+            <!-- 家庭信息 -->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="" lay-filter="stu-form4">
+                    <div class="layui-row layui-form-item">
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">家长姓名：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">联系方式：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="layui-row layui-form-item">
+
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">家长职业：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <label class="layui-form-label">家长住址：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input" disabled readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%--<div class="layui-form-item btn-bottom">--%>
+                        <%--<div class="layui-input-block" style="margin-left: 0;text-align: center;">--%>
+                            <%--<button class="layui-btn layui-btn-success" lay-submit lay-filter="component-form-element">保存</button>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxStatic}/layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: '${ctxStatic}/layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'],function(){
+        var $ = layui.$
+            ,form = layui.form;
+        qurryForm1();
+        qurryForm2();
+        qurryForm3();
+
+        function qurryForm1() {
+            $.ajax({
+                url: '${ctx}/stu/studentInfo', //模拟接口
+                type: 'get',
+                success: function(r){
+                    form.val("stu-form1", {
+                        "userName": r.userName // "name": "value"
+                        ,"id": r.id
+                        ,"gender": r.gender
+                        ,"collegeName": r.collegeName
+                        ,"idCard": r.idCard
+                        ,"specialtyName": r.specialtyName
+                        ,"entryYear": r.entryYear
+                        ,"phone": r.phone
+                        ,"postalCode": r.postalCode
+                        ,"email": r.email
+                        ,"nation": r.nation
+                        ,"birthdate": r.birthdate
+                        ,"studyYears": "3年"
+                        ,"politicsStatus": r.politicsStatus
+                        ,"nativePlace": r.nativePlace
+                        ,"familyAddress": r.familyAddress
+                        ,"onShool": r.onShool
+                        ,"shoolRoll": r.shoolRoll
+                        ,"bankCard": r.bankCard
+                    })
+                }
+            });
+        }
+
+        function qurryForm2() {
+            $.ajax({
+                url: '${ctx}/class/classInfo', //模拟接口
+                type: 'get',
+                success: function(r){
+                    form.val("stu-form2", {
+                        "orgName": r.orgName // "name": "value"
+                        ,"specialtyName": r.specialtyName
+                        ,"className": r.className
+                        ,"monitorName": r.monitorName
+                        ,"monitorTel": r.monitorTel
+                        ,"adviserName": r.adviserName
+                        ,"adviserTel": r.adviserTel
+                        ,"remark": r.remark
+                    })
+                }
+            });
+        }
+
+        function qurryForm3() {
+            $.ajax({
+                url: '${ctx}/stu/dormInfo', //模拟接口
+                type: 'get',
+                success: function(r){
+                    form.val("stu-form3", {
+                        "area": r.area // "name": "value"
+                        ,"buildingNum": r.buildingNum
+                        ,"floor": r.floor
+                        ,"id": r.id
+                        ,"orientation": r.orientation
+                        ,"leader": r.leader
+                        ,"bunkNum": r.bunkNum
+                    })
+                }
+            });
+        }
+
+        form.render();
+    });
+</script>
+</body>
+
+</html>

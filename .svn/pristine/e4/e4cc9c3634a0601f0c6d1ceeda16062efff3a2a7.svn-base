@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysEmpInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="emp_id" property="empId" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="VARCHAR" />
+    <result column="sortno" property="sortno" jdbcType="VARCHAR" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="birthdate" property="birthdate" jdbcType="VARCHAR" />
+    <result column="cardtype" property="cardtype" jdbcType="VARCHAR" />
+    <result column="cardno" property="cardno" jdbcType="VARCHAR" />
+    <result column="mobileno" property="mobileno" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="family_address" property="familyAddress" jdbcType="VARCHAR" />
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="faxno" property="faxno" jdbcType="VARCHAR" />
+    <result column="QQ" property="qq" jdbcType="VARCHAR" />
+    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="politics_status" property="politicsStatus" jdbcType="VARCHAR" />
+    <result column="nationality" property="nationality" jdbcType="VARCHAR" />
+    <result column="degree" property="degree" jdbcType="VARCHAR" />
+    <result column="specialty" property="specialty" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, emp_id, org_id, sortno, nickname, realname, gender, birthdate, cardtype, cardno, mobileno,
+    telephone, family_address, native_place, email, faxno, QQ, weibo, postcode, nation, politics_status,
+    nationality, degree, specialty, remark
+  </sql>
+
+  <select id="selectByEmpId" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from sys_emp_info
+    where emp_id = #{empId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_emp_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_emp_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto" >
+    insert into sys_emp_info (id, emp_id, org_id, sortno, nickname, realname, gender, birthdate, cardtype, cardno, mobileno,
+    telephone, family_address, native_place, email, faxno, QQ, weibo, postcode, nation, politics_status,
+    nationality, degree, specialty, remark)
+    values (#{id,jdbcType=VARCHAR}, #{empId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR},
+      #{sortno,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR},
+      #{gender,jdbcType=VARCHAR}, #{birthdate,jdbcType=VARCHAR}, #{cardtype,jdbcType=VARCHAR},
+      #{cardno,jdbcType=VARCHAR}, #{mobileno,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{familyAddress,jdbcType=VARCHAR}, #{nativePlace,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+      #{faxno,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{weibo,jdbcType=VARCHAR},
+      #{postcode,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{politicsStatus,jdbcType=VARCHAR},
+      #{nationality,jdbcType=VARCHAR}, #{degree,jdbcType=VARCHAR}, #{specialty,jdbcType=VARCHAR},
+      #{remark,jdbcType=INTEGER})
+  </insert>
+
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto" >
+    insert into sys_emp_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="sortno != null" >
+        sortno,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthdate != null" >
+        birthdate,
+      </if>
+      <if test="cardtype != null" >
+        cardtype,
+      </if>
+      <if test="cardno != null" >
+        cardno,
+      </if>
+      <if test="mobileno != null" >
+        mobileno,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="familyAddress != null" >
+        family_address,
+      </if>
+      <if test="nativePlace != null" >
+        native_place,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="faxno != null" >
+        faxno,
+      </if>
+      <if test="qq != null" >
+        QQ,
+      </if>
+      <if test="weibo != null" >
+        weibo,
+      </if>
+      <if test="postcode != null" >
+        postcode,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="politicsStatus != null" >
+        politics_status,
+      </if>
+      <if test="nationality != null" >
+        nationality,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="specialty != null" >
+        specialty,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortno != null" >
+        #{sortno,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null" >
+        #{cardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null" >
+        #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileno != null" >
+        #{mobileno,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="familyAddress != null" >
+        #{familyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="faxno != null" >
+        #{faxno,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsStatus != null" >
+        #{politicsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null" >
+        #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto" >
+    update sys_emp_info
+    <set >
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="sortno != null" >
+        sortno = #{sortno,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+      <if test="birthdate != null" >
+        birthdate = #{birthdate,jdbcType=VARCHAR},
+      </if>
+      <if test="cardtype != null" >
+        cardtype = #{cardtype,jdbcType=VARCHAR},
+      </if>
+      <if test="cardno != null" >
+        cardno = #{cardno,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileno != null" >
+        mobileno = #{mobileno,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="familyAddress != null" >
+        family_address = #{familyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="nativePlace != null" >
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="faxno != null" >
+        faxno = #{faxno,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        QQ = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="weibo != null" >
+        weibo = #{weibo,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="politicsStatus != null" >
+        politicsStatus = #{politicsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="nationality != null" >
+        nationality = #{nationality,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="specialty != null" >
+        specialty = #{specialty,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto" >
+    update sys_emp_info
+    set emp_id = #{empId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      sortno = #{sortno,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      birthdate = #{birthdate,jdbcType=VARCHAR},
+      cardtype = #{cardtype,jdbcType=VARCHAR},
+      cardno = #{cardno,jdbcType=VARCHAR},
+      mobileno = #{mobileno,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      family_address = #{familyAddress,jdbcType=VARCHAR},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      faxno = #{faxno,jdbcType=VARCHAR},
+      QQ = #{qq,jdbcType=VARCHAR},
+      weibo = #{weibo,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      politics_status = #{politicsStatus,jdbcType=VARCHAR},
+      nationality = #{nationality,jdbcType=VARCHAR},
+      degree = #{degree,jdbcType=VARCHAR},
+      specialty = #{specialty,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 自己添加的Sql-->
+  <select id="selectIdsByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <if test="name != null and name != ''">
+      <bind name="realname" value="'%' + name + '%'" />
+    </if>
+    select
+      id,realname
+    from sys_emp_info
+    where 1=1
+    <if test="name != null and name !=''">
+      AND realname like #{realname}
+    </if>
+    limit 10
+  </select>
+
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+      count(id)
+    from sys_emp_info
+    where id = #{id}
+  </select>
+
+  <select id="selectByTemplate" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysEmpInfoDto" resultMap="BaseResultMap">
+    select
+    e.*
+    from sys_emp_info e,sys_user u
+    where e.id = u.id
+    <if test="t.userType != null">
+      and u.user_type = #{t.userType,jdbcType=VARCHAR}
+    </if>
+    <if test="t.empId != null" >
+      and e.emp_id = #{t.empId,jdbcType=VARCHAR}
+    </if>
+    <if test="t.orgId != null" >
+      and e.org_id = #{t.orgId,jdbcType=VARCHAR}
+    </if>
+    <if test="t.sortno != null" >
+      and e.sortno = #{t.sortno,jdbcType=VARCHAR}
+    </if>
+    <if test="t.nickname != null" >
+      and e.nickname like "%"#{t.nickname,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="t.realname != null" >
+      and e.realname like "%"#{t.realname,jdbcType=VARCHAR}"%"
+    </if>
+    <if test="t.gender != null" >
+      and e.gender = #{t.gender,jdbcType=VARCHAR}
+    </if>
+    <if test="t.birthdate != null" >
+      and e.birthdate = #{t.birthdate,jdbcType=VARCHAR}
+    </if>
+    <if test="t.cardtype != null" >
+      and e.cardtype = #{t.cardtype,jdbcType=VARCHAR}
+    </if>
+    <if test="t.cardno != null" >
+      and e.cardno = #{t.cardno,jdbcType=VARCHAR}
+    </if>
+    <if test="t.mobileno != null" >
+      and e.mobileno = #{t.mobileno,jdbcType=VARCHAR}
+    </if>
+    <if test="t.telephone != null" >
+      and e.telephone = #{t.telephone,jdbcType=VARCHAR}
+    </if>
+    <if test="t.familyAddress != null" >
+      and e.family_address = #{t.familyAddress,jdbcType=VARCHAR}
+    </if>
+    <if test="t.nativePlace != null" >
+      and e.native_place = #{t.nativePlace,jdbcType=VARCHAR}
+    </if>
+    <if test="t.email != null" >
+      and e.email = #{t.email,jdbcType=VARCHAR}
+    </if>
+    <if test="t.faxno != null" >
+      and e.faxno = #{t.faxno,jdbcType=VARCHAR}
+    </if>
+    <if test="t.qq != null" >
+      and e.QQ = #{t.qq,jdbcType=VARCHAR}
+    </if>
+    <if test="t.weibo != null" >
+      and e.weibo = #{t.weibo,jdbcType=VARCHAR}
+    </if>
+    <if test="t.postcode != null" >
+      and e.postcode = #{t.postcode,jdbcType=VARCHAR}
+    </if>
+    <if test="t.nation != null" >
+      and e.nation = #{t.nation,jdbcType=VARCHAR}
+    </if>
+    <if test="t.politicsStatus != null" >
+      and e.politicsStatus = #{t.politicsStatus,jdbcType=VARCHAR}
+    </if>
+    <if test="t.nationality != null" >
+      and e.nationality = #{t.nationality,jdbcType=VARCHAR}
+    </if>
+    <if test="t.degree != null" >
+      and e.degree = #{t.degree,jdbcType=VARCHAR}
+    </if>
+    <if test="t.specialty != null" >
+      and e.specialty = #{t.specialty,jdbcType=VARCHAR}
+    </if>
+    <if test="t.remark != null" >
+      and e.remark = #{t.remark,jdbcType=INTEGER}
+    </if>
+  </select>
+
+</mapper>

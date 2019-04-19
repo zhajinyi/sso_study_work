@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysOrganizationMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysOrganizationDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="org_name" property="orgName" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="parent_ids" property="parentIds" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="DECIMAL" />
+    <result column="org_type" property="orgType" jdbcType="CHAR" />
+    <result column="org_grade" property="orgGrade" jdbcType="CHAR" />
+    <result column="useable" property="useable" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, org_name, parent_id, parent_ids, sort,  org_type, org_grade, useable, create_by,
+    create_date, update_by, update_date, remark, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_organization
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_organization
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysOrganization" >
+    insert into sys_organization (id, org_name, parent_id, 
+      parent_ids, sort,  
+      org_type, org_grade, 
+       useable, create_by,
+      create_date, update_by, update_date, 
+      remark, del_flag)
+    values (#{id,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{parentIds,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL},  #{orgType,jdbcType=CHAR}, #{orgGrade,jdbcType=CHAR}, 
+      #{jdbcType=VARCHAR}, #{useable,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR},
+      #{createDate,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysOrganization" >
+    insert into sys_organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orgName != null" >
+        org_name,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="parentIds != null" >
+        parent_ids,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="orgType != null" >
+        org_type,
+      </if>
+      <if test="orgGrade != null" >
+        org_grade,
+      </if>
+      <if test="useable != null" >
+        useable,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null" >
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIds != null" >
+        #{parentIds,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="orgType != null" >
+        #{orgType,jdbcType=CHAR},
+      </if>
+      <if test="orgGrade != null" >
+        #{orgGrade,jdbcType=CHAR},
+      </if>
+      <if test="useable != null" >
+        #{useable,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysOrganization" >
+    update sys_organization
+    <set >
+      <if test="orgName != null" >
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIds != null" >
+        parent_ids = #{parentIds,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="orgType != null" >
+        org_type = #{orgType,jdbcType=CHAR},
+      </if>
+      <if test="orgGrade != null" >
+        org_grade = #{orgGrade,jdbcType=CHAR},
+      </if>
+      <if test="useable != null" >
+        useable = #{useable,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.SysOrganization" >
+    update sys_organization
+    set org_name = #{orgName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      parent_ids = #{parentIds,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=DECIMAL},
+      org_type = #{orgType,jdbcType=CHAR},
+      org_grade = #{orgGrade,jdbcType=CHAR},
+      useable = #{useable,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 自己添加的Sql-->
+  <select id="countByPrimaryKey" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+     count(id)
+    FROM sys_organization
+    WHERE id = #{id}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM sys_organization
+  </select>
+  <!-- 查找二级学院-->
+  <select id="selectCollegeTree" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM sys_organization
+    WHERE org_type = "B"
+  </select>
+  <!-- 自己添加的Sql-->
+  <select id="selectIdsByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <if test="name != null and name != ''">
+      <bind name="realname" value="'%' + name + '%'" />
+    </if>
+    select
+    id,org_name
+    from sys_organization
+    where org_type = "B"
+    <if test="name != null and name !=''">
+      AND org_name LIKE #{realname}
+    </if>
+    ORDER BY id
+
+  </select>
+
+  <select id="selectIdsByNameAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <if test="name != null and name != ''">
+      <bind name="realname" value="'%' + name + '%'" />
+    </if>
+    select
+    id,org_name
+    from sys_organization
+    WHERE 1=1
+    <if test="name != null and name !=''">
+      AND org_name LIKE #{realname}
+    </if>
+    ORDER BY id
+  </select>
+
+  <!-- 查找所有的组织-->
+  <select id="queryAllSysOrganization" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM sys_organization
+    WHERE del_flag = "0" and useable="1"
+    ORDER BY sort
+  </select>
+
+</mapper>

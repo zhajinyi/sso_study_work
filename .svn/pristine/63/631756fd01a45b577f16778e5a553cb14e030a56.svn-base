@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao.SisoExcelleaderInfoMapper" >
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="VARCHAR" />
+    <result column="orgid" property="orgid" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="orgname" property="orgname" jdbcType="VARCHAR" />
+    <result column="empcode" property="empcode" jdbcType="VARCHAR" />
+    <result column="banji" property="banji" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="admissionnumber" property="admissionnumber" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="excellentyear" property="excellentyear" jdbcType="VARCHAR" />
+    <result column="selfassessment" property="selfassessment" jdbcType="VARCHAR" />
+    <result column="avegrafed" property="avegrafed" jdbcType="VARCHAR" />
+    <result column="lowgrafed" property="lowgrafed" jdbcType="VARCHAR" />
+    <result column="classrank" property="classrank" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ExditResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="empid" property="empid" jdbcType="VARCHAR" />
+    <result column="orgid" property="orgid" jdbcType="VARCHAR" />
+    <result column="empname" property="empname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="orgname" property="orgname" jdbcType="VARCHAR" />
+    <result column="empcode" property="empcode" jdbcType="VARCHAR" />
+    <result column="banji" property="banji" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="admissionnumber" property="admissionnumber" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="excellentyear" property="excellentyear" jdbcType="VARCHAR" />
+    <result column="selfassessment" property="selfassessment" jdbcType="VARCHAR" />
+    <result column="avegrafed" property="avegrafed" jdbcType="VARCHAR" />
+    <result column="lowgrafed" property="lowgrafed" jdbcType="VARCHAR" />
+    <result column="classrank" property="classrank" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+    <result column="class_code" property="classId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, empid, orgid, empname, sex, orgname, empcode, banji, phone, admissionnumber, 
+    job, excellentyear, selfassessment, avegrafed, lowgrafed, classrank, endtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from siso_excelleader_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from siso_excelleader_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto" >
+    insert into siso_excelleader_info (id, empid, orgid,
+      empname, sex, orgname,
+      empcode, banji, phone,
+      admissionnumber, job, excellentyear,
+      selfassessment, avegrafed, lowgrafed,
+      classrank, endtime)
+    values (#{id,jdbcType=VARCHAR}, #{empid,jdbcType=VARCHAR}, #{orgid,jdbcType=VARCHAR},
+      #{empname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR},
+      #{empcode,jdbcType=VARCHAR}, #{banji,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+      #{admissionnumber,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, #{excellentyear,jdbcType=VARCHAR},
+      #{selfassessment,jdbcType=VARCHAR}, #{avegrafed,jdbcType=VARCHAR}, #{lowgrafed,jdbcType=VARCHAR},
+      #{classrank,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto" >
+    insert into siso_excelleader_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="empid != null" >
+        empid,
+      </if>
+      <if test="orgid != null" >
+        orgid,
+      </if>
+      <if test="empname != null" >
+        empname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="orgname != null" >
+        orgname,
+      </if>
+      <if test="empcode != null" >
+        empcode,
+      </if>
+      <if test="banji != null" >
+        banji,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="admissionnumber != null" >
+        admissionnumber,
+      </if>
+      <if test="job != null" >
+        job,
+      </if>
+      <if test="excellentyear != null" >
+        excellentyear,
+      </if>
+      <if test="selfassessment != null" >
+        selfassessment,
+      </if>
+      <if test="avegrafed != null" >
+        avegrafed,
+      </if>
+      <if test="lowgrafed != null" >
+        lowgrafed,
+      </if>
+      <if test="classrank != null" >
+        classrank,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="empcode != null" >
+        #{empcode,jdbcType=VARCHAR},
+      </if>
+      <if test="banji != null" >
+        #{banji,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="admissionnumber != null" >
+        #{admissionnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="excellentyear != null" >
+        #{excellentyear,jdbcType=VARCHAR},
+      </if>
+      <if test="selfassessment != null" >
+        #{selfassessment,jdbcType=VARCHAR},
+      </if>
+      <if test="avegrafed != null" >
+        #{avegrafed,jdbcType=VARCHAR},
+      </if>
+      <if test="lowgrafed != null" >
+        #{lowgrafed,jdbcType=VARCHAR},
+      </if>
+      <if test="classrank != null" >
+        #{classrank,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto" >
+    update siso_excelleader_info
+    <set >
+      <if test="empid != null" >
+        empid = #{empid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null" >
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="empname != null" >
+        empname = #{empname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null" >
+        orgname = #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="empcode != null" >
+        empcode = #{empcode,jdbcType=VARCHAR},
+      </if>
+      <if test="banji != null" >
+        banji = #{banji,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="admissionnumber != null" >
+        admissionnumber = #{admissionnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null" >
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="excellentyear != null" >
+        excellentyear = #{excellentyear,jdbcType=VARCHAR},
+      </if>
+      <if test="selfassessment != null" >
+        selfassessment = #{selfassessment,jdbcType=VARCHAR},
+      </if>
+      <if test="avegrafed != null" >
+        avegrafed = #{avegrafed,jdbcType=VARCHAR},
+      </if>
+      <if test="lowgrafed != null" >
+        lowgrafed = #{lowgrafed,jdbcType=VARCHAR},
+      </if>
+      <if test="classrank != null" >
+        classrank = #{classrank,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto" >
+    update siso_excelleader_info
+    set empid = #{empid,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      empname = #{empname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      orgname = #{orgname,jdbcType=VARCHAR},
+      empcode = #{empcode,jdbcType=VARCHAR},
+      banji = #{banji,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      admissionnumber = #{admissionnumber,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      excellentyear = #{excellentyear,jdbcType=VARCHAR},
+      selfassessment = #{selfassessment,jdbcType=VARCHAR},
+      avegrafed = #{avegrafed,jdbcType=VARCHAR},
+      lowgrafed = #{lowgrafed,jdbcType=VARCHAR},
+      classrank = #{classrank,jdbcType=VARCHAR},
+      endtime = #{endtime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+<!-- 自己加的SQL-->
+  <select id="countByPrimaryKey" resultType="java.lang.Integer" parameterType="java.lang.String" >
+    select
+    count(*)
+    from siso_excelleader_info
+    where id = #{id}
+  </select>
+
+  <select id="selectByTemplate"  resultMap="BaseResultMap" >
+    <if test="t.empid != null and t.empid != ''">
+      <bind name="t.empid" value="'%' + t.empid + '%'" />
+    </if>
+    <if test="t.empname != null and t.empname != ''">
+      <bind name="t.empname" value="'%' + t.empname + '%'" />
+    </if>
+    <if test="t.orgid != null and t.orgid != ''">
+      <bind name="t.orgid" value="'%' + t.orgid + '%'" />
+    </if>
+    <if test="t.orgname != null and t.orgname != ''">
+      <bind name="t.orgname" value="'%' + t.orgname + '%'" />
+    </if>
+    <if test="t.banji != null and t.banji != ''">
+      <bind name="t.banji" value="'%' + t.banji + '%'" />
+    </if>
+    <if test="t.endtime != null and t.endtime != ''">
+      <bind name="t.endtime" value="'%' + t.endtime + '%'" />
+    </if>
+    <if test="t.excellentyear != null and t.excellentyear != ''">
+      <bind name="t.excellentyear" value="'%' + t.excellentyear + '%'" />
+    </if>
+    select
+    <include refid="Base_Column_List" />
+    from siso_excelleader_info
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="t.empid != null and t.empid != ''">
+        AND empid LIKE #{t.empid,jdbcType=VARCHAR}
+      </if>
+      <if test="t.empname != null and t.empname != ''">
+        AND empname LIKE #{t.empname,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgid != null and t.orgid != ''">
+        AND orgid LIKE #{t.orgid,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgname != null and t.orgname != ''">
+        AND orgname LIKE #{t.orgname,jdbcType=VARCHAR}
+      </if>
+      <if test="t.banji != null and t.banji != ''">
+        AND banji LIKE #{t.banji,jdbcType=VARCHAR}
+      </if>
+      <if test="t.endtime != null and t.endtime != ''">
+        AND endtime LIKE #{t.endtime,jdbcType=VARCHAR}
+      </if>
+      <if test="t.excellentyear != null and t.excellentyear != ''">
+        AND excellentyear LIKE #{t.excellentyear,jdbcType=VARCHAR}
+      </if>
+      <if test="t.avegrafed != null and t.avegrafed != ''">
+        AND avegrafed = #{t.avegrafed,jdbcType=VARCHAR}
+      </if>
+      <if test="t.lowgrafed != null and t.lowgrafed != ''">
+        AND lowgrafed = #{t.lowgrafed,jdbcType=VARCHAR}
+      </if>
+      <if test="t.phone != null and t.phone != ''" >
+        AND phone = #{t.phone,jdbcType=VARCHAR}
+      </if>
+      <if test="t.job != null and t.job != ''" >
+        AND job = #{t.job,jdbcType=VARCHAR}
+      </if>
+      <if test="t.sex != null and t.sex != ''" >
+        AND sex = #{t.sex,jdbcType=VARCHAR}
+      </if>
+      <if test="t.grade != null and t.grade != ''" >
+        AND empid IN (
+            SELECT s.id FROM siso_student_info s
+            WHERE s.grade = #{t.grade,jdbcType=VARCHAR}
+            <if test="t.orgid != null and t.orgid != ''">
+              AND s.college_code = #{t.orgid,jdbcType=VARCHAR}
+            </if>
+        )
+      </if>
+    </trim>
+  </select>
+
+
+
+  <select id="queryByTemplate"  resultMap="ExditResultMap" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto">
+    SELECT sei.*,ssi.class_code
+    FROM siso_excelleader_info sei,siso_student_info ssi
+    WHERE sei.empid = ssi.id
+      <if test="t.empid != null and t.empid != ''">
+        AND sei.empid = #{t.empid,jdbcType=VARCHAR}
+      </if>
+      <if test="t.empname != null and t.empname != ''">
+        AND sei.empname LIKE #{t.empname,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgid != null and t.orgid != ''">
+        AND sei.orgid = #{t.orgid,jdbcType=VARCHAR}
+      </if>
+      <if test="t.orgname != null and t.orgname != ''">
+        AND sei.orgname LIKE "%"#{t.orgname,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.banji != null and t.banji != ''">
+        AND sei.banji = "%"#{t.banji,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.endtime != null and t.endtime != ''">
+        AND sei.endtime LIKE "%"#{t.endtime,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.excellentyear != null and t.excellentyear != ''">
+        AND sei.excellentyear LIKE "%"#{t.excellentyear,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.avegrafed != null and t.avegrafed != ''">
+        AND sei.avegrafed = #{t.avegrafed,jdbcType=VARCHAR}
+      </if>
+      <if test="t.lowgrafed != null and t.lowgrafed != ''">
+        AND sei.lowgrafed = #{t.lowgrafed,jdbcType=VARCHAR}
+      </if>
+      <if test="t.phone != null and t.phone != ''" >
+        AND sei.phone LIKE "%"#{t.phone,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.job != null and t.job != ''" >
+        AND sei.job LIKE "%"#{t.job,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.sex != null and t.sex != ''" >
+        AND sei.sex = #{t.sex,jdbcType=VARCHAR}
+      </if>
+      <if test="t.admissionnumber != null and t.admissionnumber != ''" >
+        AND sei.admissionnumber LIKE "%"#{t.admissionnumber,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.selfassessment != null and t.selfassessment != ''" >
+        AND sei.selfassessment LIKE "%"#{t.selfassessment,jdbcType=VARCHAR}"%"
+      </if>
+      <if test="t.classrank != null and t.classrank != ''" >
+        AND sei.classrank = #{t.classrank,jdbcType=VARCHAR}
+      </if>
+
+      <if test="t.classId != null and t.classId != ''" >
+        AND ssi.class_code = #{t.classId,jdbcType=VARCHAR}
+      </if>
+
+  </select>
+
+
+
+</mapper>

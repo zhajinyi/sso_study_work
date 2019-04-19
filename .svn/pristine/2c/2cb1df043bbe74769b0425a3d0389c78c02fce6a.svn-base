@@ -1,0 +1,93 @@
+package org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.controller;
+
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.shiro.SecurityUtils;
+import org.bureaumanager.bureaumanagerpro.base.BaseController;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoAdvancedInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoExcelleaderInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.service.impl.SisoAdvancedInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.service.impl.SisoExcelleaderInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.SisoStudentInfo;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoClassInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.pojo.dto.SisoStudentInfoDto;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.service.impl.SisoClassInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.model.stuBasicInfo.service.impl.SisoStudentInfoServiceImpl;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.Msg;
+import org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysUserDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @Author: BaoLing
+ * @Date: 2019/2/14 16:14
+ * @Description: AwardsController
+ * @Version: 1.0
+ */
+@Controller
+@RequestMapping("/awards")
+public class AwardsController extends BaseController {
+
+    @Autowired
+    SisoExcelleaderInfoServiceImpl excelleaderInfoService;
+    @Autowired
+    SisoAdvancedInfoServiceImpl advancedInfoService;
+    @Autowired
+    SisoStudentInfoServiceImpl studentInfoService;
+
+    @RequestMapping(value = "/excelLeader" , method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Msg findAllExcelLeader(@RequestBody(required = false) SisoExcelleaderInfoDto t){
+        PageHelper.startPage(t.getCurrentPage(), t.getPageSize());
+        List<SisoExcelleaderInfoDto> list = excelleaderInfoService.selectEntitiesByTemplate(t);
+        PageInfo page = new PageInfo(list,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    @RequestMapping(value = "/oneExcelLeader" , method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Msg findExcelLeaderByUserId(@RequestBody(required = false) SisoExcelleaderInfoDto t){
+        if (null== SecurityUtils.getSubject().getSession()){
+            return null;
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+
+        //t.setEmpid(userDto.getEmpId());
+        PageHelper.startPage(t.getCurrentPage(), t.getPageSize());
+        List<SisoExcelleaderInfoDto> list = excelleaderInfoService.selectEntitiesByTemplate(t);
+        PageInfo page = new PageInfo(list,5);
+        return Msg.success().add("PageInfo",page);
+    }
+
+    @RequestMapping(value = "/oneAdvancedInfo" , method = {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public Msg findOneAdvancedInfo(@RequestBody(required = false) SisoAdvancedInfoDto t) {
+        if (null== SecurityUtils.getSubject().getSession()){
+            return null;
+        }
+        SysUserDto userDto = (SysUserDto) SecurityUtils.getSubject().getSession().getAttribute("user");
+        //SisoStudentInfoDto studentInfoDto = studentInfoService.selectStudentInfoByUserId(userDto.getEmpId());
+        //为避免空指针异常，对象为null时就返回查询不到的值
+        //String banjiName = null == studentInfoDto ? "0000" :studentInfoDto.getClassName();
+        //t.setBanjiName(banjiName);
+        PageHelper.startPage(t.getCurrentPage(),t.getPageSize());
+        List<SisoAdvancedInfoDto> list = advancedInfoService.selectEntitiesByTemplate(t);
+        PageInfo page = new PageInfo(list,5);
+        return Msg.success().add("PageInfo", page);
+    }
+
+    @RequestMapping(value = "/commTree2",method =  {RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    @Override
+    public List<Map> selectCollegeAndClassTree(@RequestParam(value = "grade",required = false) String grade) throws Exception{
+        return super.selectCollegeAndClassTree(grade);
+    }
+}

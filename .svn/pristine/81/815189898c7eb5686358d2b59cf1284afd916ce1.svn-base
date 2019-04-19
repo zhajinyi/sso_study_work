@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/main.css" media="all">
+    <style>
+        html {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layui-fluid">
+        <form class="layui-form" action="">
+            <div class="layui-form-item">
+                <label class="layui-form-label">ID：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="id" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">编号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sex" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">描述：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分组：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入标题"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态：</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="sex" value="启用" title="启用">
+                    <input type="radio" name="sex" value="禁止" title="禁止" checked>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-layout-admin btn-sumbit">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" type="button" lay-filter="class_form_sub">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'tree', 'table', 'layer'], function () {
+            var $ = layui.$
+                , tree = layui.tree
+                , fun = layui.fun
+                , table = layui.table
+                , $body = $('body') //body
+
+            //获取url传值
+            var theRequest = fun.GetRequest();
+            var id = theRequest.id;
+            var sex = theRequest.sex;
+            if (id !== undefined && sex !== undefined ) {
+                $('input[name=id]').val(unescape(id));
+                $('input[name=sex]').val(unescape(sex));
+            }
+            $('button[lay-filter=class_form_sub]').on('click', function () {
+                parent.layer.closeAll();
+                parent.layer.alert('提交成功！');
+            })
+        })
+    </script>

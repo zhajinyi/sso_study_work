@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.dao.SisoBursaryMapper">
+    <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="empid" property="empId" jdbcType="VARCHAR" />
+        <result column="orgid" property="orgId" jdbcType="VARCHAR" />
+        <result column="empname" property="empName" jdbcType="VARCHAR" />
+        <result column="orgname" property="orgName" jdbcType="VARCHAR" />
+        <result column="classname" property="className" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="INTEGER" />
+        <result column="political" property="political" jdbcType="INTEGER" />
+        <result column="xueke_jiaquan_fen" property="xueKeJiaQuanFen" jdbcType="VARCHAR" />
+        <result column="xueke_defen" property="xueKeDeFen" jdbcType="VARCHAR" />
+        <result column="zonghesuyang_fen" property="zongHeSuYangFen" jdbcType="VARCHAR" />
+        <result column="deyu_defen" property="deYuDeFen" jdbcType="VARCHAR" />
+        <result column="zonghe_fen" property="zongHeFen" jdbcType="VARCHAR" />
+        <result column="bursary_type" property="bursaryType" jdbcType="VARCHAR" />
+        <result column="bursary_time" property="bursaryTime" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, empid, orgid, empname, orgname, classname, sex, political, xueke_jiaquan_fen,
+        xueke_defen, zonghesuyang_fen, deyu_defen,zonghe_fen,bursary_type,bursary_time,remark
+    </sql>
+    <insert id="addBursary" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto">
+        insert into siso_bursary (id,empid,orgid,empname,orgname,classname,sex,political,xueke_jiaquan_fen,xueke_defen,zonghesuyang_fen,deyu_defen,zonghe_fen,bursary_type,bursary_time,remark)
+        values (#{id},#{empId},#{orgId},#{empName},#{orgName},#{className},#{sex},#{political},#{xueKeJiaQuanFen},#{xueKeDeFen},#{zongHeSuYangFen},#{deYuDeFen},#{zongHeFen},#{bursaryType},#{bursaryTime},#{remark})
+    </insert>
+    <delete id="deleteBursary" parameterType="String">
+        delete from siso_bursary where id = #{id}
+    </delete>
+    <update id="updateBursary" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto">
+        update siso_bursary set empid=#{empId},orgid=#{orgId},empname=#{empName},orgname=#{orgName},classname=#{className},sex=#{sex},political=#{political},xueke_jiaquan_fen=#{xueKeJiaQuanFen},xueke_defen=#{xueKeDeFen},zonghesuyang_fen=#{zongHeSuYangFen},deyu_defen=#{deYuDeFen},zonghe_fen=#{zongHeFen},bursary_type=#{bursaryType},bursary_time=#{bursaryTime},remark=#{remark}
+        where id=#{id}
+    </update>
+    <select id="selectById" parameterType="String" resultType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto">
+        select * from siso_bursary where id = #{id}
+    </select>
+    <select id="countByEmpIdAndTime" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto" resultType="Integer">
+        select count(id) from siso_bursary where empid = #{empId} and bursary_time=#{bursaryTime}
+    </select>
+    <select id="getMaxId" resultType="Integer">
+        select max(id) from siso_bursary
+    </select>
+    <select id="selectByEmpIdAndTime" parameterType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto" resultType="org.bureaumanager.bureaumanagerpro.model.rewardsAndPunishmentsManagement.pojo.dto.SisoBursaryDto">
+        select * from siso_bursary where empid = #{empId} and bursary_time=#{bursaryTime}
+    </select>
+
+    <!-- 自己添加的SQL -->
+    <select id="selectByTemplate"  resultMap="BaseResultMap" >
+        <if test="t.empId != null and t.empId != ''">
+            <bind name="t.empId" value="'%' + t.empId + '%'" />
+        </if>
+        <if test="t.bursaryType != null and t.bursaryType != ''">
+            <bind name="t.bursaryType" value="'%' + t.bursaryType + '%'" />
+        </if>
+        <if test="t.bursaryTime != null and t.bursaryTime != ''">
+            <bind name="t.bursaryTime" value="'%' + t.bursaryTime + '%'" />
+        </if>
+        <if test="t.remark != null and t.remark != ''">
+            <bind name="t.remark" value="'%' + t.remark + '%'" />
+        </if>
+        select
+        <include refid="Base_Column_List" />
+        from siso_bursary
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="t.empId != null and t.empId != ''">
+                AND empid LIKE #{t.empId,jdbcType=VARCHAR}
+            </if>
+            <if test="t.bursaryType != null and t.bursaryType != ''">
+                AND bursary_type LIKE #{t.bursaryType,jdbcType=VARCHAR}
+            </if>
+            <if test="t.bursaryTime != null and t.bursaryTime != ''">
+                AND bursary_time LIKE #{t.bursaryTime,jdbcType=VARCHAR}
+            </if>
+            <if test="t.remark != null and t.remark != ''">
+                AND remark LIKE #{t.remark,jdbcType=VARCHAR}
+            </if>
+        </trim>
+    </select>
+</mapper>

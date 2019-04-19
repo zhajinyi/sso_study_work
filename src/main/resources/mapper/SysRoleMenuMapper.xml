@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.bureaumanager.bureaumanagerpro.sysConfig.dao.SysRoleMenuMapper">
+  <resultMap id="BaseResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto" >
+    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
+    <id column="menu_permission" property="menuPermission" jdbcType="VARCHAR" />
+  </resultMap>
+<resultMap id="roleMenuResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto">
+  <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+  <id column="menu_id" property="menuId" jdbcType="VARCHAR" />
+  <id column="menu_permission" property="menuPermission" jdbcType="VARCHAR" />
+  <result column="organization_id" property="orgId" jdbcType="VARCHAR" />
+  <result column="role_name" property="roleName" jdbcType="VARCHAR"/>
+  <result column="org_name" property="orgName" jdbcType="VARCHAR"/>
+</resultMap>
+  <resultMap id="getRolebyMenuIdResultMap" type="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto">
+    <id column="role_id" property="roleId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    role_id,menu_id,menu_permission
+  </sql>
+  <delete id="deleteByPrimaryKey" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto" >
+    delete from sys_role_menu
+    where role_id = #{roleId,jdbcType=VARCHAR}
+    and menu_id = #{menuId,jdbcType=VARCHAR}
+    and menu_permission = #{menuPermission,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto" >
+    insert into sys_role_menu (role_id, menu_id, menu_permission
+    )
+    values (#{roleId,jdbcType=VARCHAR}, #{menuId,jdbcType=VARCHAR}, #{menuPermission,jdbcType=VARCHAR}
+    )
+  </insert>
+  <insert id="insertSelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto" >
+    insert into sys_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="menuId != null" >
+        menu_id,
+      </if>
+      <if test="menuPermission != null" >
+        menu_permission,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuId != null" >
+        #{menuId,jdbcType=VARCHAR},
+      </if>
+      <if test="menuPermission != null" >
+        #{menuPermission,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+ <!-- 自己加的Sql-->
+  <select id="selectPermssionsByRoleId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM sys_role_menu srm
+    LEFT JOIN sys_menu sm
+    ON srm.menu_id = sm.id
+    WHERE srm.role_id = #{roleId,jdbcType=VARCHAR}
+  </select>
+
+  <!--通过菜单的ID，将表中的所有roleID查出-->
+<select id="getRolebyMenuId" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT
+      distinct(role_id)
+    FROM sys_role_menu
+    WHERE  menu_id = #{menuId,jdbcType=VARCHAR}
+</select>
+
+
+  <select id="selectRoleMenuBySelectivce" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto" resultMap="roleMenuResultMap">
+    SELECT
+        srm.role_id as role_id,
+        srm.menu_id as menu_id,
+        srm.menu_permission as menu_permission,
+        sr.name as role_name,
+        sr.org_name as org_name,
+        sr.organization_id as organization_id
+    FROM
+        sys_role_menu srm
+    LEFT JOIN (
+        SELECT
+            sr.id,
+            sr. NAME,
+            so.org_name,
+		    sr.organization_id
+        FROM
+            sys_role sr,
+            sys_organization so
+        WHERE
+            sr.organization_id = so.id
+    ) sr
+    ON srm.role_id = sr.id
+    <trim prefix="where" prefixOverrides="and|or">
+      <if test="menuId != null and menuId != '' ">
+        and srm.menu_id = #{menuId,jdbcType=VARCHAR}
+      </if>
+      <if test="roleName != null and roleName != ''">
+        and sr.name = #{roleName,jdbcType=VARCHAR}
+      </if>
+      <if test="orgId != null and orgId != ''">
+        and sr.organization_id = #{orgId,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </select>
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="org.bureaumanager.bureaumanagerpro.sysConfig.pojo.dto.SysRoleMenuKeyDto">
+    update sys_role_menu
+    <set >
+      menu_permission = #{menuPermission,jdbcType=VARCHAR}
+    </set>
+    where menu_id = #{menuId,jdbcType=VARCHAR}
+      and role_id = #{roleId,jdbcType=VARCHAR}
+  </update>
+
+  <delete id="deleteEntityByMenuIdandRoleId" parameterType="java.util.Map">
+    delete from sys_role_menu
+      where
+      role_id = #{roleId}
+      and
+      menu_id = #{menuId}
+  </delete>
+
+
+
+  <insert id="insertByBatch" parameterType="java.util.List">
+    insert into sys_role_menu (role_id, menu_id, menu_permission)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.roleId,jdbcType=VARCHAR}, #{item.menuId,jdbcType=VARCHAR},#{item.menuPermission,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+
+</mapper>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<%--
+  Created by IntelliJ IDEA.
+  User: liupengzheng
+  Date: 2019/2/15
+  Time: 10:11
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="/include/taglib.jsp"%>
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="${ctxStatic}/layuiadmin/style/main.css" media="all">
+</head>
+
+<body>
+<div class="layui-container">
+    <br><br>
+    <div class="layui-btn-group">
+        <button class="layui-btn" id="btn-add">新增</button>
+        <button class="layui-btn" id="btn-expand">全部展开</button>
+        <button class="layui-btn" id="btn-fold">全部折叠</button>
+    </div>
+
+    <table id="table1" class="layui-table" lay-filter="table1"></table>
+</div>
+<!-- 操作列 -->
+<script type="text/html" id="oper-col">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script src="${ctxStatic}/layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.config({
+        base: ''
+    }).extend({
+        treetable: 'treetable-lay/treetable'
+    }).use(['table', 'treetable'], function () {
+        var $ = layui.jquery;
+        var table = layui.table;
+        var form = layui.form;
+        var element = layui.element;
+        var treetable = layui.treetable;
+
+        // 渲染表格
+        var renderTable = function () {
+            layer.load(2);
+            treetable.render({
+                elem: '#table1',
+                url: '${ctx}/user/org/treeTable',
+                treeColIndex: 2,
+                treeSpid: "",   //总父级id
+                treeIdName: 'id',
+                treePidName: 'parentId',
+                page: false,
+                cols: [[
+                    {type: 'numbers'},
+                    {field: 'id', title: '组织编号'},
+                    {field: 'orgName', title: '组织名称'},
+                    {field: 'sort', title: '排序'},
+                    {field: 'parentId', title: '上级组织编号'},
+                    {templet: '#oper-col', title: '操作'}
+                ]],
+                done: function () {
+                    layer.closeAll('loading');
+                }
+            });
+
+        };
+
+        renderTable();
+
+        $('#btn-expand').click(function () {
+            treetable.expandAll('#table1');
+        });
+
+        $('#btn-fold').click(function () {
+            treetable.foldAll('#table1');
+        });
+
+        $('#btn-add').click(function () {
+
+            EditLayer('新增', "add");
+        });
+
+        //监听工具条
+        table.on('tool(table1)', function (obj) {
+            var data = obj.data;
+            var layEvent = obj.event;
+
+            if (layEvent === 'del') {
+                layer.alert('真的要删除吗？',{
+                    skin: 'layui-layer-molv' //样式类名  自定义样式
+                    ,closeBtn: 1    // 是否显示关闭按钮
+                    ,anim: 1 //动画类型
+                    ,btn: ['删除','取消'] //按钮
+                    ,icon: 6    // icon
+                    ,yes:function(){
+                        $.ajax({
+                            "url":'${ctx}/user/org/delete/organization',
+                            'dataType': 'json',
+                            "data": JSON.stringify(data),
+                            "contentType" : 'application/json',
+                            "type":"POST",
+                            "success":function (re) {
+                                if(re.extend.code){
+                                    layer.alert('删除成功！', {
+                                        skin: 'layui-layer-molv' //样式类名  自定义样式
+                                        ,closeBtn: 1    // 是否显示关闭按钮
+                                        ,anim: 1 //动画类型
+                                        ,btn: ['确定'] //按钮
+                                        ,icon: 6    // icon
+                                        ,yes:function(){
+                                            layer.close(layer.index);
+                                            renderTable();
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    ,btn2:function(){
+                        layer.msg('好的,已帮您取消删除请求');
+                    }
+                });
+            } else if (layEvent === 'edit') {
+                EditLayer('编辑', obj.event, data);
+            }
+        });
+
+
+        //弹窗函数
+        function LayerOpen(url) {
+            var width = document.body.offsetWidth;
+            var height = document.body.offsetHeight;
+            parent.layer.open({
+                type: 2 //Page层类型
+                , area: ["60%","60%"]
+                , title: false
+                , shade: 0.6 //遮罩透明度
+                , maxmin: true //允许全屏最小化
+                , anim: 2 //0-6的动画形式，-1不开启
+                , content: url
+                ,end: function () {
+                    treetable.foldAll('#auth-table');
+                    renderTable();
+                }
+            });
+        }
+
+
+        function EditLayer(title,type,data) {
+            var width = document.body.offsetWidth;
+            var height = document.body.offsetHeight;
+            var requestUrl = "";
+            var id = "";
+            if (type == 'edit'){
+                requestUrl = '${ctxTeacher}/organization/table_data.jsp?id=' + escape(data.id)+ "&event=" + type;
+            }else {
+                requestUrl =  '${ctxTeacher}/organization/table_data.jsp?event=' + escape("add");
+            }
+            parent.layer.open({
+                type: 2 //Page层类型
+                , area: ["60%","60%"]
+                , title: title
+                , shade: 0.6 //遮罩透明度
+                , maxmin: true //允许全屏最小化
+                , anim: 2 //0-6的动画形式，-1不开启
+                , content: requestUrl
+                , end: function(){
+                    treetable.foldAll('#auth-table');
+                    renderTable();
+                }
+            });
+        }
+
+
+
+    });
+</script>
+</body>
+
+</html>

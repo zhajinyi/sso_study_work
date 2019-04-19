@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <title>苏州工业园区服务外包学院-学工系统-首页</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../../layuiadmin/style/main.css" media="all">
+</head>
+
+<body>
+    <div id="addClass">
+        <form class="layui-form" action="" lay-filter="component-form-group">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">角色名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="tel" name="userName" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">上级角色：</label>
+                    <div class="layui-input-inline">
+                        <select name="professional" lay-filter="professional">
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">状态：</label>
+                    <div class="layui-input-inline">
+                        <input type="radio" name="sex" value="启用" title="启用" checked="">
+                        <input type="radio" name="sex" value="不启用" title="不启用">
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-layout-admin btn-sumbit">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" type="button" lay-submit="" lay-filter="class_form_sub">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="../../../layuiadmin/layui/layui.js?t=1"></script>
+    <script>
+        layui.config({
+            base: '../../../layuiadmin/' //静态资源所在路径
+        }).extend({
+            index: 'lib/index' //主入口模块
+        }).use(['index', 'form', 'layer', 'form'], function () {
+            var $ = layui.$
+                , $body = $('body')
+                , fun = layui.fun
+                , layer = layui.layer
+                , layer = layui.form
+                , form = layui.form;
+
+            //获取url传值
+            var theRequest = fun.GetRequest();
+            var id = theRequest.id;
+            var name = theRequest.name;
+            //点击添加按钮弹出弹窗，动态获取下来列表中的下来数据
+            fun.AjaxData('json/stu/stu_manage.js', 'get', {}, successData);
+            function successData(res) {
+                if (res.code === 0) {
+                    $.each(res.data, function (index, data) {
+                        $("select[name=professional]").append('<option value="' + data.id + '">' + data.username + '</option>')
+                    })
+                    form.render(null, 'component-form-group');
+                    DefaultData();
+                }
+            }
+            //点击表格中的修改时，得到相应的id如果id部位undfined，则将改用户对应的数据显示到表单中
+            function DefaultData() {
+                if (id !== undefined && name !== undefined) {
+                    fun.AjaxData('json/stu/stu_manage.js', 'get', { id: id,name: unescape(name) }, successData1);
+                    function successData1(res) {
+                        form.val('component-form-group', {
+                            'professional': res.data[1].id
+                        });
+                        $('input[name=userName]').val(res.data[1].city);
+                    }
+                }
+            }
+
+            /* 监听提交 */
+            form.on('submit(class_form_sub)', function (data) {
+                parent.layer.closeAll();
+                parent.layer.alert(JSON.stringify(data.field), {
+                    title: '最终的提交信息'
+                })
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>

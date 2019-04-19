@@ -1,0 +1,81 @@
+package org.bureaumanager.bureaumanagerpro.sysConfig.config;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.classDataInterface.GetClassInfos;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.dorm.GetSuShe;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.empDataInterface.GetEmpInfos;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.fwdtWalkSchool.WalkClient;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.organization.GetOrganizations;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.studentInfo.GetStudentInfo;
+import org.bureaumanager.bureaumanagerpro.sysConfig.webService.userDataInterface.GetUserInfos;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+
+
+@Component
+public class ScheduledTasks {
+    private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
+
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+
+/*    @Scheduled(fixedRate = 3600000)
+    public void printCurrentTime(){
+        logger.info("间隔五秒触发："+sdf.format(new Date()));
+    }
+
+    @Scheduled(cron = "0 0 20 * * ?")
+    public void printCurrentTime2(){
+        logger.info("每天20时触发"+sdf.format(new Date()));
+    }*/
+
+
+    //@Scheduled(cron = "0 0 1 * * ?")
+    public void updateStuInfo() throws Exception {
+        logger.info("==========PClient开始更新==========");
+        //PClient.doRun();
+        logger.info("==========PClient更新结束==========");
+        logger.info("==========WalkClient开始更新==========");
+//        WalkClient.doRun();
+        logger.info("==========WalkClient更新结束==========");
+        logger.info("==========宿舍信息开始更新==========");
+        GetSuShe.getAllSuShe();
+        logger.info("==========宿舍信息更新结束==========");
+        logger.info("==========人员信息开始更新==========");
+        GetEmpInfos.getAllEmployee();
+        logger.info("==========人员信息更新结束==========");
+        logger.info("==========班级信息开始更新==========");
+        GetClassInfos.getAllBanji();
+        logger.info("==========班级信息更新结束==========");
+        logger.info("==========部门信息开始更新==========");
+        GetOrganizations.getAllOrganizations();
+        logger.info("==========部门信息更新结束==========");
+        logger.info("==========学生信息开始更新==========");
+        GetStudentInfo.getAllstudentinfo();
+        logger.info("==========学生信息更新结束==========");
+        logger.info("==========用户信息开始更新==========");
+        GetUserInfos.getAllUserInfo();
+        logger.info("==========用户信息更新结束==========");
+        logger.info("==========优秀班级信息开始更新==========");
+        logger.info("==========优秀班级信息更新结束==========");
+        logger.info("==========优秀毕业生信息开始更新==========");
+//        StudentAwardClient3.doRun();
+//        StudentAwardClient2.doRun();
+        logger.info("==========优秀毕业生信息更新结束==========");
+        logger.info("==========StudentAwardClient开始更新==========");
+//        StudentAwardClient.doRun();
+        logger.info("==========StudentAwardClient更新结束==========");
+    }
+    @Scheduled(cron = "0 0 20 * * ?")
+    public void updateStuInfo2() throws Exception {
+        logger.info("==========优秀毕业生信息开始更新==========");
+       //FwdtPClient.doRun();
+//       StudentAwardClient.doRun();
+//       ClassAwardClient.doRun();
+//  StudentAwardClient2.doRun();
+//       ClassAwardClient.doRun();
+       WalkClient.doRun();
+        logger.info("==========优秀毕业生信息更新结束==========");
+    }
+}
